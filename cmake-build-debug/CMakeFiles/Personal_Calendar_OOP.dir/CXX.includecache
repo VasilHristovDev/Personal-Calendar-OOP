@@ -1,0 +1,42 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+D:/OOP/Personal-Calendar-OOP/Date.cpp
+Date.h
+D:/OOP/Personal-Calendar-OOP/Date.h
+
+D:/OOP/Personal-Calendar-OOP/Date.h
+iostream
+-
+
+D:/OOP/Personal-Calendar-OOP/Event.h
+Date.h
+D:/OOP/Personal-Calendar-OOP/Date.h
+Hour.h
+D:/OOP/Personal-Calendar-OOP/Hour.h
+
+D:/OOP/Personal-Calendar-OOP/Hour.cpp
+Hour.h
+D:/OOP/Personal-Calendar-OOP/Hour.h
+
+D:/OOP/Personal-Calendar-OOP/Hour.h
+iostream
+-
+
+D:/OOP/Personal-Calendar-OOP/main.cpp
+iostream
+-
+cstring
+-
+Date.cpp
+D:/OOP/Personal-Calendar-OOP/Date.cpp
+Hour.cpp
+D:/OOP/Personal-Calendar-OOP/Hour.cpp
+Event.h
+D:/OOP/Personal-Calendar-OOP/Event.h
+
