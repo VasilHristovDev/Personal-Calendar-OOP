@@ -3,6 +3,7 @@
 
 CMakeFiles\Personal_Calendar_OOP.dir\main.cpp.obj: ..\Date.cpp
 CMakeFiles\Personal_Calendar_OOP.dir\main.cpp.obj: ..\Date.h
+CMakeFiles\Personal_Calendar_OOP.dir\main.cpp.obj: ..\Event.cpp
 CMakeFiles\Personal_Calendar_OOP.dir\main.cpp.obj: ..\Event.h
 CMakeFiles\Personal_Calendar_OOP.dir\main.cpp.obj: ..\Hour.cpp
 CMakeFiles\Personal_Calendar_OOP.dir\main.cpp.obj: ..\Hour.h

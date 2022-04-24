@@ -1,9 +1,9 @@
 #include <iostream>
 #include <cstring>
 
-#include "Date.cpp"
-#include "Hour.cpp"
-#include "Event.h"
+//#include "Date.cpp"
+//#include "Hour.cpp"
+#include "Event.cpp"
 
 enum commands {
     MAKE_APPOINTMENT,
@@ -35,6 +35,7 @@ commands stringToCommands(const char * command)
     return WRONG_COMMAND;
 }
 int main() {
-
+    Event event({30,2,2004},"meeting","Meeting with Christian",{10,20},{10,30});
+    event.getDate().print(std::cout);
 
 }
