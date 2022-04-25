@@ -71,6 +71,17 @@ void Event::setEndingHour(const Hour hour) {
     this->endingHour.setMinutes(hour.getMinutes());;
 }
 
+bool Event::operator==(const Event &event) const {
+    return this->date == event.getDate() && this->startingHour == event.getStartingHour() && this->endingHour == event.getEndingHour();
+}
+
+void Event::print(std::ostream &out) {
+    out<<this->name<<std::endl<<this->comment;
+    this->date.print(out);
+    this->startingHour.print(out);
+    out<<" - ";
+    this->endingHour.print(out);
+}
 Event::~Event() = default;
 
 

@@ -17,6 +17,7 @@ public:
     unsigned int getMinutes() const;
 
     void print(std::ostream & out);
+    bool operator ==(const Hour & hour1) const;
 };
 
 

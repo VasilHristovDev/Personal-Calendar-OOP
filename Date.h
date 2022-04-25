@@ -22,6 +22,7 @@ public:
     unsigned int getMonth() const;
     unsigned int getYear() const;
 //    void read(std::ifstream & in);
+    bool operator == (const Date & date1) const;
 };
 bool isValid(const Date & date);
 

@@ -24,6 +24,14 @@ D:/OOP/Personal-Calendar-OOP/Date.cpp
 Hour.cpp
 D:/OOP/Personal-Calendar-OOP/Hour.cpp
 
+D:/OOP/Personal-Calendar-OOP/EventCalendar.cpp
+EventCalendar.h
+D:/OOP/Personal-Calendar-OOP/EventCalendar.h
+
+D:/OOP/Personal-Calendar-OOP/EventCalendar.h
+Event.cpp
+D:/OOP/Personal-Calendar-OOP/Event.cpp
+
 D:/OOP/Personal-Calendar-OOP/Hour.cpp
 Hour.h
 D:/OOP/Personal-Calendar-OOP/Hour.h
@@ -37,6 +45,6 @@ iostream
 -
 cstring
 -
-Event.cpp
-D:/OOP/Personal-Calendar-OOP/Event.cpp
+EventCalendar.cpp
+D:/OOP/Personal-Calendar-OOP/EventCalendar.cpp
 

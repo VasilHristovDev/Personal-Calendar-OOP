@@ -33,3 +33,7 @@ Hour::Hour(unsigned int hour, unsigned int minutes) {
 void Hour::print(std::ostream &out) {
     out<<(this->hour < 10 ? "0":"")<<this->hour<<HOUR_SEPARATOR<<(this->minutes < 10 ? "0":"")<< this->minutes;
 }
+
+bool Hour::operator==(const Hour &hour1) const {
+    return this->hour == hour1.getHour() && this->minutes == hour1.getMinutes();
+ }

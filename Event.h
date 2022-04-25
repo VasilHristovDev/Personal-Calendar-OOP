@@ -30,6 +30,9 @@ public:
     Hour getStartingHour() const;
     Hour getEndingHour() const;
 
+    void print(std::ostream & out);
+
+    bool operator == (const Event & event) const;
     //destructor
     ~Event();
 };

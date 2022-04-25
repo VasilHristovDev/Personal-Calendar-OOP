@@ -123,3 +123,8 @@ unsigned int Date::getMonth() const {
 unsigned int Date::getYear() const {
     return this->year;
 }
+
+bool Date::operator==(const Date &date1) const {
+    return this->day == date1.getDay() && this->month == date1.getMonth() && this->year == date1.getYear();
+}
+

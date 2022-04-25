@@ -3,7 +3,7 @@
 
 //#include "Date.cpp"
 //#include "Hour.cpp"
-#include "Event.cpp"
+#include "EventCalendar.cpp"
 
 enum commands {
     MAKE_APPOINTMENT,
