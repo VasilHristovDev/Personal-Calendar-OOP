@@ -37,3 +37,19 @@ void Hour::print(std::ostream &out) {
 bool Hour::operator==(const Hour &hour1) const {
     return this->hour == hour1.getHour() && this->minutes == hour1.getMinutes();
  }
+
+Hour &Hour::operator=(const Hour &other){
+     if(this != &other) {
+         this->hour = other.hour;
+         this->minutes = other.minutes;
+     }
+    return *this;
+}
+
+bool Hour::operator<(const Hour &hour1) const {
+    return this->hour < hour1.getHour() || (this->hour == hour1.getHour() && this->minutes < hour1.getMinutes());
+}
+
+bool Hour::operator>(const Hour &hour1) const {
+    return this->hour > hour1.getHour() || (this->hour == hour1.getHour() && this->minutes > hour1.getMinutes());
+}

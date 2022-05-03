@@ -128,3 +128,11 @@ bool Date::operator==(const Date &date1) const {
     return this->day == date1.getDay() && this->month == date1.getMonth() && this->year == date1.getYear();
 }
 
+Date &Date::operator=(const Date &other) {
+    this->day = other.getDay();
+    this->month = other.getMonth();
+    this->year = other.getYear();
+
+    return *this;
+}
+

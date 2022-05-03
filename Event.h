@@ -24,7 +24,7 @@ public:
     void setEndingHour(Hour hour);
 
     //selectors
-    Date getDate() const;
+    const Date getDate() const;
     const char * getName() const;
     const char * getComment() const;
     Hour getStartingHour() const;
@@ -33,6 +33,7 @@ public:
     void print(std::ostream & out);
 
     bool operator == (const Event & event) const;
+    Event & operator = (const Event & other);
     //destructor
     ~Event();
 };

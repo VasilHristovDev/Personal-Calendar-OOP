@@ -1,15 +1,14 @@
 #ifndef PERSONAL_CALENDAR_OOP_EVENTCALENDAR_H
 #define PERSONAL_CALENDAR_OOP_EVENTCALENDAR_H
 #include "Event.cpp"
+#include "EventContainer.h"
 
-const unsigned int MAX_EVENTS = 100;
-const unsigned int DEFAULT_CAP = 10;
 
 class EventCalendar {
 private:
-    Event * events;
-    int numberEvents = 0;
-    int maxEvents = 0;
+    EventContainer<> events;
+    bool checkIfDateFree(const Date & date, const Hour & startingHour, const Hour & endingHour);
+    Event * sortEventsByStartingHour(const EventContainer<> * events);
 public:
     //constructor
     EventCalendar();
@@ -18,7 +17,8 @@ public:
     //logic
     void addEvent(const Event & event);
     void removeEvent(const Event & event);
-    const Event & searchEvent(Date date, Hour startingHour, Hour endingHour);
+    void searchEvent(const char * string);
+    void printDayList(const Date & date);
 
 
     //mutators

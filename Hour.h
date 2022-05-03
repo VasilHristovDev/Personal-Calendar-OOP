@@ -18,6 +18,9 @@ public:
 
     void print(std::ostream & out);
     bool operator ==(const Hour & hour1) const;
+    bool operator <(const Hour & hour1) const;
+    bool operator >(const Hour & hour1) const;
+    Hour & operator = (const Hour & other);
 };
 
 

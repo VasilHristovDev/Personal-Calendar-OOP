@@ -16,7 +16,7 @@ Event::Event(Date date, const char *name, const char *comment, const Hour starti
     this->setEndingHour(endingHour);
 }
 
- Date Event::getDate() const {
+ const Date Event::getDate() const {
     return this->date;
 }
 
@@ -73,6 +73,18 @@ void Event::setEndingHour(const Hour hour) {
 
 bool Event::operator==(const Event &event) const {
     return this->date == event.getDate() && this->startingHour == event.getStartingHour() && this->endingHour == event.getEndingHour();
+}
+
+Event & Event::operator=(const Event &other) {
+    if(this != &other)
+    {
+        this->date = other.getDate();
+        this->setName(other.getName());
+        this->setComment(other.getComment());
+        this->startingHour = other.getStartingHour();
+        this->endingHour = other.getEndingHour();
+    }
+    return *this;
 }
 
 void Event::print(std::ostream &out) {
