@@ -21,6 +21,9 @@ public:
     bool operator <(const Hour & hour1) const;
     bool operator >(const Hour & hour1) const;
     Hour & operator = (const Hour & other);
+
+    friend std::istream & operator >>( std::istream & in, Hour & hour);
+
 };
 
 

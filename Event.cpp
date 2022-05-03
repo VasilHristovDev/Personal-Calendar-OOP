@@ -36,7 +36,7 @@ const char *Event::getComment() const {
     return this->endingHour;
 }
 
-void Event::setDate(const Date date1) {
+void Event::setDate(Date date1) {
     if(isValid(date1))
     {
         this->date.setDay(date1.getDay());

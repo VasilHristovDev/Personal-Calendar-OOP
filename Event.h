@@ -34,6 +34,7 @@ public:
 
     bool operator == (const Event & event) const;
     Event & operator = (const Event & other);
+
     //destructor
     ~Event();
 };

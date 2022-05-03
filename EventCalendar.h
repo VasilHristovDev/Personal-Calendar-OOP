@@ -6,9 +6,8 @@
 
 class EventCalendar {
 private:
-    EventContainer<> events;
+    EventContainer<Event> events;
     bool checkIfDateFree(const Date & date, const Hour & startingHour, const Hour & endingHour);
-    Event * sortEventsByStartingHour(const EventContainer<> * events);
 public:
     //constructor
     EventCalendar();
@@ -18,16 +17,14 @@ public:
     void addEvent(const Event & event);
     void removeEvent(const Event & event);
     void searchEvent(const char * string);
+    void changeEvent(const Event& event);
     void printDayList(const Date & date);
 
 
     //mutators
-    void setEvents(const Event * events, int size);
-    void setNumberEvents(int numberEvents);
-    void setMaxEvents(int maxEvents);
+    void setEvents(const Event * events, int size, int maxSize = DEFAULT_CAP);
 
-    //destructor
-    ~EventCalendar();
 };
+static EventContainer<Event> sortEventsByStartingHour(const Event * events, unsigned int numberOfEvents);
 
 #endif //PERSONAL_CALENDAR_OOP_EVENTCALENDAR_H

@@ -38,7 +38,7 @@ bool isValid(const Date &date) {
     months givenMonth = (months) (date.getMonth());
     unsigned int days = date.getDay();
     unsigned int year = date.getYear();
-    
+
     bool isLeapYear = year % 4 == 0 || year % 400 == 0;
     switch (givenMonth) {
         case JANUARY:
@@ -134,5 +134,13 @@ Date &Date::operator=(const Date &other) {
     this->year = other.getYear();
 
     return *this;
+}
+
+std::istream &operator>>(std::istream &in, Date &date) {
+    std::cout << DATE_INPUT_HELPER_MESSAGE << std::endl;
+    in >> date.day;
+    in >> date.month;
+    in >> date.year;
+    return in;
 }
 

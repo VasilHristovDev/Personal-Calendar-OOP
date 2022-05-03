@@ -4,6 +4,7 @@
 #define PERSONAL_CALENDAR_OOP_DATE_H
 
 static const char * INVALID_DATE_MESSAGE = "The date u entered is invalid!";
+static const char * DATE_INPUT_HELPER_MESSAGE = "Please enter a date in the correct format dd/mm/yy!";
 
 class Date {
 private:
@@ -24,6 +25,7 @@ public:
 //    void read(std::ifstream & in);
     bool operator == (const Date & date1) const;
     Date & operator = (const Date & other);
+    friend std::istream & operator >> (std::istream & in, Date &date);
 };
 bool isValid(const Date & date);
 
