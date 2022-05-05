@@ -2,33 +2,33 @@
 #define PERSONAL_CALENDAR_OOP_EVENT_H
 
 #include "Date.cpp"
-#include "Hour.cpp"
+#include "Time.cpp"
 
 class Event {
 private:
     Date date;
     char *name{};
     char *comment{};
-    Hour startingHour;
-    Hour endingHour;
+    Time startingTime;
+    Time endingTime;
 public:
     //constructors
     Event();
-    Event(Date date, const char *name, const char *comment, Hour startingHour, Hour endingHour);
+    Event(Date date, const char *name, const char *comment, Time startingTime, Time endingTime);
 
     //mutators
     void setDate(Date);
     void setName(const char *name);
     void setComment(const char *comment);
-    void setStartingHour(Hour hour);
-    void setEndingHour(Hour hour);
+    void setStartingTime(Time hour);
+    void setEndingTime(Time hour);
 
     //selectors
-    const Date getDate() const;
+    Date getDate() const;
     const char * getName() const;
     const char * getComment() const;
-    Hour getStartingHour() const;
-    Hour getEndingHour() const;
+    Time getStartingTime() const;
+    Time getEndingTime() const;
 
     void print(std::ostream & out);
 

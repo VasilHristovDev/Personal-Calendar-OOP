@@ -1,13 +1,14 @@
 #ifndef PERSONAL_CALENDAR_OOP_EVENTCALENDAR_H
 #define PERSONAL_CALENDAR_OOP_EVENTCALENDAR_H
+
 #include "Event.cpp"
-#include "EventContainer.h"
+#include "Container.h"
 
 
 class EventCalendar {
 private:
-    EventContainer<Event> events;
-    bool checkIfDateFree(const Date & date, const Hour & startingHour, const Hour & endingHour);
+    Container<Event> events;
+    bool checkIfDateFree(const Date & date, const Time & startingTime, const Time & endingTime);
 public:
     //constructor
     EventCalendar();
@@ -20,11 +21,10 @@ public:
     void changeEvent(const Event& event);
     void printDayList(const Date & date);
 
-
     //mutators
     void setEvents(const Event * events, int size, int maxSize = DEFAULT_CAP);
 
 };
-static EventContainer<Event> sortEventsByStartingHour(const Event * events, unsigned int numberOfEvents);
+static Container<Event> sortEventsByStartingHour(const Event * events, unsigned int numberOfEvents);
 
 #endif //PERSONAL_CALENDAR_OOP_EVENTCALENDAR_H

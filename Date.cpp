@@ -1,9 +1,5 @@
-//
-// Created by VasilHristovDev on 23.4.2022 г..
-//
 #include "Date.h"
-
-const char DATE_SEPARATOR = '/';
+#include "Helper.h"
 
 enum months {
     JANUARY = 1,
@@ -82,22 +78,12 @@ bool isValid(const Date &date) {
     }
     return true;
 }
-
-Date::Date(unsigned int day, unsigned int month, unsigned int year) {
-    this->day = day;
-    this->month = month;
-    this->year = year;
-}
+Date::Date():day(0),month(0),year(0) {}
+Date::Date(unsigned int day, unsigned int month, unsigned int year):day(day),month(month),year(year){}
 
 
 void Date::print(std::ostream &out) const {
-    out << this->day << DATE_SEPARATOR << this->month << DATE_SEPARATOR << this->year << std::endl;
-}
-
-Date::Date() {
-    this->day = 0;
-    this->month = 0;
-    this->year = 0;
+    out << this->day << Helper::DATE_SEPARATOR << this->month << Helper::DATE_SEPARATOR << this->year << std::endl;
 }
 
 void Date::setDay(unsigned int _day) {
@@ -129,18 +115,23 @@ bool Date::operator==(const Date &date1) const {
 }
 
 Date &Date::operator=(const Date &other) {
-    this->day = other.getDay();
-    this->month = other.getMonth();
-    this->year = other.getYear();
-
+    if(this != &other) {
+        this->setDay(other.getDay());
+        this->setMonth(other.getMonth());
+        this->setYear(other.getYear());
+    }
     return *this;
 }
 
 std::istream &operator>>(std::istream &in, Date &date) {
-    std::cout << DATE_INPUT_HELPER_MESSAGE << std::endl;
+    std::cout << Helper::DATE_INPUT_HELPER_MESSAGE << std::endl;
     in >> date.day;
+    in.ignore(1);
     in >> date.month;
+    in.ignore(1);
     in >> date.year;
-    return in;
+    if(isValid(date)) { return in; }
+
+    std::cerr<<Helper::INVALID_DATE_MESSAGE<<std::endl;
 }
 

@@ -1,18 +1,9 @@
 #include "EventCalendar.h"
 #include <cstring>
 
-const char *EVENT_NOT_FOUND_ERROR = "Event with this information was not found!";
-const char *DATE_NOT_FREE_ERROR_MESSAGE = "The event cannot be added because an event with the same date exists!";
-const char *HELPER_MESSAGE_CHANGE_EVENT = "Hello! In order to change information for the event build the string: "
-                                          "\n To change the date: write 'd'"
-                                          "\n To change the name: write 'n'"
-                                          "\n To change the comment: write 'c'"
-                                          "\n Your final string could look like that dnc";
-const char *UNKNOWN_COMMAND_USED = "Unknown command was used!";
-
 
 EventCalendar::EventCalendar() {
-    this->events = EventContainer<>();
+    this->events = Container<Event>();
 }
 
 /**
@@ -35,7 +26,7 @@ EventCalendar::EventCalendar(const Event *events, const int numberEvents, const 
  * @param size
  */
 void EventCalendar::setEvents(const Event *_events, int size, int maxSize) {
-    this->events = EventContainer<Event>(_events, size, maxSize);
+    this->events = Container<Event>(_events, size, maxSize);
     unsigned int eventSize = this->events.getSize();
     for (int i = 0; i < eventSize; ++i) {
         this->events.add(_events[i]);
@@ -47,10 +38,10 @@ void EventCalendar::setEvents(const Event *_events, int size, int maxSize) {
  * @param Event event
  */
 void EventCalendar::addEvent(const Event &event) {
-    if (this->checkIfDateFree(event.getDate(), event.getStartingHour(), event.getEndingHour())) {
+    if (this->checkIfDateFree(event.getDate(), event.getStartingTime(), event.getEndingTime())) {
         this->events.add(event);
     } else {
-        std::cerr << DATE_NOT_FREE_ERROR_MESSAGE << std::endl;
+        std::cerr << Helper::DATE_NOT_FREE_ERROR_MESSAGE << std::endl;
     }
 
 }
@@ -64,7 +55,7 @@ void EventCalendar::removeEvent(const Event &event) {
             flag = true;
         }
     }
-    if (!flag) std::cerr << EVENT_NOT_FOUND_ERROR << std::endl;
+    if (!flag) std::cerr << Helper::EVENT_NOT_FOUND_ERROR << std::endl;
 }
 
 /**
@@ -84,16 +75,16 @@ void EventCalendar::searchEvent(const char *string) {
 /**
  *
  * @param Date date
- * @param Hour startingHour
- * @param Hour endingHour
+ * @param Hour startingTime
+ * @param Hour endingTime
  * @return bool
  */
-bool EventCalendar::checkIfDateFree(const Date &date, const Hour &startingHour, const Hour &endingHour) {
+bool EventCalendar::checkIfDateFree(const Date &date, const Time &startingTime, const Time &endingTime) {
     unsigned int eventSize = this->events.getSize();
 
     for (int i = 0; i < eventSize; ++i) {
         if (this->events[i].getDate() == date) {
-            if (this->events[i].getStartingHour() < startingHour && this->events[i].getEndingHour() > startingHour)
+            if (this->events[i].getStartingTime() < startingTime && this->events[i].getEndingTime() > startingTime)
                 return false;
         }
     }
@@ -119,7 +110,7 @@ void EventCalendar::printDayList(const Date &date) {
         }
     }
 
-    EventContainer<Event> eventContainer = sortEventsByStartingHour(eventsForDay, counterEvents);
+    Container<Event> eventContainer = sortEventsByStartingHour(eventsForDay, counterEvents);
     for (int i = 0; i < counterEvents; ++i) {
         eventContainer[i].print(std::cout);
     }
@@ -129,30 +120,30 @@ void EventCalendar::printDayList(const Date &date) {
 
 void EventCalendar::changeEvent(const Event &event) {
 
-    std::cout << HELPER_MESSAGE_CHANGE_EVENT << std::endl;
+    std::cout << Helper::HELPER_MESSAGE_CHANGE_EVENT << std::endl;
     char *command = nullptr;
     std::cin >> command;
     unsigned int index = this->events.getIndex(event);
 
-    if (index == ERROR_INDEX) {
-        std::cerr << EVENT_NOT_FOUND_ERROR << std::endl;
+    if (index == Helper::ERROR_INDEX) {
+        std::cerr << Helper::EVENT_NOT_FOUND_ERROR << std::endl;
         return;
     }
 
     if (strstr(command, "d")) {
         Date date;
         std::cin >> date;
-        Hour startingHour;
+        Time startingHour;
         std::cin >> startingHour;
-        Hour endingHour;
+        Time endingHour;
         std::cin >> endingHour;
         if(checkIfDateFree(date, startingHour, endingHour)) {
             this->events[index].setDate(date);
-            this->events[index].setStartingHour(startingHour);
-            this->events[index].setStartingHour(endingHour);
+            this->events[index].setStartingTime(startingHour);
+            this->events[index].setStartingTime(endingHour);
         }
         else {
-            std::cerr<<DATE_NOT_FREE_ERROR_MESSAGE<<std::endl;
+            std::cerr<<Helper::DATE_NOT_FREE_ERROR_MESSAGE<<std::endl;
         }
 
     } else if (strstr(command, "c")) {
@@ -164,17 +155,17 @@ void EventCalendar::changeEvent(const Event &event) {
         std::cin >> name;
         this->events[index].setName(name);
     } else {
-        std::cerr << UNKNOWN_COMMAND_USED << std::endl;
+        std::cerr << Helper::UNKNOWN_COMMAND_USED << std::endl;
     }
 
 }
 
 
-EventContainer<Event> sortEventsByStartingHour(const Event *_events, unsigned int numberEvents) {
-    EventContainer<Event> returnableEvents(_events, numberEvents);
+Container<Event> sortEventsByStartingHour(const Event *_events, unsigned int numberEvents) {
+    Container<Event> returnableEvents(_events, numberEvents);
     for (int i = 0; i < numberEvents; ++i) {
         for (int j = i + 1; j < numberEvents; ++j) {
-            if (returnableEvents[i].getStartingHour() > returnableEvents[j].getStartingHour()) {
+            if (returnableEvents[i].getStartingTime() > returnableEvents[j].getStartingTime()) {
                 returnableEvents.swap(returnableEvents[i], returnableEvents[j]);
             }
         }

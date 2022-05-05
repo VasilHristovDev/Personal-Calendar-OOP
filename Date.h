@@ -3,8 +3,6 @@
 #ifndef PERSONAL_CALENDAR_OOP_DATE_H
 #define PERSONAL_CALENDAR_OOP_DATE_H
 
-static const char * INVALID_DATE_MESSAGE = "The date u entered is invalid!";
-static const char * DATE_INPUT_HELPER_MESSAGE = "Please enter a date in the correct format dd/mm/yy!";
 
 class Date {
 private:
@@ -14,7 +12,7 @@ private:
 public:
     Date();
     Date(unsigned int day, unsigned int month, unsigned int year);
-    void print(std::ostream & out) const;
+    void print(std::ostream & out = std::cout) const;
     void setDay(unsigned int day);
     void setMonth(unsigned int month);
     void setYear(unsigned int year);
@@ -22,7 +20,6 @@ public:
     unsigned int getDay() const;
     unsigned int getMonth() const;
     unsigned int getYear() const;
-//    void read(std::ifstream & in);
     bool operator == (const Date & date1) const;
     Date & operator = (const Date & other);
     friend std::istream & operator >> (std::istream & in, Date &date);

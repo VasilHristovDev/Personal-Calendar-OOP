@@ -1,8 +1,5 @@
 #include <iostream>
 #include <cstring>
-
-//#include "Date.cpp"
-//#include "Hour.cpp"
 #include "EventCalendar.cpp"
 
 enum commands {
@@ -35,7 +32,21 @@ commands stringToCommands(const char * command)
     return WRONG_COMMAND;
 }
 int main() {
-    Event event({30,2,2004},"meeting","Meeting with Christian",{10,20},{10,30});
-    event.getDate().print(std::cout);
+    Event event({10,2,2004},"meeting","Meeting with Christian",{10,20},{10,30});
+    Event event1({10,2,2004},"meeting","Meeting with Christian",{10,20},{10,30});
+    Event event2({10,2,2004},"meeting","Meeting with Christian",{10,20},{10,30});
+    Event event3({10,2,2004},"meeting","Meeting with Christian",{10,20},{10,30});
+    Event event4({10,2,2004},"meeting","Meeting with Christian",{10,20},{10,30});
+    Event event5({10,2,2004},"meeting","Meeting with Christian",{10,20},{10,30});
+    Event * events = new Event[6];
+    events[0] = event;
+    events[1] = event1;
+    events[2] = event2;
+    events[3] = event3;
+    events[4] = event4;
+    events[5] = event5;
+    EventCalendar calendar(events,6,10);
+    calendar.addEvent(event1);
+    calendar.printDayList({10,2,2004});
 
 }
