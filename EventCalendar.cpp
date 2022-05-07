@@ -2,10 +2,6 @@
 #include <cstring>
 
 
-EventCalendar::EventCalendar() {
-    this->events = Container<Event>();
-}
-
 /**
  *
  * @param events
@@ -25,11 +21,10 @@ EventCalendar::EventCalendar(const Event *events, const int numberEvents, const 
  * @param _events
  * @param size
  */
-void EventCalendar::setEvents(const Event *_events, int size, int maxSize) {
-    this->events = Container<Event>(_events, size, maxSize);
-    unsigned int eventSize = this->events.getSize();
-    for (int i = 0; i < eventSize; ++i) {
-        this->events.add(_events[i]);
+void EventCalendar::setEvents(const Event *_events,int size,int maxSize) {
+    this->events =  Container<Event>(maxSize);
+    for (int i = 0; i < size; ++i) {
+        this->addEvent(_events[i]);
     }
 }
 
@@ -37,7 +32,7 @@ void EventCalendar::setEvents(const Event *_events, int size, int maxSize) {
  *
  * @param Event event
  */
-void EventCalendar::addEvent(const Event &event) {
+void EventCalendar::addEvent(const Event & event) {
     if (this->checkIfDateFree(event.getDate(), event.getStartingTime(), event.getEndingTime())) {
         this->events.add(event);
     } else {
@@ -62,11 +57,11 @@ void EventCalendar::removeEvent(const Event &event) {
  *
  * @param string
  */
-void EventCalendar::searchEvent(const char *string) {
+void EventCalendar::searchEvent(String & string) {
     unsigned int eventSize = this->events.getSize();
     for (int i = 0; i < eventSize; ++i) {
-        char *commentStr = strstr(this->events[i].getComment(), string);
-        char *nameStr = strstr(this->events[i].getName(), string);
+        char *commentStr = strstr(this->events[i].getComment().getText(), string.getText());
+        char *nameStr = strstr(this->events[i].getName().getText(), string.getText());
         if (commentStr || nameStr)
             this->events[i].print(std::cout);
     }
@@ -160,13 +155,17 @@ void EventCalendar::changeEvent(const Event &event) {
 
 }
 
+EventCalendar::EventCalendar() {
+ this->events = Container<Event>(DEFAULT_CAP);
+}
+
 
 Container<Event> sortEventsByStartingHour(const Event *_events, unsigned int numberEvents) {
-    Container<Event> returnableEvents(_events, numberEvents);
+    Container<Event> returnableEvents(numberEvents);
     for (int i = 0; i < numberEvents; ++i) {
         for (int j = i + 1; j < numberEvents; ++j) {
             if (returnableEvents[i].getStartingTime() > returnableEvents[j].getStartingTime()) {
-                returnableEvents.swap(returnableEvents[i], returnableEvents[j]);
+                std::swap(returnableEvents[i], returnableEvents[j]);
             }
         }
     }

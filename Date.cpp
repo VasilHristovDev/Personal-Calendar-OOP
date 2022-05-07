@@ -34,7 +34,7 @@ bool isValid(const Date &date) {
     months givenMonth = (months) (date.getMonth());
     unsigned int days = date.getDay();
     unsigned int year = date.getYear();
-
+    //TODO: Implement correct logic for leap year!!!!
     bool isLeapYear = year % 4 == 0 || year % 400 == 0;
     switch (givenMonth) {
         case JANUARY:
@@ -78,7 +78,7 @@ bool isValid(const Date &date) {
     }
     return true;
 }
-Date::Date():day(0),month(0),year(0) {}
+Date::Date():day(1),month(1),year(2001) {}
 Date::Date(unsigned int day, unsigned int month, unsigned int year):day(day),month(month),year(year){}
 
 
@@ -115,7 +115,7 @@ bool Date::operator==(const Date &date1) const {
 }
 
 Date &Date::operator=(const Date &other) {
-    if(this != &other) {
+    if(this != &other && isValid(other)) {
         this->setDay(other.getDay());
         this->setMonth(other.getMonth());
         this->setYear(other.getYear());
@@ -130,8 +130,9 @@ std::istream &operator>>(std::istream &in, Date &date) {
     in >> date.month;
     in.ignore(1);
     in >> date.year;
-    if(isValid(date)) { return in; }
-
-    std::cerr<<Helper::INVALID_DATE_MESSAGE<<std::endl;
+    if(!isValid(date)) {
+        std::cerr<<Helper::INVALID_DATE_MESSAGE<<std::endl;
+    }
+    return in;
 }
 

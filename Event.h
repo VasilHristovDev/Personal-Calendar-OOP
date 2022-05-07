@@ -3,12 +3,13 @@
 
 #include "Date.cpp"
 #include "Time.cpp"
+#include "String.h"
 
 class Event {
 private:
     Date date;
-    char *name{};
-    char *comment{};
+    String name;
+    String comment;
     Time startingTime;
     Time endingTime;
 public:
@@ -25,18 +26,16 @@ public:
 
     //selectors
     Date getDate() const;
-    const char * getName() const;
-    const char * getComment() const;
+    String getName() const;
+    String getComment() const;
     Time getStartingTime() const;
     Time getEndingTime() const;
 
-    void print(std::ostream & out);
-
+    void print(std::ostream & out = std::cout);
+    Event & operator=(const Event & other);
     bool operator == (const Event & event) const;
-    Event & operator = (const Event & other);
+    friend std::istream & operator >> (std::istream & in, Event & event);
 
-    //destructor
-    ~Event();
 };
 
 

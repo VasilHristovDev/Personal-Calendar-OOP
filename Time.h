@@ -1,7 +1,7 @@
-#include <iostream>
 #ifndef PERSONAL_CALENDAR_OOP_HOUR_H
 #define PERSONAL_CALENDAR_OOP_HOUR_H
 
+#include <iostream>
 
 class Time {
 private:
@@ -25,6 +25,6 @@ public:
     friend std::istream & operator >>(std::istream & in, Time & time);
 
 };
-
+bool isValidTime(const Time & time);
 
 #endif //PERSONAL_CALENDAR_OOP_HOUR_H

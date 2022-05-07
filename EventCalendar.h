@@ -17,12 +17,13 @@ public:
     //logic
     void addEvent(const Event & event);
     void removeEvent(const Event & event);
-    void searchEvent(const char * string);
+    void searchEvent(String & string);
     void changeEvent(const Event& event);
     void printDayList(const Date & date);
 
     //mutators
     void setEvents(const Event * events, int size, int maxSize = DEFAULT_CAP);
+
 
 };
 static Container<Event> sortEventsByStartingHour(const Event * events, unsigned int numberOfEvents);

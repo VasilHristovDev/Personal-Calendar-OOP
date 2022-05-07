@@ -3,8 +3,8 @@
 
 Event::Event() {
     this->setDate(Date());
-    this->name = nullptr;
-    this->comment = nullptr;
+    this->name = String();
+    this->comment = String();
     this->setStartingTime(Time());
     this->setEndingTime(Time());
 }
@@ -21,11 +21,11 @@ Date Event::getDate() const {
     return this->date;
 }
 
-const char *Event::getName() const {
+String Event::getName() const {
     return this->name;
 }
 
-const char *Event::getComment() const {
+String Event::getComment() const {
     return this->comment;
 }
 
@@ -47,26 +47,33 @@ void Event::setDate(Date date1) {
 }
 
 void Event::setName(const char *_name) {
-    delete[] this->name;
-    this->name = new char[strlen(_name)];
-    strcpy(this->name, _name);
+    this->name = _name;
 }
 
 void Event::setComment(const char *_comment) {
-    if (this->comment != nullptr) delete[] this->comment;
-
-    this->comment = new char[strlen(_comment)];
-    strcpy(this->comment, _comment);
+    this->comment = _comment;
 }
 
 void Event::setStartingTime(Time hour) {
-    this->startingTime.setHour(hour.getHour());
-    this->startingTime.setMinutes(hour.getMinutes());
+    if(isValidTime(hour)) {
+        this->startingTime.setHour(hour.getHour());
+        this->startingTime.setMinutes(hour.getMinutes());
+    }
+    else {
+        std::cerr<<Helper::INVALID_TIME_ERROR_MESSAGE<<std::endl;
+    }
+
 }
 
 void Event::setEndingTime(Time hour) {
-    this->endingTime.setHour(hour.getHour());
-    this->endingTime.setMinutes(hour.getMinutes());;
+    if(isValidTime(hour)) {
+        this->endingTime.setHour(hour.getHour());
+        this->endingTime.setMinutes(hour.getMinutes());
+    }
+    else {
+        std::cerr<<Helper::INVALID_TIME_ERROR_MESSAGE<<std::endl;
+    }
+
 }
 
 bool Event::operator==(const Event &event) const {
@@ -75,27 +82,36 @@ bool Event::operator==(const Event &event) const {
 }
 
 Event &Event::operator=(const Event &other) {
-    if (this != &other) {
-        this->date = other.getDate();
-        this->setName(other.getName());
-        this->setComment(other.getComment());
-        this->startingTime = other.getStartingTime();
-        this->endingTime = other.getEndingTime();
+    if(this != &other)
+    {
+        this->date = other.date;
+        this->name = other.name;
+        this->comment = other.comment;
+        this->startingTime = other.startingTime;
+        this->endingTime = other.endingTime;
     }
     return *this;
 }
 
 void Event::print(std::ostream &out) {
-    out << this->name << std::endl << this->comment;
+    out << this->name << std::endl << this->comment << std::endl;
     this->date.print(out);
     this->startingTime.print(out);
     out << " - ";
     this->endingTime.print(out);
+    std::cout << std::endl;
 }
 
-Event::~Event() {
-    delete[] this->name;
-    delete[] this->comment;
-};
+std::istream &operator>>(std::istream &in, Event &event) {
+    in>>event.date;
+    std::cout<<Helper::NAME_INPUT_HELPER_MESSAGE<<std::endl;
+    in.ignore();
+    in>>event.name;
+    std::cout<<Helper::COMMENT_INPUT_HELPER_MESSAGE<<std::endl;
+    in>>event.comment;
+    in>>event.startingTime;
+    in>>event.endingTime;
+    return in;
+}
 
 

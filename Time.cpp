@@ -28,7 +28,7 @@ Time::Time(unsigned int hour, unsigned int minutes) {
 }
 
 void Time::print(std::ostream &out) const {
-    out << (this->hour < 10 ? "0" : "") << this->hour << Helper::HOUR_SEPARATOR << (this->minutes < 10 ? "0" : "")
+    out << (this->hour < 10 ? "0" : "") << this->hour << Helper::TIME_SEPARATOR << (this->minutes < 10 ? "0" : "")
         << this->minutes;
 }
 
@@ -53,10 +53,19 @@ bool Time::operator>(const Time &hour1) const {
 }
 
 std::istream &operator>>(std::istream &in, Time &hour) {
-    std::cout<< Helper::HOUR_INPUT_HELPER_MESSAGE<<std::endl;
+    std::cout << Helper::TIME_INPUT_HELPER_MESSAGE << std::endl;
     in >> hour.hour;
     in.ignore(1);
     in >> hour.minutes;
-
+    if(!isValidTime(hour))
+        std::cerr<<Helper::INVALID_TIME_ERROR_MESSAGE<<std::endl;
     return in;
+}
+
+bool isValidTime(const Time & time)
+{
+    unsigned int hour = time.getHour();
+    unsigned int minutes = time.getMinutes();
+
+    return hour < 23 && hour >= 0 && minutes < 59 && minutes >= 0 ;
 }
