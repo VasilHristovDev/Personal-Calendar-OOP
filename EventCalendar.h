@@ -23,7 +23,7 @@ public:
 
     //mutators
     void setEvents(const Event * events, int size, int maxSize = DEFAULT_CAP);
-
+    void writeEvents(const char * filename);
 
 };
 static Container<Event> sortEventsByStartingHour(const Event * events, unsigned int numberOfEvents);

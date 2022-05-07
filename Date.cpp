@@ -83,6 +83,7 @@ Date::Date(unsigned int day, unsigned int month, unsigned int year):day(day),mon
 
 
 void Date::print(std::ostream &out) const {
+    out<<"date: ";
     out << this->day << Helper::DATE_SEPARATOR << this->month << Helper::DATE_SEPARATOR << this->year << std::endl;
 }
 

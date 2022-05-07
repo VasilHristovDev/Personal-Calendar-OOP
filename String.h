@@ -8,8 +8,7 @@ private:
     unsigned int size;
     void deallocateMemory();
 public:
-    String();
-    String(const char *text);
+    String(const char * text = "\0");
     String(const String & string);
 
     ~String();
@@ -20,18 +19,13 @@ public:
     const char *getText() const;
 
     String &operator=(const String &other);
-    String &operator+(const String &other);
+    String operator+(const String &other);
 
     friend std::istream & operator >> (std::istream & in, String & readable);
     friend std::ostream & operator << (std::ostream & out, String & readable);
 
 };
 
-String::String() {
-    this->text = new char [1];
-    this->size = 0;
-    this->text[0] = '\0';
-}
 
 String::String(const char *text) {
     this->size = strlen(text);
@@ -62,15 +56,11 @@ String &String::operator=(const String &other) {
     }
     return *this;
 }
-
-String &String::operator+(const String &other) {
-    String temp = *this;
-    deallocateMemory();
-    this->text = new char [this->size + other.getSize() + 1];
-    strcpy(this->text, temp.getText());
-    strcat(this->text,other.getText());
-
-    return *this;
+String String::operator+(const String &other) {
+    char * returnable = new char[this->size + other.getSize() + 1];
+    strcpy(returnable, this->text);
+    strcat(returnable,other.getText());
+    return (String)returnable;
 }
 
 void String::deallocateMemory() {

@@ -17,6 +17,7 @@ public:
     Container();
 
     Container(unsigned int cap);
+    Container(const Container<Type> & container);
 
     void add(const Type &element);
 
@@ -29,7 +30,7 @@ public:
     unsigned int getSize() const;
 
     Type &operator[](unsigned index);
-
+    Container<Type> & operator=(const Container<Type> & other);
     ~Container();
 
 };
@@ -100,6 +101,32 @@ unsigned int Container<Type>::getIndex(const Type &element) {
 template<class Type>
 Container<Type>::~Container() {
     delete[] arr;
+}
+
+template<class Type>
+Container<Type> &Container<Type>::operator=(const Container<Type> &other) {
+    if(this != &other)
+    {
+        delete [] arr;
+        capacity = other.capacity;
+        arr = new Type [capacity];
+        size = other.getSize();
+        for (int i = 0; i < size; ++i) {
+            arr[i] = other.arr[i];
+        }
+    }
+    return *this;
+}
+
+template<class Type>
+Container<Type>::Container(const Container<Type> &container) {
+    capacity = container.capacity;
+    arr = new Type[capacity];
+    size = container.size;
+
+    for (int i = 0; i < size; ++i) {
+        arr[i] = container.arr[i];
+    }
 }
 
 

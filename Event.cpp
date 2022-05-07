@@ -1,12 +1,7 @@
 #include "Event.h"
 #include "Helper.h"
 
-Event::Event() {
-    this->setDate(Date());
-    this->name = String();
-    this->comment = String();
-    this->setStartingTime(Time());
-    this->setEndingTime(Time());
+Event::Event():date(), name(), comment(),startingTime(),endingTime(){
 }
 
 Event::Event(Date date, const char *name, const char *comment, const Time startingTime, const Time endingTime) {
@@ -94,8 +89,10 @@ Event &Event::operator=(const Event &other) {
 }
 
 void Event::print(std::ostream &out) {
-    out << this->name << std::endl << this->comment << std::endl;
+    out <<"name: "<< this->name <<std::endl;
+    out<<"comment:  "<< this->comment<<std::endl;
     this->date.print(out);
+    out<<"time: ";
     this->startingTime.print(out);
     out << " - ";
     this->endingTime.print(out);
@@ -112,6 +109,10 @@ std::istream &operator>>(std::istream &in, Event &event) {
     in>>event.startingTime;
     in>>event.endingTime;
     return in;
+}
+
+void Event::save(std::ostream & out) {
+    this->print(out);
 }
 
 

@@ -8,17 +8,16 @@ const char *OUTPUT_FILENAME = "EventCalendar.txt";
 
 class Program {
 private:
-    EventCalendar *calendar;
+    EventCalendar calendar;
 public:
     Program();
 
     void run();
 
-    ~Program();
 };
 
 Program::Program() {
-    this->calendar = new EventCalendar();
+    this->calendar =  EventCalendar();
 }
 
 void Program::run() {
@@ -36,23 +35,23 @@ void Program::run() {
                 break;
             case MAKE_APPOINTMENT:
                 std::cin >> event;
-                this->calendar->addEvent(event);
+                this->calendar.addEvent(event);
                 break;
             case CANCEL_APPOINTMENT:
                 std::cin >> event;
-                this->calendar->removeEvent(event);
+                this->calendar.removeEvent(event);
                 break;
             case DAY_SCHEDULE:
                 std::cin >> date;
-                this->calendar->printDayList(date);
+                this->calendar.printDayList(date);
                 break;
             case CHANGE_APPOINTMENT:
                 std::cin >> event;
-                this->calendar->changeEvent(event);
+                this->calendar.changeEvent(event);
                 break;
             case SEARCH_APPOINTMENT:
                 std::cin >> string;
-                this->calendar->searchEvent(string);
+                this->calendar.searchEvent(string);
                 break;
             case WORKLOAD:
                 //TODO: Implement showing workload
@@ -67,14 +66,9 @@ void Program::run() {
         }
     }
     std::cout << Helper::EXIT_MESSAGE << OUTPUT_FILENAME << std::endl;
-
-    //TODO: Implement writing to a file
-//    this->calendar.writeFile();
+    this->calendar.writeEvents(OUTPUT_FILENAME);
 }
 
-Program::~Program() {
-    delete[] this->calendar;
-}
 
 
 #endif //PERSONAL_CALENDAR_OOP_PROGRAM_H

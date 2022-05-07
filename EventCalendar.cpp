@@ -1,5 +1,6 @@
 #include "EventCalendar.h"
 #include <cstring>
+#include <fstream>
 
 
 /**
@@ -114,18 +115,18 @@ void EventCalendar::printDayList(const Date &date) {
 }
 
 void EventCalendar::changeEvent(const Event &event) {
-
     std::cout << Helper::HELPER_MESSAGE_CHANGE_EVENT << std::endl;
-    char *command = nullptr;
+    String command;
+    std::cin.ignore();
     std::cin >> command;
     unsigned int index = this->events.getIndex(event);
-
+    std::cout<<index<<std::endl;
     if (index == Helper::ERROR_INDEX) {
         std::cerr << Helper::EVENT_NOT_FOUND_ERROR << std::endl;
         return;
     }
 
-    if (strstr(command, "d")) {
+    if (strstr(command.getText(), "d")) {
         Date date;
         std::cin >> date;
         Time startingHour;
@@ -135,17 +136,17 @@ void EventCalendar::changeEvent(const Event &event) {
         if(checkIfDateFree(date, startingHour, endingHour)) {
             this->events[index].setDate(date);
             this->events[index].setStartingTime(startingHour);
-            this->events[index].setStartingTime(endingHour);
+            this->events[index].setEndingTime(endingHour);
         }
         else {
             std::cerr<<Helper::DATE_NOT_FREE_ERROR_MESSAGE<<std::endl;
         }
 
-    } else if (strstr(command, "c")) {
+    } else if (strstr(command.getText(), "c")) {
         char *comment = nullptr;
         std::cin >> comment;
         this->events[index].setComment(comment);
-    } else if (strstr(command, "n")) {
+    } else if (strstr(command.getText(), "n")) {
         char *name = nullptr;
         std::cin >> name;
         this->events[index].setName(name);
@@ -155,8 +156,23 @@ void EventCalendar::changeEvent(const Event &event) {
 
 }
 
-EventCalendar::EventCalendar() {
- this->events = Container<Event>(DEFAULT_CAP);
+EventCalendar::EventCalendar() : events(Container<Event>()){}
+
+
+void EventCalendar::writeEvents(const char * filename) {
+
+    std::ofstream out;
+    out.open(filename);
+    if(out)
+    {
+        unsigned int size = this->events.getSize();
+        for (int i = 0; i < size ; ++i) {
+            out<<i+1<<": "<<std::endl;
+            this->events[i].save(out);
+        }
+    }
+    out.close();
+
 }
 
 

@@ -61,7 +61,7 @@ const char * Helper::COMMANDS_HELPER_MESSAGE = "Hello! \n"
                                                "To see your daily schedule for a certain week write: show:busy \n"
                                                "To exit the program write: exit \n";
  const char * Helper::EXIT_MESSAGE = "Goodbye! \n"
-                                           "Your event calendar is currently being save to: ";
+                                           "Your event calendar is currently being saved to: ";
 
 
 #endif //PERSONAL_CALENDAR_OOP_HELPER_H
