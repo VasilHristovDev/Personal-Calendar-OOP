@@ -165,7 +165,6 @@ void EventCalendar::writeEvents(const char *filename) {
 
 }
 String constructFileName(const Date & startDate) {
-
     char * yearStr = new char [5];
     unsigned int year = startDate.getYear();
     yearStr[0] = year / 1000  + '0';
@@ -211,13 +210,26 @@ void EventCalendar::outputScheduleFromTo(const Date &dateStart, const Date &date
             }
         }
         sortEventsByDuration(eventsToBeShown);
-        //TODO:Implement Sorting events by duration
-        //TODO:Implement Printing all days of the period
-
+        unsigned int sizeReturnable = eventsToBeShown.getSize();
+        for (int i = 0; i < sizeReturnable ; ++i) {
+            eventsToBeShown[i].print(out);
+        }
+        out.close();
     }
-
 }
 
+void sortEventsByDuration(Container<Event> & events)
+{
+    unsigned int size = events.getSize();
+    for (int i = 0; i < size ; ++i) {
+        for (int j = i + 1; j < size ; ++j) {
+            if(getDuration(events[i]) < getDuration(events[j]))
+            {
+                events.swap(events[i], events[j]);
+            }
+        }
+    }
+}
 
 Container<Event> sortEventsByStartingHour(Container<Event> &events, unsigned int numberEvents) {
     Container<Event> returnableEvents(numberEvents);
