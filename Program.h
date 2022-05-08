@@ -28,6 +28,7 @@ void Program::run() {
         commands COMMAND = stringToCommands(command);
         Event event;
         Date date;
+        Date date2;
         String string;
         switch (COMMAND) {
             case SHOW_COMMANDS:
@@ -54,7 +55,9 @@ void Program::run() {
                 this->calendar.searchEvent(string);
                 break;
             case WORKLOAD:
-                //TODO: Implement showing workload
+                std::cin>>date;
+                std::cin>>date2;
+                this->calendar.outputScheduleFromTo(date,date2);
                 break;
             case FIND_FREE_TIME:
                 //TODO: Implement finding free time

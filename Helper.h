@@ -31,10 +31,13 @@ public:
     //UI
     static const char * COMMANDS_HELPER_MESSAGE;
     static const char * EXIT_MESSAGE;
+
+    //determination of day of the week constants
+    static const unsigned int MONTH_DIFFERENCE_CONST;
 };
 
 const char *Helper::INVALID_DATE_MESSAGE = "The date you entered is invalid!";
-const char *Helper::DATE_INPUT_HELPER_MESSAGE = "Please enter a date in the correct format dd/mm/yy!";
+const char *Helper::DATE_INPUT_HELPER_MESSAGE = "Please enter a date in the correct format dd/mm/yyyy!";
 const char Helper::TIME_SEPARATOR = ':';
 const char Helper::DATE_SEPARATOR = '/';
 const char *Helper::TIME_INPUT_HELPER_MESSAGE = "Please enter the hour in the following format: hh:ii";
@@ -62,6 +65,6 @@ const char * Helper::COMMANDS_HELPER_MESSAGE = "Hello! \n"
                                                "To exit the program write: exit \n";
  const char * Helper::EXIT_MESSAGE = "Goodbye! \n"
                                            "Your event calendar is currently being saved to: ";
-
+const unsigned int Helper::MONTH_DIFFERENCE_CONST = 2;
 
 #endif //PERSONAL_CALENDAR_OOP_HELPER_H

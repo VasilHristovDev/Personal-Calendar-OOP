@@ -96,7 +96,10 @@ void Event::print(std::ostream &out) {
     this->startingTime.print(out);
     out << " - ";
     this->endingTime.print(out);
-    std::cout << std::endl;
+    out<<std::endl;
+    out<<"duration: ";
+    out<<getDuration(*this)<<" min";
+    out<<std::endl;
 }
 
 std::istream &operator>>(std::istream &in, Event &event) {

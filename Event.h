@@ -39,5 +39,11 @@ public:
 
 };
 
+static unsigned int getDuration(const Event & event) {
+    unsigned int hours = event.getEndingTime().getHour() - event.getStartingTime().getHour();
+    unsigned int minutes = event.getEndingTime().getMinutes() - event.getStartingTime().getMinutes();
+
+    return hours * 60 + minutes;
+}
 
 #endif //PERSONAL_CALENDAR_OOP_EVENT_H

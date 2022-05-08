@@ -20,6 +20,7 @@ public:
     void searchEvent(String & string);
     void changeEvent(const Event& event);
     void printDayList(const Date & date);
+    void outputScheduleFromTo(const Date & dateStart, const Date & dateEnd);
 
     //mutators
     void setEvents(const Event * events, int size, int maxSize = DEFAULT_CAP);
@@ -27,5 +28,7 @@ public:
 
 };
 static Container<Event> sortEventsByStartingHour(Container<Event> & events, unsigned int numberOfEvents);
+static String constructFileName(const Date & startDate);
+static void sortEventsByDuration(Container<Event> & container);
 
 #endif //PERSONAL_CALENDAR_OOP_EVENTCALENDAR_H

@@ -22,9 +22,13 @@ public:
     unsigned int getYear() const;
     bool operator == (const Date & date1) const;
     Date & operator = (const Date & other);
+    bool operator <=(const Date & date1) const;
+    bool operator >=(const Date & date1) const;
     friend std::istream & operator >> (std::istream & in, Date &date);
+    void printDayOfWeek(std::ostream & out = std::cout) const;
 };
 bool isValid(const Date & date);
+unsigned int getDayOfWeek(const Date & date);
 
 
 #endif //PERSONAL_CALENDAR_OOP_DATE_H

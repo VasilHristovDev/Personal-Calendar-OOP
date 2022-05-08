@@ -164,6 +164,59 @@ void EventCalendar::writeEvents(const char *filename) {
     out.close();
 
 }
+String constructFileName(const Date & startDate) {
+
+    char * yearStr = new char [5];
+    unsigned int year = startDate.getYear();
+    yearStr[0] = year / 1000  + '0';
+    yearStr[1] = year / 100 % 10 + '0';
+    yearStr[2] = year / 10 % 10 + '0';
+    yearStr[3] = year % 10 + '0';
+    yearStr[4] = '\0';
+
+    char * monthStr = new char [3];
+    unsigned int month = startDate.getMonth();
+    monthStr[0] = (month < OCTOBER ? '0': (month / 10 % 10 + '0'));
+    monthStr[1] = month % 10 + '0';
+    monthStr[2] = '\0';
+
+    char * dayStr = new char [3];
+    unsigned int day = startDate.getDay();
+    dayStr[0] = (day < 10 ? '0': (day / 10 % 10 + '0'));
+    dayStr[1] = day % 10 + '0';
+    dayStr[2] = '\0';
+
+    std::cout<<yearStr<<"-"<<monthStr<<"-"<<dayStr<<std::endl;
+    String returnableStr("stats");
+    returnableStr = returnableStr + "-" +yearStr + "-" +monthStr + "-"+dayStr+".txt";
+    std::cout<<returnableStr.getText();
+    delete [] dayStr;
+    delete [] monthStr;
+    delete [] yearStr;
+    return returnableStr;
+}
+
+void EventCalendar::outputScheduleFromTo(const Date &dateStart, const Date &dateEnd) {
+    String filename = constructFileName(dateStart);
+    std::ofstream out;
+    out.open(filename.getText());
+    if(out)
+    {
+        unsigned int size = this->events.getSize();
+        Container<Event> eventsToBeShown;
+        for (int i = 0; i < size ; ++i) {
+            if(this->events[i].getDate() >= dateStart && this->events[i].getDate() <= dateEnd)
+            {
+                eventsToBeShown.add(this->events[i]);
+            }
+        }
+        sortEventsByDuration(eventsToBeShown);
+        //TODO:Implement Sorting events by duration
+        //TODO:Implement Printing all days of the period
+
+    }
+
+}
 
 
 Container<Event> sortEventsByStartingHour(Container<Event> &events, unsigned int numberEvents) {

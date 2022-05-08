@@ -1,5 +1,16 @@
 #include "Date.h"
 #include "Helper.h"
+#include <cmath>
+
+enum dayOfWeek {
+    MONDAY = 1,
+    TUESDAY = 2,
+    WEDNESDAY = 3,
+    THURSDAY = 4,
+    FRIDAY = 5,
+    SATURDAY = 6,
+    SUNDAY = 0
+};
 
 enum months {
     JANUARY = 1,
@@ -78,13 +89,39 @@ bool isValid(const Date &date) {
     }
     return true;
 }
-Date::Date():day(1),month(1),year(2001) {}
-Date::Date(unsigned int day, unsigned int month, unsigned int year):day(day),month(month),year(year){}
+
+unsigned int getDayOfWeek(const Date &date) {
+    unsigned int day = date.getDay();
+    unsigned int month = date.getMonth();
+    if (month >= MARCH)
+        month -= Helper::MONTH_DIFFERENCE_CONST;
+    else {
+        month += 10;
+    }
+    int century = date.getYear() / 100;
+    int year;
+    if (month == 11 || month == 12)
+        year = date.getYear() % 100 - 1;
+    else
+        year = date.getYear() % 100;
+    int yearByFour = floor(year / 4);
+    int centuryByFour = floor(century / 4);
+    int monthManipulation = floor(2.6 * month - 0.2);
+
+    return (day + monthManipulation - 2 * century + year + yearByFour + centuryByFour) % 7;
+
+}
+
+Date::Date() : day(1), month(1), year(2001) {}
+
+Date::Date(unsigned int day, unsigned int month, unsigned int year) : day(day), month(month), year(year) {}
 
 
 void Date::print(std::ostream &out) const {
-    out<<"date: ";
-    out << this->day << Helper::DATE_SEPARATOR << this->month << Helper::DATE_SEPARATOR << this->year << std::endl;
+    out << "date: ";
+    this->printDayOfWeek(out);
+    out << (this->day < 10 ? "0" : "") << this->day << Helper::DATE_SEPARATOR << (this->month < 10 ? "0" : "")
+        << this->month << Helper::DATE_SEPARATOR << this->year << std::endl;
 }
 
 void Date::setDay(unsigned int _day) {
@@ -116,7 +153,7 @@ bool Date::operator==(const Date &date1) const {
 }
 
 Date &Date::operator=(const Date &other) {
-    if(this != &other && isValid(other)) {
+    if (this != &other && isValid(other)) {
         this->setDay(other.getDay());
         this->setMonth(other.getMonth());
         this->setYear(other.getYear());
@@ -131,9 +168,48 @@ std::istream &operator>>(std::istream &in, Date &date) {
     in >> date.month;
     in.ignore(1);
     in >> date.year;
-    if(!isValid(date)) {
-        std::cerr<<Helper::INVALID_DATE_MESSAGE<<std::endl;
+    if (!isValid(date)) {
+        std::cerr << Helper::INVALID_DATE_MESSAGE << std::endl;
     }
     return in;
 }
+
+void Date::printDayOfWeek(std::ostream &out) const {
+    std::cout<<getDayOfWeek(*this)<<std::endl;
+    switch (getDayOfWeek(*this)) {
+        case MONDAY:
+            out << "Mon ";
+            break;
+        case TUESDAY:
+            out << "Tue ";
+            break;
+        case WEDNESDAY:
+            out << "Wed ";
+            break;
+        case THURSDAY:
+            out << "Thu ";
+            break;
+        case FRIDAY:
+            out << "Fri ";
+            break;
+        case SATURDAY:
+            out << "Sat ";
+            break;
+        case SUNDAY:
+            out << "Sun ";
+            break;
+        default:
+            out << "Invalid day of week ";
+            break;
+    }
+}
+
+bool Date::operator<=(const Date &date1) const {
+    return this->year <= date1.getYear() && this->month <= date1.getMonth() && this->day <= date1.getMonth();
+}
+
+bool Date::operator>=(const Date &date1) const {
+    return this->year >= date1.getYear() && this->month >= date1.getMonth() && this->day >= date1.getMonth();
+}
+
 

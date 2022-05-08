@@ -142,6 +142,8 @@ CMakeFiles/Personal_Calendar_OOP.dir/main.cpp.obj: ../main.cpp \
   C:/Program\ Files/JetBrains/CLion\ 2022.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/istream \
   C:/Program\ Files/JetBrains/CLion\ 2022.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/istream.tcc \
   ../Helper.h \
+  C:/Program\ Files/JetBrains/CLion\ 2022.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/cmath \
+  C:/Program\ Files/JetBrains/CLion\ 2022.1/bin/mingw/x86_64-w64-mingw32/include/math.h \
   ../Time.cpp \
   ../Time.h \
   ../String.h \
@@ -319,6 +321,8 @@ C:/Program\ Files/JetBrains/CLion\ 2022.1/bin/mingw/x86_64-w64-mingw32/include/c
 
 C:/Program\ Files/JetBrains/CLion\ 2022.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/ios_base.h:
 
+C:/Program\ Files/JetBrains/CLion\ 2022.1/bin/mingw/x86_64-w64-mingw32/include/math.h:
+
 C:/Program\ Files/JetBrains/CLion\ 2022.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/ext/atomicity.h:
 
 C:/Program\ Files/JetBrains/CLion\ 2022.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32/bits/gthr.h:
@@ -440,6 +444,8 @@ C:/Program\ Files/JetBrains/CLion\ 2022.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/1
 C:/Program\ Files/JetBrains/CLion\ 2022.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/istream:
 
 ../Helper.h:
+
+C:/Program\ Files/JetBrains/CLion\ 2022.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/cmath:
 
 ../Time.cpp:
 
