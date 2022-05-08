@@ -3,6 +3,7 @@
 #ifndef PERSONAL_CALENDAR_OOP_EVENTCONTAINER_H
 #define PERSONAL_CALENDAR_OOP_EVENTCONTAINER_H
 
+//TODO: Implement resize method for the container class
 const unsigned int MAX_EVENTS = 100;
 const unsigned int DEFAULT_CAP = 10;
 
@@ -29,7 +30,7 @@ public:
 
     unsigned int getSize() const;
 
-    Type &operator[](unsigned index);
+    Type & operator[](unsigned index);
     Container<Type> & operator=(const Container<Type> & other);
     ~Container();
 
@@ -53,7 +54,7 @@ Container<Type>::Container(unsigned int cap) {
 
 template<class Type>
 Container<Type>::Container() {
-    capacity = 2;
+    capacity = DEFAULT_CAP;
     size = 0;
     arr = new Type[capacity];
 }
@@ -86,7 +87,9 @@ Type &Container<Type>::operator[](unsigned int index) {
 
 template<class Type>
 void Container<Type>::swap(Type &element1, Type &element2) {
-    std::swap(element1, element2);
+    Type temp = element1;
+    element1 = element2;
+    element2 = temp;
 }
 
 template<class Type>

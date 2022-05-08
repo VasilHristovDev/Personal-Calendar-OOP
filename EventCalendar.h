@@ -26,6 +26,6 @@ public:
     void writeEvents(const char * filename);
 
 };
-static Container<Event> sortEventsByStartingHour(const Event * events, unsigned int numberOfEvents);
+static Container<Event> sortEventsByStartingHour(Container<Event> & events, unsigned int numberOfEvents);
 
 #endif //PERSONAL_CALENDAR_OOP_EVENTCALENDAR_H

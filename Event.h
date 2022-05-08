@@ -33,7 +33,7 @@ public:
 
     void print(std::ostream & out = std::cout);
     void save(std::ostream & out);
-    Event & operator=(const Event & other);
+//    Event & operator=(const Event & other);
     bool operator == (const Event & event) const;
     friend std::istream & operator >> (std::istream & in, Event & event);
 

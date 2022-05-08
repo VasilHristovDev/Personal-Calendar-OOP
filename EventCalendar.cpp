@@ -12,18 +12,14 @@
 EventCalendar::EventCalendar(const Event *events, const int numberEvents, const int maxEvents) {
     this->setEvents(events, numberEvents, maxEvents);
 }
-/**
- *
- * @param _maxEvents
- */
 
 /**
  *
  * @param _events
  * @param size
  */
-void EventCalendar::setEvents(const Event *_events,int size,int maxSize) {
-    this->events =  Container<Event>(maxSize);
+void EventCalendar::setEvents(const Event *_events, int size, int maxSize) {
+    this->events = Container<Event>(maxSize);
     for (int i = 0; i < size; ++i) {
         this->addEvent(_events[i]);
     }
@@ -33,7 +29,7 @@ void EventCalendar::setEvents(const Event *_events,int size,int maxSize) {
  *
  * @param Event event
  */
-void EventCalendar::addEvent(const Event & event) {
+void EventCalendar::addEvent(const Event &event) {
     if (this->checkIfDateFree(event.getDate(), event.getStartingTime(), event.getEndingTime())) {
         this->events.add(event);
     } else {
@@ -58,7 +54,7 @@ void EventCalendar::removeEvent(const Event &event) {
  *
  * @param string
  */
-void EventCalendar::searchEvent(String & string) {
+void EventCalendar::searchEvent(String &string) {
     unsigned int eventSize = this->events.getSize();
     for (int i = 0; i < eventSize; ++i) {
         char *commentStr = strstr(this->events[i].getComment().getText(), string.getText());
@@ -96,21 +92,16 @@ void EventCalendar::printDayList(const Date &date) {
             counterEvents++;
         }
     }
-
-    auto *eventsForDay = new Event[counterEvents];
-    int tempC = 0;
-    unsigned int sizeEvents = this->events.getSize();
-    for (int i = 0; i < sizeEvents; ++i) {
+    Container<Event> eventContainer(counterEvents);
+    for (int i = 0; i < eventSize; ++i) {
         if (this->events[i].getDate() == date) {
-            eventsForDay[tempC++] = this->events[i];
+            eventContainer.add(this->events[i]);
         }
     }
-
-    Container<Event> eventContainer = sortEventsByStartingHour(eventsForDay, counterEvents);
+    eventContainer = sortEventsByStartingHour(eventContainer, counterEvents);
     for (int i = 0; i < counterEvents; ++i) {
         eventContainer[i].print(std::cout);
     }
-    delete[] eventsForDay;
 
 }
 
@@ -120,7 +111,7 @@ void EventCalendar::changeEvent(const Event &event) {
     std::cin.ignore();
     std::cin >> command;
     unsigned int index = this->events.getIndex(event);
-    std::cout<<index<<std::endl;
+    std::cout << index << std::endl;
     if (index == Helper::ERROR_INDEX) {
         std::cerr << Helper::EVENT_NOT_FOUND_ERROR << std::endl;
         return;
@@ -133,13 +124,12 @@ void EventCalendar::changeEvent(const Event &event) {
         std::cin >> startingHour;
         Time endingHour;
         std::cin >> endingHour;
-        if(checkIfDateFree(date, startingHour, endingHour)) {
+        if (checkIfDateFree(date, startingHour, endingHour)) {
             this->events[index].setDate(date);
             this->events[index].setStartingTime(startingHour);
             this->events[index].setEndingTime(endingHour);
-        }
-        else {
-            std::cerr<<Helper::DATE_NOT_FREE_ERROR_MESSAGE<<std::endl;
+        } else {
+            std::cerr << Helper::DATE_NOT_FREE_ERROR_MESSAGE << std::endl;
         }
 
     } else if (strstr(command.getText(), "c")) {
@@ -156,18 +146,18 @@ void EventCalendar::changeEvent(const Event &event) {
 
 }
 
-EventCalendar::EventCalendar() : events(Container<Event>()){}
+EventCalendar::EventCalendar() : events(Container<Event>()) {}
 
 
-void EventCalendar::writeEvents(const char * filename) {
+void EventCalendar::writeEvents(const char *filename) {
 
     std::ofstream out;
     out.open(filename);
-    if(out)
-    {
+    if (out) {
         unsigned int size = this->events.getSize();
-        for (int i = 0; i < size ; ++i) {
-            out<<i+1<<": "<<std::endl;
+        for (int i = 0; i < size; ++i) {
+            out << std::endl;
+            out << i + 1 << ": " << std::endl;
             this->events[i].save(out);
         }
     }
@@ -176,12 +166,15 @@ void EventCalendar::writeEvents(const char * filename) {
 }
 
 
-Container<Event> sortEventsByStartingHour(const Event *_events, unsigned int numberEvents) {
+Container<Event> sortEventsByStartingHour(Container<Event> &events, unsigned int numberEvents) {
     Container<Event> returnableEvents(numberEvents);
+    for (int i = 0; i < numberEvents; ++i) {
+        returnableEvents.add(events[i]);
+    }
     for (int i = 0; i < numberEvents; ++i) {
         for (int j = i + 1; j < numberEvents; ++j) {
             if (returnableEvents[i].getStartingTime() > returnableEvents[j].getStartingTime()) {
-                std::swap(returnableEvents[i], returnableEvents[j]);
+                returnableEvents.swap(returnableEvents[i], returnableEvents[j]);
             }
         }
     }
