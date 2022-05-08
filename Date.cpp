@@ -45,8 +45,13 @@ bool isValid(const Date &date) {
     months givenMonth = (months) (date.getMonth());
     unsigned int days = date.getDay();
     unsigned int year = date.getYear();
-    //TODO: Implement correct logic for leap year!!!!
-    bool isLeapYear = year % 4 == 0 || year % 400 == 0;
+    bool isLeapYear = false;
+    if ((year % 400 == 0 || year % 4 == 0) && year % 100 != 0 ) {
+        isLeapYear = true;
+    }
+    else {
+        isLeapYear = false;
+    }
     switch (givenMonth) {
         case JANUARY:
             if (days > JANUARY_DAYS) return false;
