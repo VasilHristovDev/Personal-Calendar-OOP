@@ -98,7 +98,7 @@ void EventCalendar::printDayList(const Date &date) {
             eventContainer.add(this->events[i]);
         }
     }
-    eventContainer = sortEventsByStartingHour(eventContainer, counterEvents);
+    sortEventsByStartingHour(eventContainer, counterEvents);
     for (int i = 0; i < counterEvents; ++i) {
         eventContainer[i].print(std::cout);
     }
@@ -210,9 +210,13 @@ void EventCalendar::outputScheduleFromTo(const Date &dateStart, const Date &date
             }
         }
         sortEventsByDuration(eventsToBeShown);
-        unsigned int sizeReturnable = eventsToBeShown.getSize();
+        Container<Date> dates = getAllDatesFromPeriod(dateStart,dateEnd);
+        int * durations = sortDatesFromBusiestAndGetDurations(eventsToBeShown,dates);
+        unsigned int sizeReturnable = dates.getSize();
         for (int i = 0; i < sizeReturnable ; ++i) {
-            eventsToBeShown[i].print(out);
+            dates[i].print(out);
+            out<<" - "<<durations[i]<<" min";
+            out<<std::endl;
         }
         out.close();
     }
@@ -231,7 +235,7 @@ void sortEventsByDuration(Container<Event> & events)
     }
 }
 
-Container<Event> sortEventsByStartingHour(Container<Event> &events, unsigned int numberEvents) {
+void sortEventsByStartingHour(Container<Event> &events, unsigned int numberEvents) {
     Container<Event> returnableEvents(numberEvents);
     for (int i = 0; i < numberEvents; ++i) {
         returnableEvents.add(events[i]);
@@ -243,6 +247,32 @@ Container<Event> sortEventsByStartingHour(Container<Event> &events, unsigned int
             }
         }
     }
-    return returnableEvents;
+}
+int * sortDatesFromBusiestAndGetDurations(Container<Event> & givenEvents, Container<Date> & givenDates)
+{
+    unsigned int sizeEvents = givenEvents.getSize();
+    unsigned int sizeDates = givenDates.getSize();
+    int * arrayWithDurations = new int [sizeDates];
+    for (int i = 0; i < sizeDates; ++i) {
+        arrayWithDurations[i] = 0;
+    }
+    for (int i = 0; i < sizeDates; ++i) {
+        for (int j = 0; j < sizeEvents ; ++j) {
+            if(givenDates[i] == givenEvents[j].getDate())
+            {
+                arrayWithDurations[i] += getDuration(givenEvents[j]);
+            }
+        }
+    }
+    for (int i = 0; i < sizeDates ; ++i) {
+        for (int j = i + 1; j < sizeDates; ++j) {
+            if(arrayWithDurations[i] < arrayWithDurations[j])
+            {
+                givenDates.swap(givenDates[i], givenDates[j]);
+                std::swap(arrayWithDurations[i], arrayWithDurations[j]);
+            }
+        }
+    }
+    return arrayWithDurations;
 }
 

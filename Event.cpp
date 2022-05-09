@@ -92,6 +92,7 @@ void Event::print(std::ostream &out) {
     out <<"name: "<< this->name <<std::endl;
     out<<"comment:  "<< this->comment<<std::endl;
     this->date.print(out);
+    out<<std::endl;
     out<<"time: ";
     this->startingTime.print(out);
     out << " - ";

@@ -12,20 +12,6 @@ enum dayOfWeek {
     SUNDAY = 0
 };
 
-enum months {
-    JANUARY = 1,
-    FEBRUARY = 2,
-    MARCH = 3,
-    APRIL = 4,
-    MAY = 5,
-    JUNE = 6,
-    JULY = 7,
-    AUGUST = 8,
-    SEPTEMBER = 9,
-    OCTOBER = 10,
-    NOVEMBER = 11,
-    DECEMBER = 12
-};
 enum daysMonths {
     JANUARY_DAYS = 31,
     FEBRUARY_DAYS = 28,
@@ -40,24 +26,23 @@ enum daysMonths {
     NOVEMBER_DAYS = 30,
     DECEMBER_DAYS = 31
 };
-
-bool isValid(const Date &date) {
-    months givenMonth = (months) (date.getMonth());
-    unsigned int days = date.getDay();
-    unsigned int year = date.getYear();
-    bool isLeapYear = false;
+bool isLeapYearChecker(unsigned int year)
+{
     if ((year % 400 == 0 || year % 4 == 0) && year % 100 != 0 ) {
-        isLeapYear = true;
+        return true;
     }
     else {
-        isLeapYear = false;
+        return false;
     }
+}
+bool doesNotHaveMoreDays(unsigned int days, months givenMonth, bool isLeap)
+{
     switch (givenMonth) {
         case JANUARY:
             if (days > JANUARY_DAYS) return false;
             break;
         case FEBRUARY:
-            if ((isLeapYear && days > FEBRUARY_DAYS + 1) || (!isLeapYear && days > FEBRUARY_DAYS)) return false;
+            if ((isLeap && days > FEBRUARY_DAYS + 1) || (!isLeap && days > FEBRUARY_DAYS)) return false;
             break;
         case MARCH:
             if (days > MARCH_DAYS) return false;
@@ -94,6 +79,14 @@ bool isValid(const Date &date) {
     }
     return true;
 }
+bool isValid(const Date &date) {
+    months givenMonth = (months) (date.getMonth());
+    unsigned int days = date.getDay();
+    unsigned int year = date.getYear();
+    bool isLeapYear = isLeapYearChecker(year);
+
+    return doesNotHaveMoreDays(days,givenMonth,isLeapYear);
+}
 
 unsigned int getDayOfWeek(const Date &date) {
     unsigned int day = date.getDay();
@@ -126,7 +119,7 @@ void Date::print(std::ostream &out) const {
     out << "date: ";
     this->printDayOfWeek(out);
     out << (this->day < 10 ? "0" : "") << this->day << Helper::DATE_SEPARATOR << (this->month < 10 ? "0" : "")
-        << this->month << Helper::DATE_SEPARATOR << this->year << std::endl;
+        << this->month << Helper::DATE_SEPARATOR << this->year;
 }
 
 void Date::setDay(unsigned int _day) {
@@ -180,7 +173,6 @@ std::istream &operator>>(std::istream &in, Date &date) {
 }
 
 void Date::printDayOfWeek(std::ostream &out) const {
-    std::cout<<getDayOfWeek(*this)<<std::endl;
     switch (getDayOfWeek(*this)) {
         case MONDAY:
             out << "Mon ";
@@ -210,11 +202,105 @@ void Date::printDayOfWeek(std::ostream &out) const {
 }
 
 bool Date::operator<=(const Date &date1) const {
-    return this->year <= date1.getYear() && this->month <= date1.getMonth() && this->day <= date1.getMonth();
+    if(this->year < date1.getYear())
+    {
+        return true;
+    }
+    else if(this->year == date1.getYear())
+    {
+        if(this->month < date1.getMonth())
+            return true;
+        else if(this->month == date1.getMonth())
+        {
+            if(this->day <= date1.getDay())
+            {
+                return true;
+            }
+            else
+                return false;
+        }
+        else {
+            return false;
+        }
+    }
+    return false;
 }
 
 bool Date::operator>=(const Date &date1) const {
-    return this->year >= date1.getYear() && this->month >= date1.getMonth() && this->day >= date1.getMonth();
+    if(this->year > date1.getYear())
+    {
+        return true;
+    }
+    else if(this->year == date1.getYear())
+    {
+        if(this->month > date1.getMonth())
+            return true;
+        else if(this->month == date1.getMonth())
+        {
+            if(this->day >= date1.getDay())
+            {
+                return true;
+            }
+            else
+                return false;
+        }
+        else {
+            return false;
+        }
+    }
+    return false;
 }
+
+Date &Date::operator++() {
+    unsigned int monthReturnable = this->month;
+    unsigned int daysReturnable = this->day;
+    unsigned int yearReturnable = this->year;
+
+    if(!doesNotHaveMoreDays(daysReturnable + 1, (months) monthReturnable, isLeapYearChecker(yearReturnable)))
+    {
+        if((months)(monthReturnable + 1) > DECEMBER)
+        {
+            yearReturnable++;
+            monthReturnable = 1;
+            daysReturnable = 1;
+        }
+        else
+        {
+            daysReturnable = 1;
+            monthReturnable++;
+        }
+    }
+    else
+    {
+        daysReturnable++;
+    }
+    this->setYear(yearReturnable);
+    this->setMonth(monthReturnable);
+    this->setDay(daysReturnable);
+
+    return *this;
+}
+
+Date Date::operator++(int) {
+    Date old = *this;
+    operator++();
+    return old;
+}
+
+Container<Date> getAllDatesFromPeriod(const Date & dateStart, const Date & dateEnd)
+{
+    Date currDate = dateStart;
+    Container<Date> returnableDates;
+
+    while(currDate <= dateEnd)
+    {
+
+        returnableDates.add(currDate);
+        ++currDate;
+    }
+
+    return returnableDates;
+}
+
 
 

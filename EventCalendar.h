@@ -27,7 +27,8 @@ public:
     void writeEvents(const char * filename);
 
 };
-static Container<Event> sortEventsByStartingHour(Container<Event> & events, unsigned int numberOfEvents);
+static void sortEventsByStartingHour(Container<Event> & events, unsigned int numberOfEvents);
+static int * sortDatesFromBusiestAndGetDurations(Container<Event> & givenEvents, Container<Date> & givenDates);
 static String constructFileName(const Date & startDate);
 static void sortEventsByDuration(Container<Event> & container);
 
