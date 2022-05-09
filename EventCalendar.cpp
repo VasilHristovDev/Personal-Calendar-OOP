@@ -30,7 +30,7 @@ void EventCalendar::setEvents(const Event *_events, int size, int maxSize) {
  * @param Event event
  */
 void EventCalendar::addEvent(const Event &event) {
-    if (this->checkIfDateFree(event.getDate(), event.getStartingTime(), event.getEndingTime())) {
+    if (checkIfDateFree(event.getDate(), event.getStartingTime(), event.getEndingTime(), this->events)) {
         this->events.add(event);
     } else {
         std::cerr << Helper::DATE_NOT_FREE_ERROR_MESSAGE << std::endl;
@@ -71,12 +71,12 @@ void EventCalendar::searchEvent(String &string) {
  * @param Hour endingTime
  * @return bool
  */
-bool EventCalendar::checkIfDateFree(const Date &date, const Time &startingTime, const Time &endingTime) {
-    unsigned int eventSize = this->events.getSize();
+bool checkIfDateFree(const Date &date, const Time &startingTime, const Time &endingTime, Container<Event> & events) {
+    unsigned int eventSize = events.getSize();
 
     for (int i = 0; i < eventSize; ++i) {
-        if (this->events[i].getDate() == date) {
-            if (this->events[i].getStartingTime() < startingTime && this->events[i].getEndingTime() > startingTime)
+        if (events[i].getDate() == date) {
+            if (events[i].getStartingTime() < startingTime && events[i].getEndingTime() > startingTime)
                 return false;
         }
     }
@@ -124,7 +124,7 @@ void EventCalendar::changeEvent(const Event &event) {
         std::cin >> startingHour;
         Time endingHour;
         std::cin >> endingHour;
-        if (checkIfDateFree(date, startingHour, endingHour)) {
+        if (checkIfDateFree(date, startingHour, endingHour, this->events)) {
             this->events[index].setDate(date);
             this->events[index].setStartingTime(startingHour);
             this->events[index].setEndingTime(endingHour);
@@ -185,10 +185,8 @@ String constructFileName(const Date & startDate) {
     dayStr[1] = day % 10 + '0';
     dayStr[2] = '\0';
 
-    std::cout<<yearStr<<"-"<<monthStr<<"-"<<dayStr<<std::endl;
     String returnableStr("stats");
     returnableStr = returnableStr + "-" +yearStr + "-" +monthStr + "-"+dayStr+".txt";
-    std::cout<<returnableStr.getText();
     delete [] dayStr;
     delete [] monthStr;
     delete [] yearStr;
@@ -219,6 +217,39 @@ void EventCalendar::outputScheduleFromTo(const Date &dateStart, const Date &date
             out<<std::endl;
         }
         out.close();
+        delete [] durations;
+    }
+    std::cout<<Helper::SAVED_WORKLOAD<<filename<<std::endl;
+}
+
+void EventCalendar::findFreeTime(const Date &dateStart, const Date &dateEnd, const Time &startTime, const Time &endTime, const int duration) {
+    Container<Event> eventsInPeriod;
+    unsigned int sizeEvents = this->events.getSize();
+    for (int i = 0; i < sizeEvents; ++i) {
+        if(this->events[i].getDate() >= dateStart && this->events[i].getDate() <= dateEnd)
+            eventsInPeriod.add(this->events[i]);
+    }
+    Container<Date> dates = getAllDatesFromPeriod(dateStart, dateEnd);
+    unsigned int sizeEventsInPeriod = eventsInPeriod.getSize();
+    unsigned int sizeDatesInPeriod = dates.getSize();
+    bool dateIsTaken = false;
+    for (int i = 0; i < sizeDatesInPeriod; ++i) {
+        dateIsTaken = false;
+        for (int j = 0; j < sizeEventsInPeriod ; ++j) {
+            if(dates[i] == eventsInPeriod[j].getDate())
+            {
+                dateIsTaken = true;
+                if(checkIfDateFree(dates[i],startTime,endTime,eventsInPeriod))
+                {
+                    dates[i].print();
+                    std::cout<<std::endl;
+                }
+            }
+        }
+        if(!dateIsTaken) {
+            dates[i].print();
+            std::cout<<Helper::DATE_FREE<<std::endl;
+        }
     }
 }
 

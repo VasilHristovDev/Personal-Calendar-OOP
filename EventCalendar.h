@@ -8,7 +8,6 @@
 class EventCalendar {
 private:
     Container<Event> events;
-    bool checkIfDateFree(const Date & date, const Time & startingTime, const Time & endingTime);
 public:
     //constructor
     EventCalendar();
@@ -21,6 +20,7 @@ public:
     void changeEvent(const Event& event);
     void printDayList(const Date & date);
     void outputScheduleFromTo(const Date & dateStart, const Date & dateEnd);
+    void findFreeTime(const Date & dateStart, const Date & dateEnd, const Time & startTime, const Time & endTime, const int duration);
 
     //mutators
     void setEvents(const Event * events, int size, int maxSize = DEFAULT_CAP);
@@ -29,6 +29,7 @@ public:
 };
 static void sortEventsByStartingHour(Container<Event> & events, unsigned int numberOfEvents);
 static int * sortDatesFromBusiestAndGetDurations(Container<Event> & givenEvents, Container<Date> & givenDates);
+bool checkIfDateFree(const Date & date, const Time & startingTime, const Time & endingTime, Container<Event> & events);
 static String constructFileName(const Date & startDate);
 static void sortEventsByDuration(Container<Event> & container);
 

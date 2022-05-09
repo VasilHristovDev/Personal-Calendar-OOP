@@ -76,17 +76,6 @@ bool Event::operator==(const Event &event) const {
                                                                                              event.getEndingTime();
 }
 
-//Event &Event::operator=(const Event &other) {
-//    if(this != &other)
-//    {
-//        this->date = other.date;
-//        this->name = other.name;
-//        this->comment = other.comment;
-//        this->startingTime = other.startingTime;
-//        this->endingTime = other.endingTime;
-//    }
-//    return *this;
-//}
 
 void Event::print(std::ostream &out) {
     out <<"name: "<< this->name <<std::endl;

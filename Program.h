@@ -26,10 +26,14 @@ void Program::run() {
     while (stringToCommands(command) != EXIT_COMMAND) {
         std::cin >> command;
         commands COMMAND = stringToCommands(command);
+        //Helpers for the program
         Event event;
         Date date;
         Date date2;
         String string;
+        Time startingTime;
+        Time endingTime;
+        int duration;
         switch (COMMAND) {
             case SHOW_COMMANDS:
                 std::cout << Helper::COMMANDS_HELPER_MESSAGE << std::endl;
@@ -60,7 +64,13 @@ void Program::run() {
                 this->calendar.outputScheduleFromTo(date,date2);
                 break;
             case FIND_FREE_TIME:
-                //TODO: Implement finding free time
+                std::cin>>date;
+                std::cin>>date2;
+                std::cin>>startingTime;
+                std::cin>>endingTime;
+                std::cout<<"Duration: ";
+                std::cin>>duration;
+                this->calendar.findFreeTime(date,date2,startingTime,endingTime,duration);
                 break;
             case WRONG_COMMAND:
                 std::cout << Helper::UNKNOWN_COMMAND_USED << std::endl;

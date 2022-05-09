@@ -31,9 +31,13 @@ public:
     //UI
     static const char * COMMANDS_HELPER_MESSAGE;
     static const char * EXIT_MESSAGE;
+    static const char * SAVED_WORKLOAD;
 
     //determination of day of the week constants
     static const unsigned int MONTH_DIFFERENCE_CONST;
+
+    //find free time constants
+    static const char * DATE_FREE;
 };
 
 const char *Helper::INVALID_DATE_MESSAGE = "The date you entered is invalid!";
@@ -65,6 +69,8 @@ const char * Helper::COMMANDS_HELPER_MESSAGE = "Hello! \n"
                                                "To exit the program write: exit \n";
  const char * Helper::EXIT_MESSAGE = "Goodbye! \n"
                                            "Your event calendar is currently being saved to: ";
+ const char * Helper::SAVED_WORKLOAD = "Your workload was successfully saved to a file: ";
 const unsigned int Helper::MONTH_DIFFERENCE_CONST = 2;
+const char * Helper::DATE_FREE = " Is free in the desired period!";
 
 #endif //PERSONAL_CALENDAR_OOP_HELPER_H
