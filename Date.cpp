@@ -31,9 +31,7 @@ bool isLeapYearChecker(unsigned int year)
     if ((year % 400 == 0 || year % 4 == 0) && year % 100 != 0 ) {
         return true;
     }
-    else {
-        return false;
-    }
+    return false;
 }
 bool doesNotHaveMoreDays(unsigned int days, months givenMonth, bool isLeap)
 {
@@ -89,6 +87,7 @@ bool isValid(const Date &date) {
 }
 
 unsigned int getDayOfWeek(const Date &date) {
+
     unsigned int day = date.getDay();
     unsigned int month = date.getMonth();
     if (month >= MARCH)
@@ -294,7 +293,6 @@ Container<Date> getAllDatesFromPeriod(const Date & dateStart, const Date & dateE
 
     while(currDate <= dateEnd)
     {
-
         returnableDates.add(currDate);
         ++currDate;
     }

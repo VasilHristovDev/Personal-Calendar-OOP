@@ -20,11 +20,14 @@ public:
     bool operator ==(const Time & time) const;
     bool operator <(const Time & time) const;
     bool operator >(const Time & time) const;
+    bool operator <=(const Time & time) const;
+    bool operator >=(const Time & time) const;
     Time & operator = (const Time & other);
 
     friend std::istream & operator >>(std::istream & in, Time & time);
 
 };
 bool isValidTime(const Time & time);
+static bool areOverlapping(const Time & startingTime1, const Time & endingTime1, const Time & startingTime2, const Time & endingTime2);
 
 #endif //PERSONAL_CALENDAR_OOP_HOUR_H

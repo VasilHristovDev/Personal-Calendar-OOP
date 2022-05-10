@@ -62,10 +62,50 @@ std::istream &operator>>(std::istream &in, Time &hour) {
     return in;
 }
 
+bool Time::operator<=(const Time &time) const {
+    if(this->hour <= time.getHour())
+    {
+        if(this->minutes <= time.getMinutes())
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    else
+    {
+        return false;
+    }
+}
+
+bool Time::operator>=(const Time &time) const {
+    if(this->hour >= time.getHour())
+    {
+        if(this->minutes >= time.getMinutes())
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    else
+    {
+        return false;
+    }
+}
+
 bool isValidTime(const Time & time)
 {
     unsigned int hour = time.getHour();
     unsigned int minutes = time.getMinutes();
 
-    return hour < 23 && hour >= 0 && minutes < 59 && minutes >= 0 ;
+    return hour <= 23 && hour >= 0 && minutes <= 59 && minutes >= 0 ;
+}
+bool areOverlapping(const Time & startingTime1, const Time & endingTime1, const Time & startingTime2, const Time & endingTime2)
+{
+    return (startingTime1 <= endingTime2) && (endingTime1 >= startingTime2);
 }

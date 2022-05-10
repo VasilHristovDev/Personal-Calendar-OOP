@@ -3,21 +3,11 @@
 #include <fstream>
 
 
-/**
- *
- * @param events
- * @param numberEvents
- * @param maxEvents
- */
 EventCalendar::EventCalendar(const Event *events, const int numberEvents, const int maxEvents) {
     this->setEvents(events, numberEvents, maxEvents);
 }
 
-/**
- *
- * @param _events
- * @param size
- */
+
 void EventCalendar::setEvents(const Event *_events, int size, int maxSize) {
     this->events = Container<Event>(maxSize);
     for (int i = 0; i < size; ++i) {
@@ -25,10 +15,7 @@ void EventCalendar::setEvents(const Event *_events, int size, int maxSize) {
     }
 }
 
-/**
- *
- * @param Event event
- */
+
 void EventCalendar::addEvent(const Event &event) {
     if (checkIfDateFree(event.getDate(), event.getStartingTime(), event.getEndingTime(), this->events)) {
         this->events.add(event);
@@ -50,33 +37,24 @@ void EventCalendar::removeEvent(const Event &event) {
     if (!flag) std::cerr << Helper::EVENT_NOT_FOUND_ERROR << std::endl;
 }
 
-/**
- *
- * @param string
- */
+
 void EventCalendar::searchEvent(String &string) {
     unsigned int eventSize = this->events.getSize();
     for (int i = 0; i < eventSize; ++i) {
-        char *commentStr = strstr(this->events[i].getComment().getText(), string.getText());
-        char *nameStr = strstr(this->events[i].getName().getText(), string.getText());
-        if (commentStr || nameStr)
+        bool containsName = this->events[i].getName().contains(string.getText());
+        bool containsComment = this->events[i].getComment().contains(string.getText());
+        if (containsName || containsComment)
             this->events[i].print(std::cout);
     }
 }
 
-/**
- *
- * @param Date date
- * @param Hour startingTime
- * @param Hour endingTime
- * @return bool
- */
-bool checkIfDateFree(const Date &date, const Time &startingTime, const Time &endingTime, Container<Event> & events) {
+
+bool checkIfDateFree(const Date &date, const Time &startingTime, const Time &endingTime, Container<Event> &events) {
     unsigned int eventSize = events.getSize();
 
     for (int i = 0; i < eventSize; ++i) {
         if (events[i].getDate() == date) {
-            if (events[i].getStartingTime() < startingTime && events[i].getEndingTime() > startingTime)
+            if (areOverlapping(events[i].getStartingTime(), events[i].getEndingTime(), startingTime, endingTime))
                 return false;
         }
     }
@@ -84,25 +62,18 @@ bool checkIfDateFree(const Date &date, const Time &startingTime, const Time &end
 }
 
 void EventCalendar::printDayList(const Date &date) {
-    int counterEvents = 0;
     unsigned int eventSize = this->events.getSize();
-
-    for (int i = 0; i < eventSize; ++i) {
-        if (this->events[i].getDate() == date) {
-            counterEvents++;
-        }
-    }
-    Container<Event> eventContainer(counterEvents);
+    Container<Event> eventContainer;
     for (int i = 0; i < eventSize; ++i) {
         if (this->events[i].getDate() == date) {
             eventContainer.add(this->events[i]);
         }
     }
-    sortEventsByStartingHour(eventContainer, counterEvents);
-    for (int i = 0; i < counterEvents; ++i) {
+    unsigned int eventsInThatDaySize = eventContainer.getSize();
+    sortEventsByStartingHour(eventContainer);
+    for (int i = 0; i < eventsInThatDaySize; ++i) {
         eventContainer[i].print(std::cout);
     }
-
 }
 
 void EventCalendar::changeEvent(const Event &event) {
@@ -115,6 +86,8 @@ void EventCalendar::changeEvent(const Event &event) {
     if (index == Helper::ERROR_INDEX) {
         std::cerr << Helper::EVENT_NOT_FOUND_ERROR << std::endl;
         return;
+    } else {
+        std::cout << Helper::EVENT_FOUND_MESSAGE << std::endl;
     }
 
     if (strstr(command.getText(), "d")) {
@@ -164,32 +137,33 @@ void EventCalendar::writeEvents(const char *filename) {
     out.close();
 
 }
-String constructFileName(const Date & startDate) {
-    char * yearStr = new char [5];
+
+String constructFileName(const Date &startDate) {
+    char *yearStr = new char[5];
     unsigned int year = startDate.getYear();
-    yearStr[0] = year / 1000  + '0';
+    yearStr[0] = year / 1000 + '0';
     yearStr[1] = year / 100 % 10 + '0';
     yearStr[2] = year / 10 % 10 + '0';
     yearStr[3] = year % 10 + '0';
     yearStr[4] = '\0';
 
-    char * monthStr = new char [3];
+    char *monthStr = new char[3];
     unsigned int month = startDate.getMonth();
-    monthStr[0] = (month < OCTOBER ? '0': (month / 10 % 10 + '0'));
+    monthStr[0] = (month < OCTOBER ? '0' : (month / 10 % 10 + '0'));
     monthStr[1] = month % 10 + '0';
     monthStr[2] = '\0';
 
-    char * dayStr = new char [3];
+    char *dayStr = new char[3];
     unsigned int day = startDate.getDay();
-    dayStr[0] = (day < 10 ? '0': (day / 10 % 10 + '0'));
+    dayStr[0] = (day < 10 ? '0' : (day / 10 % 10 + '0'));
     dayStr[1] = day % 10 + '0';
     dayStr[2] = '\0';
 
     String returnableStr("stats");
-    returnableStr = returnableStr + "-" +yearStr + "-" +monthStr + "-"+dayStr+".txt";
-    delete [] dayStr;
-    delete [] monthStr;
-    delete [] yearStr;
+    returnableStr = returnableStr + "-" + yearStr + "-" + monthStr + "-" + dayStr + ".txt";
+    delete[] dayStr;
+    delete[] monthStr;
+    delete[] yearStr;
     return returnableStr;
 }
 
@@ -197,36 +171,35 @@ void EventCalendar::outputScheduleFromTo(const Date &dateStart, const Date &date
     String filename = constructFileName(dateStart);
     std::ofstream out;
     out.open(filename.getText());
-    if(out)
-    {
+    if (out) {
         unsigned int size = this->events.getSize();
         Container<Event> eventsToBeShown;
-        for (int i = 0; i < size ; ++i) {
-            if(this->events[i].getDate() >= dateStart && this->events[i].getDate() <= dateEnd)
-            {
+        for (int i = 0; i < size; ++i) {
+            if (this->events[i].getDate() >= dateStart && this->events[i].getDate() <= dateEnd) {
                 eventsToBeShown.add(this->events[i]);
             }
         }
         sortEventsByDuration(eventsToBeShown);
-        Container<Date> dates = getAllDatesFromPeriod(dateStart,dateEnd);
-        int * durations = sortDatesFromBusiestAndGetDurations(eventsToBeShown,dates);
+        Container<Date> dates = getAllDatesFromPeriod(dateStart, dateEnd);
+        int *durations = sortDatesFromBusiestAndGetDurations(eventsToBeShown, dates);
         unsigned int sizeReturnable = dates.getSize();
-        for (int i = 0; i < sizeReturnable ; ++i) {
+        for (int i = 0; i < sizeReturnable; ++i) {
             dates[i].print(out);
-            out<<" - "<<durations[i]<<" min";
-            out<<std::endl;
+            out << " - " << durations[i] << " min";
+            out << std::endl;
         }
         out.close();
-        delete [] durations;
+        delete[] durations;
     }
-    std::cout<<Helper::SAVED_WORKLOAD<<filename<<std::endl;
+    std::cout << Helper::SAVED_WORKLOAD << filename << std::endl;
 }
 
-void EventCalendar::findFreeTime(const Date &dateStart, const Date &dateEnd, const Time &startTime, const Time &endTime, const int duration) {
+void EventCalendar::findFreeTime(const Date &dateStart, const Date &dateEnd, const Time &startTime, const Time &endTime,
+                                 const int duration) {
     Container<Event> eventsInPeriod;
     unsigned int sizeEvents = this->events.getSize();
     for (int i = 0; i < sizeEvents; ++i) {
-        if(this->events[i].getDate() >= dateStart && this->events[i].getDate() <= dateEnd)
+        if (this->events[i].getDate() >= dateStart && this->events[i].getDate() <= dateEnd)
             eventsInPeriod.add(this->events[i]);
     }
     Container<Date> dates = getAllDatesFromPeriod(dateStart, dateEnd);
@@ -235,70 +208,64 @@ void EventCalendar::findFreeTime(const Date &dateStart, const Date &dateEnd, con
     bool dateIsTaken = false;
     for (int i = 0; i < sizeDatesInPeriod; ++i) {
         dateIsTaken = false;
-        for (int j = 0; j < sizeEventsInPeriod ; ++j) {
-            if(dates[i] == eventsInPeriod[j].getDate())
-            {
+        for (int j = 0; j < sizeEventsInPeriod; ++j) {
+            if (dates[i] == eventsInPeriod[j].getDate()) {
                 dateIsTaken = true;
-                if(checkIfDateFree(dates[i],startTime,endTime,eventsInPeriod))
-                {
+                if (checkIfDateFree(dates[i], startTime, endTime, eventsInPeriod)) {
                     dates[i].print();
-                    std::cout<<std::endl;
+                    std::cout << Helper::DATE_FREE << std::endl;
+                } else {
+                    dates[i].print();
+                    std::cout << Helper::DATE_BUSY << std::endl;
                 }
             }
         }
-        if(!dateIsTaken) {
+        if (!dateIsTaken) {
             dates[i].print();
-            std::cout<<Helper::DATE_FREE<<std::endl;
+            std::cout << Helper::DATE_FREE << std::endl;
         }
     }
 }
 
-void sortEventsByDuration(Container<Event> & events)
-{
+void sortEventsByDuration(Container<Event> &events) {
     unsigned int size = events.getSize();
-    for (int i = 0; i < size ; ++i) {
-        for (int j = i + 1; j < size ; ++j) {
-            if(getDuration(events[i]) < getDuration(events[j]))
-            {
+    for (int i = 0; i < size; ++i) {
+        for (int j = i + 1; j < size; ++j) {
+            if (getDuration(events[i]) < getDuration(events[j])) {
                 events.swap(events[i], events[j]);
             }
         }
     }
 }
 
-void sortEventsByStartingHour(Container<Event> &events, unsigned int numberEvents) {
-    Container<Event> returnableEvents(numberEvents);
-    for (int i = 0; i < numberEvents; ++i) {
-        returnableEvents.add(events[i]);
-    }
+void sortEventsByStartingHour(Container<Event> &events) {
+    unsigned int numberEvents = events.getSize();
     for (int i = 0; i < numberEvents; ++i) {
         for (int j = i + 1; j < numberEvents; ++j) {
-            if (returnableEvents[i].getStartingTime() > returnableEvents[j].getStartingTime()) {
-                returnableEvents.swap(returnableEvents[i], returnableEvents[j]);
+            if (events[i].getStartingTime() > events[j].getStartingTime()) {
+                std::swap(events[i], events[j]);
             }
         }
     }
 }
-int * sortDatesFromBusiestAndGetDurations(Container<Event> & givenEvents, Container<Date> & givenDates)
-{
+
+int *sortDatesFromBusiestAndGetDurations(Container<Event> &givenEvents, Container<Date> &givenDates) {
     unsigned int sizeEvents = givenEvents.getSize();
     unsigned int sizeDates = givenDates.getSize();
-    int * arrayWithDurations = new int [sizeDates];
+    int *arrayWithDurations = new int[sizeDates];
     for (int i = 0; i < sizeDates; ++i) {
         arrayWithDurations[i] = 0;
     }
     for (int i = 0; i < sizeDates; ++i) {
-        for (int j = 0; j < sizeEvents ; ++j) {
-            if(givenDates[i] == givenEvents[j].getDate())
-            {
+        for (int j = 0; j < sizeEvents; ++j) {
+            if (givenDates[i] == givenEvents[j].getDate()) {
                 arrayWithDurations[i] += getDuration(givenEvents[j]);
             }
         }
     }
-    for (int i = 0; i < sizeDates ; ++i) {
+    for (int i = 0; i < sizeDates; ++i) {
         for (int j = i + 1; j < sizeDates; ++j) {
-            if(arrayWithDurations[i] < arrayWithDurations[j])
-            {
+            if (arrayWithDurations[i] < arrayWithDurations[j]) {
                 givenDates.swap(givenDates[i], givenDates[j]);
                 std::swap(arrayWithDurations[i], arrayWithDurations[j]);
             }

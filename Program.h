@@ -55,6 +55,7 @@ void Program::run() {
                 this->calendar.changeEvent(event);
                 break;
             case SEARCH_APPOINTMENT:
+                std::cout<<Helper::ENTER_STRING<<std::endl;
                 std::cin >> string;
                 this->calendar.searchEvent(string);
                 break;
@@ -68,7 +69,7 @@ void Program::run() {
                 std::cin>>date2;
                 std::cin>>startingTime;
                 std::cin>>endingTime;
-                std::cout<<"Duration: ";
+                std::cout<<"Duration:";
                 std::cin>>duration;
                 this->calendar.findFreeTime(date,date2,startingTime,endingTime,duration);
                 break;

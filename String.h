@@ -14,13 +14,14 @@ public:
     ~String();
 
     void setText(const char * text);
+    bool contains(const String & other);
 
     unsigned int getSize() const;
     const char *getText() const;
 
     String &operator=(const String &other);
     String operator+(const String &other);
-
+    char operator[](int index);
     friend std::istream & operator >> (std::istream & in, String & readable);
     friend std::ostream & operator << (std::ostream & out, String & readable);
 
@@ -85,6 +86,38 @@ std::ostream &operator<<(std::ostream &out, String &readable) {
 
 String::String(const String &string) {
     this->setText(string.getText());
+}
+
+bool String::contains(const String &other) {
+    unsigned int otherSize  = other.getSize();
+    if(otherSize > this->size)
+        return false;
+    const char * otherText = other.getText();
+    for (int i = 0; i < this->size; i++){
+        int j = 0;
+        // If the first characters match
+        if(this->text[i] == otherText[j]){
+            int k = i;
+            while (this->text[i] == otherText[j] && j < otherSize)
+            {
+                j++;
+                i++;
+            }
+            if (j == otherSize)
+            {
+                return true;
+            }
+            else
+            {
+                i = k;
+            }
+        }
+    }
+    return false;
+}
+
+char String::operator[](int index) {
+    return this->text[index];
 }
 
 

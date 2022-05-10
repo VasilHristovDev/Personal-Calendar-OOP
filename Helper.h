@@ -17,6 +17,7 @@ public:
 
     //event helper constants
     static const char *EVENT_NOT_FOUND_ERROR;
+    static const char *EVENT_FOUND_MESSAGE;
     static const char *HELPER_MESSAGE_CHANGE_EVENT;
 
     //misc
@@ -32,12 +33,14 @@ public:
     static const char * COMMANDS_HELPER_MESSAGE;
     static const char * EXIT_MESSAGE;
     static const char * SAVED_WORKLOAD;
+    static const char * ENTER_STRING;
 
     //determination of day of the week constants
     static const unsigned int MONTH_DIFFERENCE_CONST;
 
     //find free time constants
     static const char * DATE_FREE;
+    static const char * DATE_BUSY;
 };
 
 const char *Helper::INVALID_DATE_MESSAGE = "The date you entered is invalid!";
@@ -46,6 +49,7 @@ const char Helper::TIME_SEPARATOR = ':';
 const char Helper::DATE_SEPARATOR = '/';
 const char *Helper::TIME_INPUT_HELPER_MESSAGE = "Please enter the hour in the following format: hh:ii";
 const char *Helper::EVENT_NOT_FOUND_ERROR = "Event with this information was not found!";
+const char *Helper::EVENT_FOUND_MESSAGE = "Event with this information was found!";
 const char *Helper::DATE_NOT_FREE_ERROR_MESSAGE = "The event cannot be added because an event with the same date exists!";
 const char *Helper::HELPER_MESSAGE_CHANGE_EVENT = "Hello! In order to change information for the event build the string: "
                                                   "\n To change the date: write 'd'"
@@ -71,6 +75,8 @@ const char * Helper::COMMANDS_HELPER_MESSAGE = "Hello! \n"
                                            "Your event calendar is currently being saved to: ";
  const char * Helper::SAVED_WORKLOAD = "Your workload was successfully saved to a file: ";
 const unsigned int Helper::MONTH_DIFFERENCE_CONST = 2;
-const char * Helper::DATE_FREE = " Is free in the desired period!";
+const char * Helper::DATE_FREE = " FREE";
+const char * Helper::DATE_BUSY = " BUSY";
+const char * Helper::ENTER_STRING = "Enter string to search for!";
 
 #endif //PERSONAL_CALENDAR_OOP_HELPER_H
