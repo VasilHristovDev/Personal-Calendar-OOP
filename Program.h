@@ -24,6 +24,7 @@ void Program::run() {
     String command;
     std::cout << Helper::COMMANDS_HELPER_MESSAGE << std::endl;
     while (stringToCommands(command) != EXIT_COMMAND) {
+        std::cout<<Helper::ENTER_COMMAND_MESSAGE;
         std::cin >> command;
         commands COMMAND = stringToCommands(command);
         //Helpers for the program
@@ -41,18 +42,22 @@ void Program::run() {
             case MAKE_APPOINTMENT:
                 std::cin >> event;
                 this->calendar.addEvent(event);
+                std::cin.ignore();
                 break;
             case CANCEL_APPOINTMENT:
                 std::cin >> event;
                 this->calendar.removeEvent(event);
+                std::cin.ignore();
                 break;
             case DAY_SCHEDULE:
                 std::cin >> date;
                 this->calendar.printDayList(date);
+                std::cin.ignore();
                 break;
             case CHANGE_APPOINTMENT:
                 std::cin >> event;
                 this->calendar.changeEvent(event);
+                std::cin.ignore();
                 break;
             case SEARCH_APPOINTMENT:
                 std::cout<<Helper::ENTER_STRING<<std::endl;
@@ -63,6 +68,7 @@ void Program::run() {
                 std::cin>>date;
                 std::cin>>date2;
                 this->calendar.outputScheduleFromTo(date,date2);
+                std::cin.ignore();
                 break;
             case FIND_FREE_TIME:
                 std::cin>>date;
@@ -72,11 +78,13 @@ void Program::run() {
                 std::cout<<"Duration:";
                 std::cin>>duration;
                 this->calendar.findFreeTime(date,date2,startingTime,endingTime,duration);
+                std::cin.ignore();
                 break;
             case WRONG_COMMAND:
                 std::cout << Helper::UNKNOWN_COMMAND_USED << std::endl;
             default:
                 break;
+
         }
     }
     std::cout << Helper::EXIT_MESSAGE << OUTPUT_FILENAME << std::endl;

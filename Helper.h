@@ -31,6 +31,7 @@ public:
 
     //UI
     static const char * COMMANDS_HELPER_MESSAGE;
+    static const char * ENTER_COMMAND_MESSAGE;
     static const char * EXIT_MESSAGE;
     static const char * SAVED_WORKLOAD;
     static const char * ENTER_STRING;
@@ -71,6 +72,7 @@ const char * Helper::COMMANDS_HELPER_MESSAGE = "Hello! \n"
                                                "To find free time in a certain week write: free \n"
                                                "To see your daily schedule for a certain week write: show:busy \n"
                                                "To exit the program write: exit \n";
+const char * Helper::ENTER_COMMAND_MESSAGE = "Enter command:\n";
  const char * Helper::EXIT_MESSAGE = "Goodbye! \n"
                                            "Your event calendar is currently being saved to: ";
  const char * Helper::SAVED_WORKLOAD = "Your workload was successfully saved to a file: ";

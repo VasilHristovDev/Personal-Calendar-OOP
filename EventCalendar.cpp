@@ -73,6 +73,7 @@ void EventCalendar::printDayList(const Date &date) {
     sortEventsByStartingHour(eventContainer);
     for (int i = 0; i < eventsInThatDaySize; ++i) {
         eventContainer[i].print(std::cout);
+        std::cout<<std::endl;
     }
 }
 
@@ -128,6 +129,7 @@ void EventCalendar::writeEvents(const char *filename) {
     out.open(filename);
     if (out) {
         unsigned int size = this->events.getSize();
+        out<<"Number of events in the calendar: "<<size;
         for (int i = 0; i < size; ++i) {
             out << std::endl;
             out << i + 1 << ": " << std::endl;
