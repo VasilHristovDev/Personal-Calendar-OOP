@@ -2,7 +2,7 @@
 #include "Helper.h"
 
 unsigned int Time::getHour() const {
-    return this->hour;
+    return this->hours;
 }
 
 unsigned int Time::getMinutes() const {
@@ -10,7 +10,7 @@ unsigned int Time::getMinutes() const {
 }
 
 void Time::setHour(const unsigned int _hour) {
-    this->hour = _hour;
+    this->hours = _hour;
 }
 
 void Time::setMinutes(const unsigned int _minutes) {
@@ -19,42 +19,42 @@ void Time::setMinutes(const unsigned int _minutes) {
 
 Time::Time() {
     this->minutes = 0;
-    this->hour = 0;
+    this->hours = 0;
 }
 
 Time::Time(unsigned int hour, unsigned int minutes) {
-    this->hour = hour;
+    this->hours = hour;
     this->minutes = minutes;
 }
 
 void Time::print(std::ostream &out) const {
-    out << (this->hour < 10 ? "0" : "") << this->hour << Helper::TIME_SEPARATOR << (this->minutes < 10 ? "0" : "")
+    out << (this->hours < 10 ? "0" : "") << this->hours << Helper::TIME_SEPARATOR << (this->minutes < 10 ? "0" : "")
         << this->minutes;
 }
 
 bool Time::operator==(const Time &hour1) const {
-    return this->hour == hour1.getHour() && this->minutes == hour1.getMinutes();
+    return this->hours == hour1.getHour() && this->minutes == hour1.getMinutes();
 }
 
 Time &Time::operator=(const Time &other) {
     if (this != &other) {
-        this->hour = other.hour;
+        this->hours = other.hours;
         this->minutes = other.minutes;
     }
     return *this;
 }
 
 bool Time::operator<(const Time &hour1) const {
-    return this->hour < hour1.getHour() || (this->hour == hour1.getHour() && this->minutes < hour1.getMinutes());
+    return this->hours < hour1.getHour() || (this->hours == hour1.getHour() && this->minutes < hour1.getMinutes());
 }
 
 bool Time::operator>(const Time &hour1) const {
-    return this->hour > hour1.getHour() || (this->hour == hour1.getHour() && this->minutes > hour1.getMinutes());
+    return this->hours > hour1.getHour() || (this->hours == hour1.getHour() && this->minutes > hour1.getMinutes());
 }
 
 std::istream &operator>>(std::istream &in, Time &hour) {
     std::cout << Helper::TIME_INPUT_HELPER_MESSAGE << std::endl;
-    in >> hour.hour;
+    in >> hour.hours;
     in.ignore(1);
     in >> hour.minutes;
     if(!isValidTime(hour))
@@ -63,7 +63,7 @@ std::istream &operator>>(std::istream &in, Time &hour) {
 }
 
 bool Time::operator<=(const Time &time) const {
-    if(this->hour <= time.getHour())
+    if(this->hours <= time.getHour())
     {
         if(this->minutes <= time.getMinutes())
         {
@@ -81,7 +81,7 @@ bool Time::operator<=(const Time &time) const {
 }
 
 bool Time::operator>=(const Time &time) const {
-    if(this->hour >= time.getHour())
+    if(this->hours >= time.getHour())
     {
         if(this->minutes >= time.getMinutes())
         {

@@ -1,0 +1,53 @@
+.TH "String" 3 "Tue May 10 2022" "PersonalCalendarOOP" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+String
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBString\fP (const char *text='\\0')"
+.br
+.ti -1c
+.RI "\fBString\fP (const \fBString\fP &string)"
+.br
+.ti -1c
+.RI "void \fBsetText\fP (const char *text)"
+.br
+.ti -1c
+.RI "bool \fBcontains\fP (const \fBString\fP &other)"
+.br
+.ti -1c
+.RI "unsigned int \fBgetSize\fP () const"
+.br
+.ti -1c
+.RI "const char * \fBgetText\fP () const"
+.br
+.ti -1c
+.RI "\fBString\fP & \fBoperator=\fP (const \fBString\fP &other)"
+.br
+.ti -1c
+.RI "\fBString\fP \fBoperator+\fP (const \fBString\fP &other)"
+.br
+.ti -1c
+.RI "char \fBoperator[]\fP (int index)"
+.br
+.in -1c
+.SS "Friends"
+
+.in +1c
+.ti -1c
+.RI "std::istream & \fBoperator>>\fP (std::istream &in, \fBString\fP &readable)"
+.br
+.ti -1c
+.RI "std::ostream & \fBoperator<<\fP (std::ostream &out, \fBString\fP &readable)"
+.br
+.in -1c
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for PersonalCalendarOOP from the source code\&.

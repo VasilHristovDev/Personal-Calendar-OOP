@@ -1,0 +1,160 @@
+\hypertarget{_container_8h_source}{}\doxysection{Container.\+h}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#include "{}Event.h"{}}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#include "{}Helper.h"{}}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#ifndef PERSONAL\_CALENDAR\_OOP\_EVENTCONTAINER\_H}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#define PERSONAL\_CALENDAR\_OOP\_EVENTCONTAINER\_H}}
+\DoxyCodeLine{6 }
+\DoxyCodeLine{7 \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} MAX\_CAP = 100;}
+\DoxyCodeLine{8 \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} DEFAULT\_CAP = 10;}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11 \textcolor{keyword}{template}<\textcolor{keyword}{class} Type>}
+\DoxyCodeLine{12 \textcolor{keyword}{class }\mbox{\hyperlink{class_container}{Container}} \{}
+\DoxyCodeLine{13 \textcolor{keyword}{private}:}
+\DoxyCodeLine{14     Type *arr;}
+\DoxyCodeLine{15     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} size;}
+\DoxyCodeLine{16     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} capacity;}
+\DoxyCodeLine{17 }
+\DoxyCodeLine{18     \textcolor{keywordtype}{void} resize();}
+\DoxyCodeLine{19 }
+\DoxyCodeLine{20 \textcolor{keyword}{public}:}
+\DoxyCodeLine{21     \mbox{\hyperlink{class_container}{Container}}();}
+\DoxyCodeLine{22 }
+\DoxyCodeLine{23     \mbox{\hyperlink{class_container}{Container}}(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} cap);}
+\DoxyCodeLine{24 }
+\DoxyCodeLine{25     \mbox{\hyperlink{class_container}{Container}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_container}{Container<Type>}} \&container);}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{27     \textcolor{keywordtype}{void} add(\textcolor{keyword}{const} Type \&element);}
+\DoxyCodeLine{28 }
+\DoxyCodeLine{29     \textcolor{keywordtype}{void} swap(Type \&element1, Type \&element2);}
+\DoxyCodeLine{30 }
+\DoxyCodeLine{31     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} getIndex(\textcolor{keyword}{const} Type \&element);}
+\DoxyCodeLine{32 }
+\DoxyCodeLine{33     \textcolor{keywordtype}{void} remove(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} index);}
+\DoxyCodeLine{34 }
+\DoxyCodeLine{35     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} getSize() \textcolor{keyword}{const};}
+\DoxyCodeLine{36 }
+\DoxyCodeLine{37     Type \&operator[](\textcolor{keywordtype}{unsigned} index);}
+\DoxyCodeLine{38 }
+\DoxyCodeLine{39     \mbox{\hyperlink{class_container}{Container<Type>}} \&operator=(\textcolor{keyword}{const} \mbox{\hyperlink{class_container}{Container<Type>}} \&other);}
+\DoxyCodeLine{40 }
+\DoxyCodeLine{41     \mbox{\hyperlink{class_container}{\string~Container}}();}
+\DoxyCodeLine{42 }
+\DoxyCodeLine{43 \};}
+\DoxyCodeLine{44 }
+\DoxyCodeLine{45 \textcolor{keyword}{template}<\textcolor{keyword}{class} Type>}
+\DoxyCodeLine{46 \textcolor{keywordtype}{void} \mbox{\hyperlink{class_container}{Container<Type>::add}}(\textcolor{keyword}{const} Type \&element) \{}
+\DoxyCodeLine{47     \textcolor{keywordflow}{if} (size + 1 >= capacity) \{}
+\DoxyCodeLine{48         resize();}
+\DoxyCodeLine{49     \}}
+\DoxyCodeLine{50     \textcolor{keywordflow}{if} (size + 1 >= MAX\_CAP)}
+\DoxyCodeLine{51         std::cerr << Helper::MAX\_CAPACITY\_REACHED\_ERROR << std::endl;}
+\DoxyCodeLine{52     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{53         arr[size++] = element;}
+\DoxyCodeLine{54 \}}
+\DoxyCodeLine{55 }
+\DoxyCodeLine{56 \textcolor{keyword}{template}<\textcolor{keyword}{class} Type>}
+\DoxyCodeLine{57 \mbox{\hyperlink{class_container}{Container<Type>::Container}}(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} cap) \{}
+\DoxyCodeLine{58     capacity = cap;}
+\DoxyCodeLine{59     size = 0;}
+\DoxyCodeLine{60     arr = \textcolor{keyword}{new} Type[capacity];}
+\DoxyCodeLine{61 \}}
+\DoxyCodeLine{62 }
+\DoxyCodeLine{63 \textcolor{keyword}{template}<\textcolor{keyword}{class} Type>}
+\DoxyCodeLine{64 \mbox{\hyperlink{class_container}{Container<Type>::Container}}() \{}
+\DoxyCodeLine{65     capacity = DEFAULT\_CAP;}
+\DoxyCodeLine{66     size = 0;}
+\DoxyCodeLine{67     arr = \textcolor{keyword}{new} Type[capacity];}
+\DoxyCodeLine{68 \}}
+\DoxyCodeLine{69 }
+\DoxyCodeLine{70 \textcolor{keyword}{template}<\textcolor{keyword}{class} Type>}
+\DoxyCodeLine{71 \textcolor{keywordtype}{void} \mbox{\hyperlink{class_container}{Container<Type>::remove}}(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} index) \{}
+\DoxyCodeLine{72     \textcolor{keywordflow}{if} (index <= size) \{}
+\DoxyCodeLine{73         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < size; ++i) \{}
+\DoxyCodeLine{74             \textcolor{keywordflow}{if} (i == index) \{}
+\DoxyCodeLine{75                 \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} j = i; j < size; ++j) \{}
+\DoxyCodeLine{76                     arr[j] = arr[j + 1];}
+\DoxyCodeLine{77                 \}}
+\DoxyCodeLine{78             \}}
+\DoxyCodeLine{79         \}}
+\DoxyCodeLine{80         size-\/-\/;}
+\DoxyCodeLine{81     \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{82         std::cerr << Helper::EVENT\_NOT\_FOUND\_ERROR << std::endl;}
+\DoxyCodeLine{83     \}}
+\DoxyCodeLine{84 \}}
+\DoxyCodeLine{85 }
+\DoxyCodeLine{86 \textcolor{keyword}{template}<\textcolor{keyword}{class} Type>}
+\DoxyCodeLine{87 \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} \mbox{\hyperlink{class_container}{Container<Type>::getSize}}()\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{88     \textcolor{keywordflow}{return} size;}
+\DoxyCodeLine{89 \}}
+\DoxyCodeLine{90 }
+\DoxyCodeLine{91 \textcolor{keyword}{template}<\textcolor{keyword}{class} Type>}
+\DoxyCodeLine{92 Type \&\mbox{\hyperlink{class_container}{Container<Type>::operator[]}}(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} index) \{}
+\DoxyCodeLine{93     \textcolor{keywordflow}{return} arr[index];}
+\DoxyCodeLine{94 \}}
+\DoxyCodeLine{95 }
+\DoxyCodeLine{96 \textcolor{keyword}{template}<\textcolor{keyword}{class} Type>}
+\DoxyCodeLine{97 \textcolor{keywordtype}{void} \mbox{\hyperlink{class_container}{Container<Type>::swap}}(Type \&element1, Type \&element2) \{}
+\DoxyCodeLine{98     Type temp = element1;}
+\DoxyCodeLine{99     element1 = element2;}
+\DoxyCodeLine{100     element2 = temp;}
+\DoxyCodeLine{101 \}}
+\DoxyCodeLine{102 }
+\DoxyCodeLine{103 \textcolor{keyword}{template}<\textcolor{keyword}{class} Type>}
+\DoxyCodeLine{104 \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} \mbox{\hyperlink{class_container}{Container<Type>::getIndex}}(\textcolor{keyword}{const} Type \&element) \{}
+\DoxyCodeLine{105     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < size; ++i) \{}
+\DoxyCodeLine{106         \textcolor{keywordflow}{if} (arr[i] == element)}
+\DoxyCodeLine{107             \textcolor{keywordflow}{return} i;}
+\DoxyCodeLine{108     \}}
+\DoxyCodeLine{109     \textcolor{keywordflow}{return} Helper::ERROR\_INDEX;}
+\DoxyCodeLine{110 \}}
+\DoxyCodeLine{111 }
+\DoxyCodeLine{112 \textcolor{keyword}{template}<\textcolor{keyword}{class} Type>}
+\DoxyCodeLine{113 \mbox{\hyperlink{class_container}{Container<Type>::\string~Container}}() \{}
+\DoxyCodeLine{114     \textcolor{keyword}{delete}[] arr;}
+\DoxyCodeLine{115 \}}
+\DoxyCodeLine{116 }
+\DoxyCodeLine{117 \textcolor{keyword}{template}<\textcolor{keyword}{class} Type>}
+\DoxyCodeLine{118 \mbox{\hyperlink{class_container}{Container<Type>}} \&\mbox{\hyperlink{class_container}{Container<Type>::operator=}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_container}{Container<Type>}} \&other) \{}
+\DoxyCodeLine{119     \textcolor{keywordflow}{if} (\textcolor{keyword}{this} != \&other) \{}
+\DoxyCodeLine{120         \textcolor{keyword}{delete}[] arr;}
+\DoxyCodeLine{121         capacity = other.capacity;}
+\DoxyCodeLine{122         arr = \textcolor{keyword}{new} Type[capacity];}
+\DoxyCodeLine{123         size = other.getSize();}
+\DoxyCodeLine{124         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < size; ++i) \{}
+\DoxyCodeLine{125             arr[i] = other.arr[i];}
+\DoxyCodeLine{126         \}}
+\DoxyCodeLine{127     \}}
+\DoxyCodeLine{128     \textcolor{keywordflow}{return} *\textcolor{keyword}{this};}
+\DoxyCodeLine{129 \}}
+\DoxyCodeLine{130 }
+\DoxyCodeLine{131 \textcolor{keyword}{template}<\textcolor{keyword}{class} Type>}
+\DoxyCodeLine{132 \mbox{\hyperlink{class_container}{Container<Type>::Container}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_container}{Container<Type>}} \&container) \{}
+\DoxyCodeLine{133     capacity = container.capacity;}
+\DoxyCodeLine{134     arr = \textcolor{keyword}{new} Type[capacity];}
+\DoxyCodeLine{135     size = container.size;}
+\DoxyCodeLine{136 }
+\DoxyCodeLine{137     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < size; ++i) \{}
+\DoxyCodeLine{138         arr[i] = container.arr[i];}
+\DoxyCodeLine{139     \}}
+\DoxyCodeLine{140 \}}
+\DoxyCodeLine{141 }
+\DoxyCodeLine{142 \textcolor{keyword}{template}<\textcolor{keyword}{class} Type>}
+\DoxyCodeLine{143 \textcolor{keywordtype}{void} \mbox{\hyperlink{class_container}{Container<Type>::resize}}() \{}
+\DoxyCodeLine{144     capacity *= 2;}
+\DoxyCodeLine{145     Type *temp = \textcolor{keyword}{new} Type[capacity];}
+\DoxyCodeLine{146 }
+\DoxyCodeLine{147     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < size; i++) \{}
+\DoxyCodeLine{148         temp[i] = arr[i];}
+\DoxyCodeLine{149     \}}
+\DoxyCodeLine{150     \textcolor{keyword}{delete}[] arr;}
+\DoxyCodeLine{151     arr = temp;}
+\DoxyCodeLine{152 \}}
+\DoxyCodeLine{153 }
+\DoxyCodeLine{154 }
+\DoxyCodeLine{155 \textcolor{preprocessor}{\#endif }\textcolor{comment}{//PERSONAL\_CALENDAR\_OOP\_EVENTCONTAINER\_H}}
+
+\end{DoxyCode}

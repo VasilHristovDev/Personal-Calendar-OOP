@@ -1,0 +1,59 @@
+.TH "Time" 3 "Tue May 10 2022" "PersonalCalendarOOP" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Time
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBTime\fP (unsigned int hours, unsigned int minutes)"
+.br
+.ti -1c
+.RI "void \fBsetHour\fP (unsigned int hours)"
+.br
+.ti -1c
+.RI "void \fBsetMinutes\fP (unsigned int minutes)"
+.br
+.ti -1c
+.RI "unsigned int \fBgetHour\fP () const"
+.br
+.ti -1c
+.RI "unsigned int \fBgetMinutes\fP () const"
+.br
+.ti -1c
+.RI "void \fBprint\fP (std::ostream &out=std::cout) const"
+.br
+.ti -1c
+.RI "bool \fBoperator==\fP (const \fBTime\fP &time) const"
+.br
+.ti -1c
+.RI "bool \fBoperator<\fP (const \fBTime\fP &time) const"
+.br
+.ti -1c
+.RI "bool \fBoperator>\fP (const \fBTime\fP &time) const"
+.br
+.ti -1c
+.RI "bool \fBoperator<=\fP (const \fBTime\fP &time) const"
+.br
+.ti -1c
+.RI "bool \fBoperator>=\fP (const \fBTime\fP &time) const"
+.br
+.ti -1c
+.RI "\fBTime\fP & \fBoperator=\fP (const \fBTime\fP &other)"
+.br
+.in -1c
+.SS "Friends"
+
+.in +1c
+.ti -1c
+.RI "std::istream & \fBoperator>>\fP (std::istream &in, \fBTime\fP &time)"
+.br
+.in -1c
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for PersonalCalendarOOP from the source code\&.

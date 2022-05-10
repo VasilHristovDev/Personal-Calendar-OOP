@@ -1,0 +1,65 @@
+.TH "Event" 3 "Tue May 10 2022" "PersonalCalendarOOP" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Event
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBEvent\fP (\fBDate\fP date, const char *name, const char *comment, \fBTime\fP startingTime, \fBTime\fP endingTime)"
+.br
+.ti -1c
+.RI "void \fBsetDate\fP (\fBDate\fP)"
+.br
+.ti -1c
+.RI "void \fBsetName\fP (const char *name)"
+.br
+.ti -1c
+.RI "void \fBsetComment\fP (const char *comment)"
+.br
+.ti -1c
+.RI "void \fBsetStartingTime\fP (\fBTime\fP hours)"
+.br
+.ti -1c
+.RI "void \fBsetEndingTime\fP (\fBTime\fP hours)"
+.br
+.ti -1c
+.RI "\fBDate\fP \fBgetDate\fP () const"
+.br
+.ti -1c
+.RI "\fBString\fP \fBgetName\fP () const"
+.br
+.ti -1c
+.RI "\fBString\fP \fBgetComment\fP () const"
+.br
+.ti -1c
+.RI "\fBTime\fP \fBgetStartingTime\fP () const"
+.br
+.ti -1c
+.RI "\fBTime\fP \fBgetEndingTime\fP () const"
+.br
+.ti -1c
+.RI "void \fBprint\fP (std::ostream &out=std::cout)"
+.br
+.ti -1c
+.RI "void \fBsave\fP (std::ostream &out)"
+.br
+.ti -1c
+.RI "bool \fBoperator==\fP (const \fBEvent\fP &event) const"
+.br
+.in -1c
+.SS "Friends"
+
+.in +1c
+.ti -1c
+.RI "std::istream & \fBoperator>>\fP (std::istream &in, \fBEvent\fP &event)"
+.br
+.in -1c
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for PersonalCalendarOOP from the source code\&.

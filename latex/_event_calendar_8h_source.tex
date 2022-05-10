@@ -1,0 +1,41 @@
+\hypertarget{_event_calendar_8h_source}{}\doxysection{Event\+Calendar.\+h}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef PERSONAL\_CALENDAR\_OOP\_EVENTCALENDAR\_H}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define PERSONAL\_CALENDAR\_OOP\_EVENTCALENDAR\_H}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include "{}Event.cpp"{}}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include "{}Container.h"{}}}
+\DoxyCodeLine{6 }
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{keyword}{class }\mbox{\hyperlink{class_event_calendar}{EventCalendar}} \{}
+\DoxyCodeLine{9 \textcolor{keyword}{private}:}
+\DoxyCodeLine{10     \mbox{\hyperlink{class_container}{Container<Event>}} events;}
+\DoxyCodeLine{11 \textcolor{keyword}{public}:}
+\DoxyCodeLine{12     \textcolor{comment}{//constructor}}
+\DoxyCodeLine{13     \mbox{\hyperlink{class_event_calendar}{EventCalendar}}();}
+\DoxyCodeLine{14     \mbox{\hyperlink{class_event_calendar}{EventCalendar}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_event}{Event}} * events, \textcolor{keywordtype}{int} numberEvents, \textcolor{keywordtype}{int} maxEvents);}
+\DoxyCodeLine{15 }
+\DoxyCodeLine{16     \textcolor{comment}{//logic}}
+\DoxyCodeLine{17     \textcolor{keywordtype}{void} addEvent(\textcolor{keyword}{const} \mbox{\hyperlink{class_event}{Event}} \& event);}
+\DoxyCodeLine{18     \textcolor{keywordtype}{void} removeEvent(\textcolor{keyword}{const} \mbox{\hyperlink{class_event}{Event}} \& event);}
+\DoxyCodeLine{19     \textcolor{keywordtype}{void} searchEvent(\mbox{\hyperlink{class_string}{String}} \& \textcolor{keywordtype}{string});}
+\DoxyCodeLine{20     \textcolor{keywordtype}{void} changeEvent(\textcolor{keyword}{const} \mbox{\hyperlink{class_event}{Event}}\& event);}
+\DoxyCodeLine{21     \textcolor{keywordtype}{void} printDayList(\textcolor{keyword}{const} \mbox{\hyperlink{class_date}{Date}} \& date);}
+\DoxyCodeLine{22     \textcolor{keywordtype}{void} outputScheduleFromTo(\textcolor{keyword}{const} \mbox{\hyperlink{class_date}{Date}} \& dateStart, \textcolor{keyword}{const} \mbox{\hyperlink{class_date}{Date}} \& dateEnd);}
+\DoxyCodeLine{23     \textcolor{keywordtype}{void} findFreeTime(\textcolor{keyword}{const} \mbox{\hyperlink{class_date}{Date}} \& dateStart, \textcolor{keyword}{const} \mbox{\hyperlink{class_date}{Date}} \& dateEnd, \textcolor{keyword}{const} \mbox{\hyperlink{class_time}{Time}} \& startTime, \textcolor{keyword}{const} \mbox{\hyperlink{class_time}{Time}} \& endTime, \textcolor{keywordtype}{int} duration);}
+\DoxyCodeLine{24 }
+\DoxyCodeLine{25     \textcolor{comment}{//mutators}}
+\DoxyCodeLine{26     \textcolor{keywordtype}{void} setEvents(\textcolor{keyword}{const} \mbox{\hyperlink{class_event}{Event}} * events, \textcolor{keywordtype}{int} size, \textcolor{keywordtype}{int} maxSize = DEFAULT\_CAP);}
+\DoxyCodeLine{27     \textcolor{keywordtype}{void} writeEvents(\textcolor{keyword}{const} \textcolor{keywordtype}{char} * filename);}
+\DoxyCodeLine{28 }
+\DoxyCodeLine{29 \};}
+\DoxyCodeLine{30 \textcolor{keyword}{static} \textcolor{keywordtype}{void} sortEventsByStartingHour(\mbox{\hyperlink{class_container}{Container<Event>}} \& events);}
+\DoxyCodeLine{31 \textcolor{keyword}{static} \textcolor{keywordtype}{int} * sortDatesFromBusiestAndGetDurations(\mbox{\hyperlink{class_container}{Container<Event>}} \& givenEvents, \mbox{\hyperlink{class_container}{Container<Date>}} \& givenDates);}
+\DoxyCodeLine{32 \textcolor{keywordtype}{bool} checkIfDateFree(\textcolor{keyword}{const} \mbox{\hyperlink{class_date}{Date}} \& date, \textcolor{keyword}{const} \mbox{\hyperlink{class_time}{Time}} \& startingTime, \textcolor{keyword}{const} \mbox{\hyperlink{class_time}{Time}} \& endingTime, \mbox{\hyperlink{class_container}{Container<Event>}} \& events);}
+\DoxyCodeLine{33 \textcolor{keyword}{static} \mbox{\hyperlink{class_string}{String}} constructFileName(\textcolor{keyword}{const} \mbox{\hyperlink{class_date}{Date}} \& startDate);}
+\DoxyCodeLine{34 \textcolor{keyword}{static} \textcolor{keywordtype}{void} sortEventsByDuration(\mbox{\hyperlink{class_container}{Container<Event>}} \& container);}
+\DoxyCodeLine{35 }
+\DoxyCodeLine{36 \textcolor{preprocessor}{\#endif }\textcolor{comment}{//PERSONAL\_CALENDAR\_OOP\_EVENTCALENDAR\_H}}
+
+\end{DoxyCode}

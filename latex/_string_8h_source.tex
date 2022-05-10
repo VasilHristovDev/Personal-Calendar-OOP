@@ -1,0 +1,129 @@
+\hypertarget{_string_8h_source}{}\doxysection{String.\+h}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef PERSONAL\_CALENDAR\_OOP\_STRING\_H}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define PERSONAL\_CALENDAR\_OOP\_STRING\_H}}
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include <cstring>}}
+\DoxyCodeLine{4 \textcolor{keyword}{const} \textcolor{keywordtype}{int} MAX\_BUFFER = 4096;}
+\DoxyCodeLine{5 \textcolor{keyword}{class }\mbox{\hyperlink{class_string}{String}} \{}
+\DoxyCodeLine{6 \textcolor{keyword}{private}:}
+\DoxyCodeLine{7     \textcolor{keywordtype}{char} *text;}
+\DoxyCodeLine{8     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} size;}
+\DoxyCodeLine{9     \textcolor{keywordtype}{void} deallocateMemory();}
+\DoxyCodeLine{10 \textcolor{keyword}{public}:}
+\DoxyCodeLine{11     \mbox{\hyperlink{class_string}{String}}(\textcolor{keyword}{const} \textcolor{keywordtype}{char} * text = \textcolor{stringliteral}{"{}\(\backslash\)0"{}});}
+\DoxyCodeLine{12     \mbox{\hyperlink{class_string}{String}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_string}{String}} \& \textcolor{keywordtype}{string});}
+\DoxyCodeLine{13 }
+\DoxyCodeLine{14     \mbox{\hyperlink{class_string}{\string~String}}();}
+\DoxyCodeLine{15 }
+\DoxyCodeLine{16     \textcolor{keywordtype}{void} setText(\textcolor{keyword}{const} \textcolor{keywordtype}{char} * text);}
+\DoxyCodeLine{17     \textcolor{keywordtype}{bool} contains(\textcolor{keyword}{const} \mbox{\hyperlink{class_string}{String}} \& other);}
+\DoxyCodeLine{18 }
+\DoxyCodeLine{19     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} getSize() \textcolor{keyword}{const};}
+\DoxyCodeLine{20     \textcolor{keyword}{const} \textcolor{keywordtype}{char} *getText() \textcolor{keyword}{const};}
+\DoxyCodeLine{21 }
+\DoxyCodeLine{22     \mbox{\hyperlink{class_string}{String}} \&operator=(\textcolor{keyword}{const} \mbox{\hyperlink{class_string}{String}} \&other);}
+\DoxyCodeLine{23     \mbox{\hyperlink{class_string}{String}} operator+(\textcolor{keyword}{const} \mbox{\hyperlink{class_string}{String}} \&other);}
+\DoxyCodeLine{24     \textcolor{keywordtype}{char} operator[](\textcolor{keywordtype}{int} index);}
+\DoxyCodeLine{25     \textcolor{keyword}{friend} std::istream \& operator >> (std::istream \& in, \mbox{\hyperlink{class_string}{String}} \& readable);}
+\DoxyCodeLine{26     \textcolor{keyword}{friend} std::ostream \& operator << (std::ostream \& out, \mbox{\hyperlink{class_string}{String}} \& readable);}
+\DoxyCodeLine{27 }
+\DoxyCodeLine{28 \};}
+\DoxyCodeLine{29 }
+\DoxyCodeLine{30 }
+\DoxyCodeLine{31 String::String(\textcolor{keyword}{const} \textcolor{keywordtype}{char} *text) \{}
+\DoxyCodeLine{32     this-\/>size = strlen(text);}
+\DoxyCodeLine{33     this-\/>text = \textcolor{keyword}{new} \textcolor{keywordtype}{char} [this-\/>size + 1];}
+\DoxyCodeLine{34     strcpy(this-\/>text,text);}
+\DoxyCodeLine{35 \}}
+\DoxyCodeLine{36 }
+\DoxyCodeLine{37 \textcolor{keywordtype}{void} String::setText(\textcolor{keyword}{const} \textcolor{keywordtype}{char} * \_text) \{}
+\DoxyCodeLine{38     \textcolor{keywordflow}{if}(this-\/>text)}
+\DoxyCodeLine{39         deallocateMemory();}
+\DoxyCodeLine{40     this-\/>size = strlen(\_text);}
+\DoxyCodeLine{41     this-\/>text = \textcolor{keyword}{new} \textcolor{keywordtype}{char} [this-\/>size + 1];}
+\DoxyCodeLine{42     strcpy(this-\/>text, \_text);}
+\DoxyCodeLine{43 \}}
+\DoxyCodeLine{44 }
+\DoxyCodeLine{45 \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} String::getSize()\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{46     \textcolor{keywordflow}{return} this-\/>size;}
+\DoxyCodeLine{47 \}}
+\DoxyCodeLine{48 }
+\DoxyCodeLine{49 \textcolor{keyword}{const} \textcolor{keywordtype}{char} *String::getText()\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{50     \textcolor{keywordflow}{return} this-\/>text;}
+\DoxyCodeLine{51 \}}
+\DoxyCodeLine{52 }
+\DoxyCodeLine{53 \mbox{\hyperlink{class_string}{String}} \&String::operator=(\textcolor{keyword}{const} \mbox{\hyperlink{class_string}{String}} \&other) \{}
+\DoxyCodeLine{54     \textcolor{keywordflow}{if}(\textcolor{keyword}{this} != \&other)}
+\DoxyCodeLine{55     \{}
+\DoxyCodeLine{56         this-\/>setText(other.getText());}
+\DoxyCodeLine{57     \}}
+\DoxyCodeLine{58     \textcolor{keywordflow}{return} *\textcolor{keyword}{this};}
+\DoxyCodeLine{59 \}}
+\DoxyCodeLine{60 \mbox{\hyperlink{class_string}{String}} String::operator+(\textcolor{keyword}{const} \mbox{\hyperlink{class_string}{String}} \&other) \{}
+\DoxyCodeLine{61     \textcolor{keywordtype}{char} * returnable = \textcolor{keyword}{new} \textcolor{keywordtype}{char}[this-\/>size + other.getSize() + 1];}
+\DoxyCodeLine{62     strcpy(returnable, this-\/>text);}
+\DoxyCodeLine{63     strcat(returnable,other.getText());}
+\DoxyCodeLine{64     \textcolor{keywordflow}{return} (\mbox{\hyperlink{class_string}{String}})returnable;}
+\DoxyCodeLine{65 \}}
+\DoxyCodeLine{66 }
+\DoxyCodeLine{67 \textcolor{keywordtype}{void} String::deallocateMemory() \{}
+\DoxyCodeLine{68     \textcolor{keyword}{delete} [] this-\/>text;}
+\DoxyCodeLine{69 \}}
+\DoxyCodeLine{70 }
+\DoxyCodeLine{71 String::\string~String() \{}
+\DoxyCodeLine{72     deallocateMemory();}
+\DoxyCodeLine{73 \}}
+\DoxyCodeLine{74 }
+\DoxyCodeLine{75 std::istream \&operator>>(std::istream \&in, \mbox{\hyperlink{class_string}{String}} \&readable) \{}
+\DoxyCodeLine{76     \textcolor{keywordtype}{char} input [MAX\_BUFFER];}
+\DoxyCodeLine{77     in.getline(input, MAX\_BUFFER -\/ 1);}
+\DoxyCodeLine{78     readable = (\mbox{\hyperlink{class_string}{String}}) input;}
+\DoxyCodeLine{79     \textcolor{keywordflow}{return} in;}
+\DoxyCodeLine{80 \}}
+\DoxyCodeLine{81 }
+\DoxyCodeLine{82 std::ostream \&operator<<(std::ostream \&out, \mbox{\hyperlink{class_string}{String}} \&readable) \{}
+\DoxyCodeLine{83     out<<readable.getText();}
+\DoxyCodeLine{84     \textcolor{keywordflow}{return} out;}
+\DoxyCodeLine{85 \}}
+\DoxyCodeLine{86 }
+\DoxyCodeLine{87 String::String(\textcolor{keyword}{const} \mbox{\hyperlink{class_string}{String}} \&\textcolor{keywordtype}{string}) \{}
+\DoxyCodeLine{88     this-\/>setText(\textcolor{keywordtype}{string}.getText());}
+\DoxyCodeLine{89 \}}
+\DoxyCodeLine{90 }
+\DoxyCodeLine{91 \textcolor{keywordtype}{bool} String::contains(\textcolor{keyword}{const} \mbox{\hyperlink{class_string}{String}} \&other) \{}
+\DoxyCodeLine{92     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} otherSize  = other.getSize();}
+\DoxyCodeLine{93     \textcolor{keywordflow}{if}(otherSize > this-\/>size)}
+\DoxyCodeLine{94         \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{95     \textcolor{keyword}{const} \textcolor{keywordtype}{char} * otherText = other.getText();}
+\DoxyCodeLine{96     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < this-\/>size; i++)\{}
+\DoxyCodeLine{97         \textcolor{keywordtype}{int} j = 0;}
+\DoxyCodeLine{98         \textcolor{comment}{// If the first characters match}}
+\DoxyCodeLine{99         \textcolor{keywordflow}{if}(this-\/>text[i] == otherText[j])\{}
+\DoxyCodeLine{100             \textcolor{keywordtype}{int} k = i;}
+\DoxyCodeLine{101             \textcolor{keywordflow}{while} (this-\/>text[i] == otherText[j] \&\& j < otherSize)}
+\DoxyCodeLine{102             \{}
+\DoxyCodeLine{103                 j++;}
+\DoxyCodeLine{104                 i++;}
+\DoxyCodeLine{105             \}}
+\DoxyCodeLine{106             \textcolor{keywordflow}{if} (j == otherSize)}
+\DoxyCodeLine{107             \{}
+\DoxyCodeLine{108                 \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{109             \}}
+\DoxyCodeLine{110             \textcolor{keywordflow}{else}}
+\DoxyCodeLine{111             \{}
+\DoxyCodeLine{112                 i = k;}
+\DoxyCodeLine{113             \}}
+\DoxyCodeLine{114         \}}
+\DoxyCodeLine{115     \}}
+\DoxyCodeLine{116     \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{117 \}}
+\DoxyCodeLine{118 }
+\DoxyCodeLine{119 \textcolor{keywordtype}{char} String::operator[](\textcolor{keywordtype}{int} index) \{}
+\DoxyCodeLine{120     \textcolor{keywordflow}{return} this-\/>text[index];}
+\DoxyCodeLine{121 \}}
+\DoxyCodeLine{122 }
+\DoxyCodeLine{123 }
+\DoxyCodeLine{124 \textcolor{preprocessor}{\#endif }\textcolor{comment}{//PERSONAL\_CALENDAR\_OOP\_STRING\_H}}
+
+\end{DoxyCode}

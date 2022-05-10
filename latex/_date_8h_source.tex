@@ -1,0 +1,58 @@
+\hypertarget{_date_8h_source}{}\doxysection{Date.\+h}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#include "{}Container.h"{}}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#ifndef PERSONAL\_CALENDAR\_OOP\_DATE\_H}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#define PERSONAL\_CALENDAR\_OOP\_DATE\_H}}
+\DoxyCodeLine{6 \textcolor{keyword}{enum} months \{}
+\DoxyCodeLine{7     JANUARY = 1,}
+\DoxyCodeLine{8     FEBRUARY = 2,}
+\DoxyCodeLine{9     MARCH = 3,}
+\DoxyCodeLine{10     APRIL = 4,}
+\DoxyCodeLine{11     MAY = 5,}
+\DoxyCodeLine{12     JUNE = 6,}
+\DoxyCodeLine{13     JULY = 7,}
+\DoxyCodeLine{14     AUGUST = 8,}
+\DoxyCodeLine{15     SEPTEMBER = 9,}
+\DoxyCodeLine{16     OCTOBER = 10,}
+\DoxyCodeLine{17     NOVEMBER = 11,}
+\DoxyCodeLine{18     DECEMBER = 12}
+\DoxyCodeLine{19 \};}
+\DoxyCodeLine{20 }
+\DoxyCodeLine{21 \textcolor{keyword}{class }\mbox{\hyperlink{class_date}{Date}} \{}
+\DoxyCodeLine{22 \textcolor{keyword}{private}:}
+\DoxyCodeLine{23     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} day;}
+\DoxyCodeLine{24     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} month;}
+\DoxyCodeLine{25     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} year;}
+\DoxyCodeLine{26 \textcolor{keyword}{public}:}
+\DoxyCodeLine{27     \mbox{\hyperlink{class_date}{Date}}();}
+\DoxyCodeLine{28     \mbox{\hyperlink{class_date}{Date}}(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} day, \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} month, \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} year);}
+\DoxyCodeLine{29     \textcolor{keywordtype}{void} print(std::ostream \& out = std::cout) \textcolor{keyword}{const};}
+\DoxyCodeLine{30     \textcolor{keywordtype}{void} setDay(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} day);}
+\DoxyCodeLine{31     \textcolor{keywordtype}{void} setMonth(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} month);}
+\DoxyCodeLine{32     \textcolor{keywordtype}{void} setYear(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} year);}
+\DoxyCodeLine{33 }
+\DoxyCodeLine{34     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} getDay() \textcolor{keyword}{const};}
+\DoxyCodeLine{35     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} getMonth() \textcolor{keyword}{const};}
+\DoxyCodeLine{36     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} getYear() \textcolor{keyword}{const};}
+\DoxyCodeLine{37     \textcolor{keywordtype}{bool} operator == (\textcolor{keyword}{const} \mbox{\hyperlink{class_date}{Date}} \& date1) \textcolor{keyword}{const};}
+\DoxyCodeLine{38     \mbox{\hyperlink{class_date}{Date}} \& operator = (\textcolor{keyword}{const} \mbox{\hyperlink{class_date}{Date}} \& other);}
+\DoxyCodeLine{39     \textcolor{keywordtype}{bool} operator <=(\textcolor{keyword}{const} \mbox{\hyperlink{class_date}{Date}} \& date1) \textcolor{keyword}{const};}
+\DoxyCodeLine{40     \textcolor{keywordtype}{bool} operator >=(\textcolor{keyword}{const} \mbox{\hyperlink{class_date}{Date}} \& date1) \textcolor{keyword}{const};}
+\DoxyCodeLine{41     \mbox{\hyperlink{class_date}{Date}} \& operator++();}
+\DoxyCodeLine{42     \mbox{\hyperlink{class_date}{Date}} operator++(\textcolor{keywordtype}{int});}
+\DoxyCodeLine{43     \textcolor{keyword}{friend} std::istream \& operator >> (std::istream \& in, \mbox{\hyperlink{class_date}{Date}} \&date);}
+\DoxyCodeLine{44     \textcolor{keywordtype}{void} printDayOfWeek(std::ostream \& out = std::cout) \textcolor{keyword}{const};}
+\DoxyCodeLine{45 \};}
+\DoxyCodeLine{46 \textcolor{keywordtype}{bool} isValid(\textcolor{keyword}{const} \mbox{\hyperlink{class_date}{Date}} \& date);}
+\DoxyCodeLine{47 \textcolor{keywordtype}{bool} isLeapYearChecker(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} year);}
+\DoxyCodeLine{48 \textcolor{keywordtype}{bool} doesNotHaveMoreDays(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} days, months givenMonth, \textcolor{keywordtype}{bool} isLeap);}
+\DoxyCodeLine{49 \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} getDayOfWeek(\textcolor{keyword}{const} \mbox{\hyperlink{class_date}{Date}} \& date);}
+\DoxyCodeLine{50 \mbox{\hyperlink{class_container}{Container <Date>}} getAllDatesFromPeriod(\textcolor{keyword}{const} \mbox{\hyperlink{class_date}{Date}} \& dateStart, \textcolor{keyword}{const} \mbox{\hyperlink{class_date}{Date}} \& dateEnd);}
+\DoxyCodeLine{51 }
+\DoxyCodeLine{52 }
+\DoxyCodeLine{53 \textcolor{preprocessor}{\#endif }\textcolor{comment}{//PERSONAL\_CALENDAR\_OOP\_DATE\_H}}
+
+\end{DoxyCode}

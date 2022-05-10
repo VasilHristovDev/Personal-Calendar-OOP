@@ -1,0 +1,101 @@
+\hypertarget{_program_8h_source}{}\doxysection{Program.\+h}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef PERSONAL\_CALENDAR\_OOP\_PROGRAM\_H}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define PERSONAL\_CALENDAR\_OOP\_PROGRAM\_H}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include "{}EventCalendar.cpp"{}}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include "{}Commands.h"{}}}
+\DoxyCodeLine{6 }
+\DoxyCodeLine{7 \textcolor{keyword}{const} \textcolor{keywordtype}{char} *OUTPUT\_FILENAME = \textcolor{stringliteral}{"{}EventCalendar.txt"{}};}
+\DoxyCodeLine{8 }
+\DoxyCodeLine{9 \textcolor{keyword}{class }\mbox{\hyperlink{class_program}{Program}} \{}
+\DoxyCodeLine{10 \textcolor{keyword}{private}:}
+\DoxyCodeLine{11     \mbox{\hyperlink{class_event_calendar}{EventCalendar}} calendar;}
+\DoxyCodeLine{12 \textcolor{keyword}{public}:}
+\DoxyCodeLine{13     \mbox{\hyperlink{class_program}{Program}}();}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15     \textcolor{keywordtype}{void} run();}
+\DoxyCodeLine{16 }
+\DoxyCodeLine{17 \};}
+\DoxyCodeLine{18 }
+\DoxyCodeLine{19 Program::Program() \{}
+\DoxyCodeLine{20     this-\/>calendar =  \mbox{\hyperlink{class_event_calendar}{EventCalendar}}();}
+\DoxyCodeLine{21 \}}
+\DoxyCodeLine{22 }
+\DoxyCodeLine{23 \textcolor{keywordtype}{void} Program::run() \{}
+\DoxyCodeLine{24     \mbox{\hyperlink{class_string}{String}} command;}
+\DoxyCodeLine{25     std::cout << Helper::COMMANDS\_HELPER\_MESSAGE << std::endl;}
+\DoxyCodeLine{26     \textcolor{keywordflow}{while} (stringToCommands(command) != EXIT\_COMMAND) \{}
+\DoxyCodeLine{27         std::cout<<Helper::ENTER\_COMMAND\_MESSAGE;}
+\DoxyCodeLine{28         std::cin >> command;}
+\DoxyCodeLine{29         commands COMMAND = stringToCommands(command);}
+\DoxyCodeLine{30         \textcolor{comment}{//Helpers for the program}}
+\DoxyCodeLine{31         \mbox{\hyperlink{class_event}{Event}} event;}
+\DoxyCodeLine{32         \mbox{\hyperlink{class_date}{Date}} date;}
+\DoxyCodeLine{33         \mbox{\hyperlink{class_date}{Date}} date2;}
+\DoxyCodeLine{34         \mbox{\hyperlink{class_string}{String}} string;}
+\DoxyCodeLine{35         \mbox{\hyperlink{class_time}{Time}} startingTime;}
+\DoxyCodeLine{36         \mbox{\hyperlink{class_time}{Time}} endingTime;}
+\DoxyCodeLine{37         \textcolor{keywordtype}{int} duration;}
+\DoxyCodeLine{38         \textcolor{keywordflow}{switch} (COMMAND) \{}
+\DoxyCodeLine{39             \textcolor{keywordflow}{case} SHOW\_COMMANDS:}
+\DoxyCodeLine{40                 std::cout << Helper::COMMANDS\_HELPER\_MESSAGE << std::endl;}
+\DoxyCodeLine{41                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{42             \textcolor{keywordflow}{case} MAKE\_APPOINTMENT:}
+\DoxyCodeLine{43                 std::cin >> event;}
+\DoxyCodeLine{44                 this-\/>calendar.addEvent(event);}
+\DoxyCodeLine{45                 std::cin.ignore();}
+\DoxyCodeLine{46                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{47             \textcolor{keywordflow}{case} CANCEL\_APPOINTMENT:}
+\DoxyCodeLine{48                 std::cin >> event;}
+\DoxyCodeLine{49                 this-\/>calendar.removeEvent(event);}
+\DoxyCodeLine{50                 std::cin.ignore();}
+\DoxyCodeLine{51                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{52             \textcolor{keywordflow}{case} DAY\_SCHEDULE:}
+\DoxyCodeLine{53                 std::cin >> date;}
+\DoxyCodeLine{54                 this-\/>calendar.printDayList(date);}
+\DoxyCodeLine{55                 std::cin.ignore();}
+\DoxyCodeLine{56                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{57             \textcolor{keywordflow}{case} CHANGE\_APPOINTMENT:}
+\DoxyCodeLine{58                 std::cin >> event;}
+\DoxyCodeLine{59                 this-\/>calendar.changeEvent(event);}
+\DoxyCodeLine{60                 std::cin.ignore();}
+\DoxyCodeLine{61                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{62             \textcolor{keywordflow}{case} SEARCH\_APPOINTMENT:}
+\DoxyCodeLine{63                 std::cout<<Helper::ENTER\_STRING<<std::endl;}
+\DoxyCodeLine{64                 std::cin >> string;}
+\DoxyCodeLine{65                 this-\/>calendar.searchEvent(\textcolor{keywordtype}{string});}
+\DoxyCodeLine{66                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{67             \textcolor{keywordflow}{case} WORKLOAD:}
+\DoxyCodeLine{68                 std::cin>>date;}
+\DoxyCodeLine{69                 std::cin>>date2;}
+\DoxyCodeLine{70                 this-\/>calendar.outputScheduleFromTo(date,date2);}
+\DoxyCodeLine{71                 std::cin.ignore();}
+\DoxyCodeLine{72                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{73             \textcolor{keywordflow}{case} FIND\_FREE\_TIME:}
+\DoxyCodeLine{74                 std::cin>>date;}
+\DoxyCodeLine{75                 std::cin>>date2;}
+\DoxyCodeLine{76                 std::cin>>startingTime;}
+\DoxyCodeLine{77                 std::cin>>endingTime;}
+\DoxyCodeLine{78                 std::cout<<\textcolor{stringliteral}{"{}Duration:"{}};}
+\DoxyCodeLine{79                 std::cin>>duration;}
+\DoxyCodeLine{80                 this-\/>calendar.findFreeTime(date,date2,startingTime,endingTime,duration);}
+\DoxyCodeLine{81                 std::cin.ignore();}
+\DoxyCodeLine{82                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{83             \textcolor{keywordflow}{case} WRONG\_COMMAND:}
+\DoxyCodeLine{84                 std::cout << Helper::UNKNOWN\_COMMAND\_USED << std::endl;}
+\DoxyCodeLine{85             \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{86                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{87 }
+\DoxyCodeLine{88         \}}
+\DoxyCodeLine{89     \}}
+\DoxyCodeLine{90     std::cout << Helper::EXIT\_MESSAGE << OUTPUT\_FILENAME << std::endl;}
+\DoxyCodeLine{91     this-\/>calendar.writeEvents(OUTPUT\_FILENAME);}
+\DoxyCodeLine{92 \}}
+\DoxyCodeLine{93 }
+\DoxyCodeLine{94 }
+\DoxyCodeLine{95 }
+\DoxyCodeLine{96 \textcolor{preprocessor}{\#endif }\textcolor{comment}{//PERSONAL\_CALENDAR\_OOP\_PROGRAM\_H}}
+
+\end{DoxyCode}

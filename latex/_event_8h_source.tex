@@ -1,0 +1,54 @@
+\hypertarget{_event_8h_source}{}\doxysection{Event.\+h}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef PERSONAL\_CALENDAR\_OOP\_EVENT\_H}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define PERSONAL\_CALENDAR\_OOP\_EVENT\_H}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include "{}Date.cpp"{}}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include "{}Time.cpp"{}}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include "{}String.h"{}}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{keyword}{class }\mbox{\hyperlink{class_event}{Event}} \{}
+\DoxyCodeLine{9 \textcolor{keyword}{private}:}
+\DoxyCodeLine{10     \mbox{\hyperlink{class_date}{Date}} date;}
+\DoxyCodeLine{11     \mbox{\hyperlink{class_string}{String}} name;}
+\DoxyCodeLine{12     \mbox{\hyperlink{class_string}{String}} comment;}
+\DoxyCodeLine{13     \mbox{\hyperlink{class_time}{Time}} startingTime;}
+\DoxyCodeLine{14     \mbox{\hyperlink{class_time}{Time}} endingTime;}
+\DoxyCodeLine{15 \textcolor{keyword}{public}:}
+\DoxyCodeLine{16     \textcolor{comment}{//constructors}}
+\DoxyCodeLine{17     \mbox{\hyperlink{class_event}{Event}}();}
+\DoxyCodeLine{18     \mbox{\hyperlink{class_event}{Event}}(\mbox{\hyperlink{class_date}{Date}} date, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *name, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *comment, \mbox{\hyperlink{class_time}{Time}} startingTime, \mbox{\hyperlink{class_time}{Time}} endingTime);}
+\DoxyCodeLine{19 }
+\DoxyCodeLine{20     \textcolor{comment}{//mutators}}
+\DoxyCodeLine{21     \textcolor{keywordtype}{void} setDate(\mbox{\hyperlink{class_date}{Date}});}
+\DoxyCodeLine{22     \textcolor{keywordtype}{void} setName(\textcolor{keyword}{const} \textcolor{keywordtype}{char} *name);}
+\DoxyCodeLine{23     \textcolor{keywordtype}{void} setComment(\textcolor{keyword}{const} \textcolor{keywordtype}{char} *comment);}
+\DoxyCodeLine{24     \textcolor{keywordtype}{void} setStartingTime(\mbox{\hyperlink{class_time}{Time}} hours);}
+\DoxyCodeLine{25     \textcolor{keywordtype}{void} setEndingTime(\mbox{\hyperlink{class_time}{Time}} hours);}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{27     \textcolor{comment}{//selectors}}
+\DoxyCodeLine{28     \mbox{\hyperlink{class_date}{Date}} getDate() \textcolor{keyword}{const};}
+\DoxyCodeLine{29     \mbox{\hyperlink{class_string}{String}} getName() \textcolor{keyword}{const};}
+\DoxyCodeLine{30     \mbox{\hyperlink{class_string}{String}} getComment() \textcolor{keyword}{const};}
+\DoxyCodeLine{31     \mbox{\hyperlink{class_time}{Time}} getStartingTime() \textcolor{keyword}{const};}
+\DoxyCodeLine{32     \mbox{\hyperlink{class_time}{Time}} getEndingTime() \textcolor{keyword}{const};}
+\DoxyCodeLine{33 }
+\DoxyCodeLine{34     \textcolor{keywordtype}{void} print(std::ostream \& out = std::cout);}
+\DoxyCodeLine{35     \textcolor{keywordtype}{void} save(std::ostream \& out);}
+\DoxyCodeLine{36 \textcolor{comment}{//    Event \& operator=(const Event \& other);}}
+\DoxyCodeLine{37     \textcolor{keywordtype}{bool} operator == (\textcolor{keyword}{const} \mbox{\hyperlink{class_event}{Event}} \& event) \textcolor{keyword}{const};}
+\DoxyCodeLine{38     \textcolor{keyword}{friend} std::istream \& operator >> (std::istream \& in, \mbox{\hyperlink{class_event}{Event}} \& event);}
+\DoxyCodeLine{39 }
+\DoxyCodeLine{40 \};}
+\DoxyCodeLine{41 }
+\DoxyCodeLine{42 \textcolor{keyword}{static} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} getDuration(\textcolor{keyword}{const} \mbox{\hyperlink{class_event}{Event}} \& event) \{}
+\DoxyCodeLine{43     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} hours = \textcolor{keyword}{event}.getEndingTime().getHour() -\/ \textcolor{keyword}{event}.getStartingTime().getHour();}
+\DoxyCodeLine{44     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} minutes = \textcolor{keyword}{event}.getEndingTime().getMinutes() -\/ \textcolor{keyword}{event}.getStartingTime().getMinutes();}
+\DoxyCodeLine{45 }
+\DoxyCodeLine{46     \textcolor{keywordflow}{return} hours * 60 + minutes;}
+\DoxyCodeLine{47 \}}
+\DoxyCodeLine{48 }
+\DoxyCodeLine{49 \textcolor{preprocessor}{\#endif }\textcolor{comment}{//PERSONAL\_CALENDAR\_OOP\_EVENT\_H}}
+
+\end{DoxyCode}

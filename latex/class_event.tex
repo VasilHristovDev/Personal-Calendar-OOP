@@ -1,0 +1,59 @@
+\hypertarget{class_event}{}\doxysection{Event Class Reference}
+\label{class_event}\index{Event@{Event}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_event_ae9391ebccea168cd6760f70df7229947}\label{class_event_ae9391ebccea168cd6760f70df7229947}} 
+{\bfseries Event} (\mbox{\hyperlink{class_date}{Date}} date, const char $\ast$name, const char $\ast$comment, \mbox{\hyperlink{class_time}{Time}} starting\+Time, \mbox{\hyperlink{class_time}{Time}} ending\+Time)
+\item 
+\mbox{\Hypertarget{class_event_aed3f9c44d2591274ee475913d96e8a29}\label{class_event_aed3f9c44d2591274ee475913d96e8a29}} 
+void {\bfseries set\+Date} (\mbox{\hyperlink{class_date}{Date}})
+\item 
+\mbox{\Hypertarget{class_event_a3640d9ddb72ddab2f7f56ea18d2c759b}\label{class_event_a3640d9ddb72ddab2f7f56ea18d2c759b}} 
+void {\bfseries set\+Name} (const char $\ast$name)
+\item 
+\mbox{\Hypertarget{class_event_aeac00e30ac289989326dacf6f033c648}\label{class_event_aeac00e30ac289989326dacf6f033c648}} 
+void {\bfseries set\+Comment} (const char $\ast$comment)
+\item 
+\mbox{\Hypertarget{class_event_a43bd8b934a30fa53293e326e4be31beb}\label{class_event_a43bd8b934a30fa53293e326e4be31beb}} 
+void {\bfseries set\+Starting\+Time} (\mbox{\hyperlink{class_time}{Time}} hours)
+\item 
+\mbox{\Hypertarget{class_event_a8c2b5bdc6b95fe25d1419b7b87ffc6ec}\label{class_event_a8c2b5bdc6b95fe25d1419b7b87ffc6ec}} 
+void {\bfseries set\+Ending\+Time} (\mbox{\hyperlink{class_time}{Time}} hours)
+\item 
+\mbox{\Hypertarget{class_event_afb982ea390aa61ed05bd3c5e544071e1}\label{class_event_afb982ea390aa61ed05bd3c5e544071e1}} 
+\mbox{\hyperlink{class_date}{Date}} {\bfseries get\+Date} () const
+\item 
+\mbox{\Hypertarget{class_event_a9b363c76ede88136d1d6745d7f5049dd}\label{class_event_a9b363c76ede88136d1d6745d7f5049dd}} 
+\mbox{\hyperlink{class_string}{String}} {\bfseries get\+Name} () const
+\item 
+\mbox{\Hypertarget{class_event_a895b8203908dad0d05b07c008f22b118}\label{class_event_a895b8203908dad0d05b07c008f22b118}} 
+\mbox{\hyperlink{class_string}{String}} {\bfseries get\+Comment} () const
+\item 
+\mbox{\Hypertarget{class_event_a35fdb8718f1ca4cb3d2e213abd8d951e}\label{class_event_a35fdb8718f1ca4cb3d2e213abd8d951e}} 
+\mbox{\hyperlink{class_time}{Time}} {\bfseries get\+Starting\+Time} () const
+\item 
+\mbox{\Hypertarget{class_event_a9f99535266daf0c6e72a23e2ead2c692}\label{class_event_a9f99535266daf0c6e72a23e2ead2c692}} 
+\mbox{\hyperlink{class_time}{Time}} {\bfseries get\+Ending\+Time} () const
+\item 
+\mbox{\Hypertarget{class_event_a66a1dc83c7e9922fa4707453d6f0b211}\label{class_event_a66a1dc83c7e9922fa4707453d6f0b211}} 
+void {\bfseries print} (std\+::ostream \&out=std\+::cout)
+\item 
+\mbox{\Hypertarget{class_event_a76cb68e1cd9909213843986520c7ed5c}\label{class_event_a76cb68e1cd9909213843986520c7ed5c}} 
+void {\bfseries save} (std\+::ostream \&out)
+\item 
+\mbox{\Hypertarget{class_event_a32421852d531dfc492f534e953416174}\label{class_event_a32421852d531dfc492f534e953416174}} 
+bool {\bfseries operator==} (const \mbox{\hyperlink{class_event}{Event}} \&event) const
+\end{DoxyCompactItemize}
+\doxysubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_event_aed459a839caa210b72041bf8d75ad2e2}\label{class_event_aed459a839caa210b72041bf8d75ad2e2}} 
+std\+::istream \& {\bfseries operator$>$$>$} (std\+::istream \&in, \mbox{\hyperlink{class_event}{Event}} \&event)
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Event.\+h\item 
+Event.\+cpp\end{DoxyCompactItemize}

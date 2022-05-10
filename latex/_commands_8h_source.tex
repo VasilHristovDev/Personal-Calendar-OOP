@@ -1,0 +1,49 @@
+\hypertarget{_commands_8h_source}{}\doxysection{Commands.\+h}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef PERSONAL\_CALENDAR\_OOP\_COMMANDS\_H}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define PERSONAL\_CALENDAR\_OOP\_COMMANDS\_H}}
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include "{}String.h"{}}}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 \textcolor{keyword}{enum} commands \{}
+\DoxyCodeLine{6     SHOW\_COMMANDS,}
+\DoxyCodeLine{7     MAKE\_APPOINTMENT,}
+\DoxyCodeLine{8     CANCEL\_APPOINTMENT,}
+\DoxyCodeLine{9     DAY\_SCHEDULE,}
+\DoxyCodeLine{10     CHANGE\_APPOINTMENT,}
+\DoxyCodeLine{11     SEARCH\_APPOINTMENT,}
+\DoxyCodeLine{12     WORKLOAD,}
+\DoxyCodeLine{13     FIND\_FREE\_TIME,}
+\DoxyCodeLine{14     EXIT\_COMMAND,}
+\DoxyCodeLine{15     WRONG\_COMMAND}
+\DoxyCodeLine{16 \};}
+\DoxyCodeLine{17 commands stringToCommands(\mbox{\hyperlink{class_string}{String}} \& command)}
+\DoxyCodeLine{18 \{}
+\DoxyCodeLine{19     \textcolor{keywordflow}{if}(strcmp(command.getText(), \textcolor{stringliteral}{"{}help"{}}) == 0)}
+\DoxyCodeLine{20         \textcolor{keywordflow}{return} SHOW\_COMMANDS;}
+\DoxyCodeLine{21     \textcolor{keywordflow}{if}(strcmp(command.getText(), \textcolor{stringliteral}{"{}make"{}}) == 0)}
+\DoxyCodeLine{22         \textcolor{keywordflow}{return} MAKE\_APPOINTMENT;}
+\DoxyCodeLine{23     \textcolor{keywordflow}{if}(strcmp(command.getText(), \textcolor{stringliteral}{"{}cancel"{}}) == 0)}
+\DoxyCodeLine{24         \textcolor{keywordflow}{return} CANCEL\_APPOINTMENT;}
+\DoxyCodeLine{25     \textcolor{keywordflow}{if}(strcmp(command.getText(), \textcolor{stringliteral}{"{}show:day"{}}) == 0)}
+\DoxyCodeLine{26         \textcolor{keywordflow}{return} DAY\_SCHEDULE;}
+\DoxyCodeLine{27     \textcolor{keywordflow}{if}(strcmp(command.getText(), \textcolor{stringliteral}{"{}change"{}}) == 0)}
+\DoxyCodeLine{28         \textcolor{keywordflow}{return} CHANGE\_APPOINTMENT;}
+\DoxyCodeLine{29     \textcolor{keywordflow}{if}(strcmp(command.getText(), \textcolor{stringliteral}{"{}search"{}}) == 0)}
+\DoxyCodeLine{30         \textcolor{keywordflow}{return} SEARCH\_APPOINTMENT;}
+\DoxyCodeLine{31     \textcolor{keywordflow}{if}(strcmp(command.getText(), \textcolor{stringliteral}{"{}show:busy"{}}) == 0)}
+\DoxyCodeLine{32         \textcolor{keywordflow}{return} WORKLOAD;}
+\DoxyCodeLine{33     \textcolor{keywordflow}{if}(strcmp(command.getText(), \textcolor{stringliteral}{"{}free"{}}) == 0)}
+\DoxyCodeLine{34         \textcolor{keywordflow}{return} FIND\_FREE\_TIME;}
+\DoxyCodeLine{35     \textcolor{keywordflow}{if}(strcmp(command.getText(), \textcolor{stringliteral}{"{}exit"{}}) == 0)}
+\DoxyCodeLine{36         \textcolor{keywordflow}{return} EXIT\_COMMAND;}
+\DoxyCodeLine{37 }
+\DoxyCodeLine{38     \textcolor{keywordflow}{return} WRONG\_COMMAND;}
+\DoxyCodeLine{39 \}}
+\DoxyCodeLine{40 }
+\DoxyCodeLine{41 }
+\DoxyCodeLine{42 }
+\DoxyCodeLine{43 }
+\DoxyCodeLine{44 \textcolor{preprocessor}{\#endif }\textcolor{comment}{//PERSONAL\_CALENDAR\_OOP\_COMMANDS\_H}}
+
+\end{DoxyCode}

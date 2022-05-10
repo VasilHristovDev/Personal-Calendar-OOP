@@ -5,29 +5,34 @@
 #include "Commands.h"
 
 const char *OUTPUT_FILENAME = "EventCalendar.txt";
-
+///Class containing the main structure in my project - EventCalendar
+///Which uses the main logic of the project
 class Program {
 private:
+    ///The only property needed for this class is of type EventCalendar
     EventCalendar calendar;
 public:
+    ///Default Constructor that initializes the EventCalendar
     Program();
-
+    ///run method that interprets the dialog mode of the project
     void run();
 
 };
-
+///Using the default constructor of EventCalendar
 Program::Program() {
     this->calendar =  EventCalendar();
 }
 
 void Program::run() {
+    ///Command - Action based dialog mode
     String command;
     std::cout << Helper::COMMANDS_HELPER_MESSAGE << std::endl;
+    ///entering commands until the exit command string is entered
     while (stringToCommands(command) != EXIT_COMMAND) {
         std::cout<<Helper::ENTER_COMMAND_MESSAGE;
         std::cin >> command;
         commands COMMAND = stringToCommands(command);
-        //Helpers for the program
+        ///Helper variables for the program to run correctly
         Event event;
         Date date;
         Date date2;
@@ -35,6 +40,7 @@ void Program::run() {
         Time startingTime;
         Time endingTime;
         int duration;
+
         switch (COMMAND) {
             case SHOW_COMMANDS:
                 std::cout << Helper::COMMANDS_HELPER_MESSAGE << std::endl;
@@ -87,6 +93,7 @@ void Program::run() {
 
         }
     }
+    ///After entering the exit command the calendar is being saved to a file
     std::cout << Helper::EXIT_MESSAGE << OUTPUT_FILENAME << std::endl;
     this->calendar.writeEvents(OUTPUT_FILENAME);
 }

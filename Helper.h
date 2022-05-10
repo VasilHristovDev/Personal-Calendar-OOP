@@ -1,54 +1,54 @@
 #ifndef PERSONAL_CALENDAR_OOP_HELPER_H
 #define PERSONAL_CALENDAR_OOP_HELPER_H
 
-
+///Helper class containing all the needed string or integer constants for the whole project
 class Helper {
 public:
-    //date helper constants
+    ///date helper constants
     static const char *INVALID_DATE_MESSAGE;
     static const char *DATE_INPUT_HELPER_MESSAGE;
     static const char DATE_SEPARATOR;
     static const char *DATE_NOT_FREE_ERROR_MESSAGE;
 
-    //hour helper constants
+    ///hours helper constants
     static const char TIME_SEPARATOR;
     static const char *TIME_INPUT_HELPER_MESSAGE;
     static const char *INVALID_TIME_ERROR_MESSAGE;
 
-    //event helper constants
+    ///event helper constants
     static const char *EVENT_NOT_FOUND_ERROR;
     static const char *EVENT_FOUND_MESSAGE;
     static const char *HELPER_MESSAGE_CHANGE_EVENT;
 
-    //misc
+    ///miscellaneous constants
     static const char *UNKNOWN_COMMAND_USED;
     static const char *MAX_CAPACITY_REACHED_ERROR;
     static const int ERROR_INDEX;
 
-    //event reading constants
+    ///event reading constants
     static const char * NAME_INPUT_HELPER_MESSAGE;
     static const char * COMMENT_INPUT_HELPER_MESSAGE;
 
-    //UI
+    ///UI related constants
     static const char * COMMANDS_HELPER_MESSAGE;
     static const char * ENTER_COMMAND_MESSAGE;
     static const char * EXIT_MESSAGE;
     static const char * SAVED_WORKLOAD;
     static const char * ENTER_STRING;
 
-    //determination of day of the week constants
+    ///determination of day of the week constants
     static const unsigned int MONTH_DIFFERENCE_CONST;
 
-    //find free time constants
+    ///find free time constants
     static const char * DATE_FREE;
     static const char * DATE_BUSY;
 };
-
+///Setting their values right after their declaration
 const char *Helper::INVALID_DATE_MESSAGE = "The date you entered is invalid!";
 const char *Helper::DATE_INPUT_HELPER_MESSAGE = "Please enter a date in the correct format dd/mm/yyyy!";
 const char Helper::TIME_SEPARATOR = ':';
 const char Helper::DATE_SEPARATOR = '/';
-const char *Helper::TIME_INPUT_HELPER_MESSAGE = "Please enter the hour in the following format: hh:ii";
+const char *Helper::TIME_INPUT_HELPER_MESSAGE = "Please enter the hours in the following format: hh:ii";
 const char *Helper::EVENT_NOT_FOUND_ERROR = "Event with this information was not found!";
 const char *Helper::EVENT_FOUND_MESSAGE = "Event with this information was found!";
 const char *Helper::DATE_NOT_FREE_ERROR_MESSAGE = "The event cannot be added because an event with the same date exists!";
