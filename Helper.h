@@ -24,6 +24,7 @@ public:
     static const char *UNKNOWN_COMMAND_USED;
     static const char *MAX_CAPACITY_REACHED_ERROR;
     static const int ERROR_INDEX;
+    static const char *ELEMENT_NOT_FOUND_ERROR;
 
     ///event reading constants
     static const char * NAME_INPUT_HELPER_MESSAGE;
@@ -42,6 +43,17 @@ public:
     ///find free time constants
     static const char * DATE_FREE;
     static const char * DATE_BUSY;
+
+    ///command strings
+    static const char * HELP_COMMAND;
+    static const char * ADD_COMMAND;
+    static const char * REMOVE_COMMAND;
+    static const char * CHANGE_COMMAND;
+    static const char * SEARCH_COMMAND;
+    static const char * SHOW_SCHEDULE_COMMAND;
+    static const char * SHOW_DAY_COMMAND;
+    static const char * FIND_FREE_TIME_COMMAND;
+    static const char * EXIT_COMMAND_STRING;
 };
 ///Setting their values right after their declaration
 const char *Helper::INVALID_DATE_MESSAGE = "The date you entered is invalid!";
@@ -50,6 +62,7 @@ const char Helper::TIME_SEPARATOR = ':';
 const char Helper::DATE_SEPARATOR = '/';
 const char *Helper::TIME_INPUT_HELPER_MESSAGE = "Please enter the hours in the following format: hh:ii";
 const char *Helper::EVENT_NOT_FOUND_ERROR = "Event with this information was not found!";
+const char *Helper::ELEMENT_NOT_FOUND_ERROR = "Element with this information was not found!";
 const char *Helper::EVENT_FOUND_MESSAGE = "Event with this information was found!";
 const char *Helper::DATE_NOT_FREE_ERROR_MESSAGE = "The event cannot be added because an event with the same date exists!";
 const char *Helper::HELPER_MESSAGE_CHANGE_EVENT = "Hello! In order to change information for the event build the string: "
@@ -73,12 +86,21 @@ const char * Helper::COMMANDS_HELPER_MESSAGE = "Hello! \n"
                                                "To see your daily schedule for a certain week write: show:busy \n"
                                                "To exit the program write: exit \n";
 const char * Helper::ENTER_COMMAND_MESSAGE = "Enter command:\n";
- const char * Helper::EXIT_MESSAGE = "Goodbye! \n"
+const char * Helper::EXIT_MESSAGE = "Goodbye! \n"
                                            "Your event calendar is currently being saved to: ";
- const char * Helper::SAVED_WORKLOAD = "Your workload was successfully saved to a file: ";
+const char * Helper::SAVED_WORKLOAD = "Your workload was successfully saved to a file: ";
 const unsigned int Helper::MONTH_DIFFERENCE_CONST = 2;
 const char * Helper::DATE_FREE = " FREE";
 const char * Helper::DATE_BUSY = " BUSY";
 const char * Helper::ENTER_STRING = "Enter string to search for!";
 
+ const char * Helper::HELP_COMMAND = "help";
+ const char * Helper::ADD_COMMAND = "make";
+ const char * Helper::REMOVE_COMMAND = "remove";
+ const char * Helper::SEARCH_COMMAND = "search";
+ const char * Helper::CHANGE_COMMAND = "change";
+ const char * Helper::SHOW_SCHEDULE_COMMAND = "show:busy";
+ const char * Helper::SHOW_DAY_COMMAND = "show:day";
+ const char * Helper::FIND_FREE_TIME_COMMAND = "free";
+ const char * Helper::EXIT_COMMAND_STRING = "exit";
 #endif //PERSONAL_CALENDAR_OOP_HELPER_H

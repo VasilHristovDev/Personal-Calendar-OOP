@@ -1,38 +1,51 @@
 \hypertarget{_time_8h_source}{}\doxysection{Time.\+h}
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef PERSONAL\_CALENDAR\_OOP\_HOUR\_H}}
-\DoxyCodeLine{2 \textcolor{preprocessor}{\#define PERSONAL\_CALENDAR\_OOP\_HOUR\_H}}
-\DoxyCodeLine{3 }
-\DoxyCodeLine{4 \textcolor{preprocessor}{\#include <iostream>}}
-\DoxyCodeLine{5 }
-\DoxyCodeLine{6 \textcolor{keyword}{class }\mbox{\hyperlink{class_time}{Time}} \{}
-\DoxyCodeLine{7 \textcolor{keyword}{private}:}
-\DoxyCodeLine{8     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} hours;}
-\DoxyCodeLine{9     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} minutes;}
-\DoxyCodeLine{10 \textcolor{keyword}{public}:}
-\DoxyCodeLine{11     \mbox{\hyperlink{class_time}{Time}}();}
-\DoxyCodeLine{12     \mbox{\hyperlink{class_time}{Time}}(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} hours, \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} minutes);}
-\DoxyCodeLine{13     \textcolor{keywordtype}{void} setHour(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} hours);}
-\DoxyCodeLine{14     \textcolor{keywordtype}{void} setMinutes(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} minutes);}
-\DoxyCodeLine{15 }
-\DoxyCodeLine{16     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} getHour() \textcolor{keyword}{const};}
-\DoxyCodeLine{17     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} getMinutes() \textcolor{keyword}{const};}
-\DoxyCodeLine{18 }
-\DoxyCodeLine{19     \textcolor{keywordtype}{void} print(std::ostream \& out = std::cout) \textcolor{keyword}{const};}
-\DoxyCodeLine{20     \textcolor{keywordtype}{bool} operator ==(\textcolor{keyword}{const} \mbox{\hyperlink{class_time}{Time}} \& time) \textcolor{keyword}{const};}
-\DoxyCodeLine{21     \textcolor{keywordtype}{bool} operator <(\textcolor{keyword}{const} \mbox{\hyperlink{class_time}{Time}} \& time) \textcolor{keyword}{const};}
-\DoxyCodeLine{22     \textcolor{keywordtype}{bool} operator >(\textcolor{keyword}{const} \mbox{\hyperlink{class_time}{Time}} \& time) \textcolor{keyword}{const};}
-\DoxyCodeLine{23     \textcolor{keywordtype}{bool} operator <=(\textcolor{keyword}{const} \mbox{\hyperlink{class_time}{Time}} \& time) \textcolor{keyword}{const};}
-\DoxyCodeLine{24     \textcolor{keywordtype}{bool} operator >=(\textcolor{keyword}{const} \mbox{\hyperlink{class_time}{Time}} \& time) \textcolor{keyword}{const};}
-\DoxyCodeLine{25     \mbox{\hyperlink{class_time}{Time}} \& operator = (\textcolor{keyword}{const} \mbox{\hyperlink{class_time}{Time}} \& other);}
-\DoxyCodeLine{26 }
-\DoxyCodeLine{27     \textcolor{keyword}{friend} std::istream \& operator >>(std::istream \& in, \mbox{\hyperlink{class_time}{Time}} \& time);}
-\DoxyCodeLine{28 }
-\DoxyCodeLine{29 \};}
-\DoxyCodeLine{30 \textcolor{keywordtype}{bool} isValidTime(\textcolor{keyword}{const} \mbox{\hyperlink{class_time}{Time}} \& time);}
-\DoxyCodeLine{31 \textcolor{keyword}{static} \textcolor{keywordtype}{bool} areOverlapping(\textcolor{keyword}{const} \mbox{\hyperlink{class_time}{Time}} \& startingTime1, \textcolor{keyword}{const} \mbox{\hyperlink{class_time}{Time}} \& endingTime1, \textcolor{keyword}{const} \mbox{\hyperlink{class_time}{Time}} \& startingTime2, \textcolor{keyword}{const} \mbox{\hyperlink{class_time}{Time}} \& endingTime2);}
-\DoxyCodeLine{32 }
-\DoxyCodeLine{33 \textcolor{preprocessor}{\#endif }\textcolor{comment}{//PERSONAL\_CALENDAR\_OOP\_HOUR\_H}}
+\DoxyCodeLine{\Hypertarget{_time_8h_source_l00001}00001 \textcolor{preprocessor}{\#ifndef PERSONAL\_CALENDAR\_OOP\_HOUR\_H}}
+\DoxyCodeLine{\Hypertarget{_time_8h_source_l00002}00002 \textcolor{preprocessor}{\#define PERSONAL\_CALENDAR\_OOP\_HOUR\_H}}
+\DoxyCodeLine{\Hypertarget{_time_8h_source_l00003}00003 }
+\DoxyCodeLine{\Hypertarget{_time_8h_source_l00004}00004 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{\Hypertarget{_time_8h_source_l00005}00005 }
+\DoxyCodeLine{\Hypertarget{_time_8h_source_l00008}\mbox{\hyperlink{class_time}{00008}} \textcolor{keyword}{class }\mbox{\hyperlink{class_time}{Time}} \{}
+\DoxyCodeLine{\Hypertarget{_time_8h_source_l00009}00009 \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{_time_8h_source_l00010}00010     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} hours;}
+\DoxyCodeLine{\Hypertarget{_time_8h_source_l00011}00011     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} minutes;}
+\DoxyCodeLine{\Hypertarget{_time_8h_source_l00012}00012 \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_time_8h_source_l00014}00014     \mbox{\hyperlink{class_time_a4245e409c7347d1d671858962c2ca3b5}{Time}}();}
+\DoxyCodeLine{\Hypertarget{_time_8h_source_l00015}00015 }
+\DoxyCodeLine{\Hypertarget{_time_8h_source_l00016}00016     \mbox{\hyperlink{class_time_a4245e409c7347d1d671858962c2ca3b5}{Time}}(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} hour, \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} minutes);}
+\DoxyCodeLine{\Hypertarget{_time_8h_source_l00017}00017 }
+\DoxyCodeLine{\Hypertarget{_time_8h_source_l00019}00019     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_time_ad0bb10f2a541ba3df0c8185747d31047}{setHour}}(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} hour);}
+\DoxyCodeLine{\Hypertarget{_time_8h_source_l00020}00020 }
+\DoxyCodeLine{\Hypertarget{_time_8h_source_l00021}00021     \textcolor{keywordtype}{void} setMinutes(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} minutes);}
+\DoxyCodeLine{\Hypertarget{_time_8h_source_l00022}00022 }
+\DoxyCodeLine{\Hypertarget{_time_8h_source_l00024}00024     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} \mbox{\hyperlink{class_time_ae87a67b05fc6b4973372d73da6677db3}{getHour}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{_time_8h_source_l00025}00025 }
+\DoxyCodeLine{\Hypertarget{_time_8h_source_l00026}00026     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} getMinutes() \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{_time_8h_source_l00027}00027 }
+\DoxyCodeLine{\Hypertarget{_time_8h_source_l00029}00029     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_time_abce839858683788520d0400fed01797c}{print}}(std::ostream \&out = std::cout) \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{_time_8h_source_l00030}00030 }
+\DoxyCodeLine{\Hypertarget{_time_8h_source_l00032}00032     \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_time_a358022173825bc5eb75e2101df0f78e4}{operator==}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_time}{Time}} \&time) \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{_time_8h_source_l00033}00033 }
+\DoxyCodeLine{\Hypertarget{_time_8h_source_l00034}00034     \textcolor{keywordtype}{bool} operator<(\textcolor{keyword}{const} \mbox{\hyperlink{class_time}{Time}} \&time) \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{_time_8h_source_l00035}00035 }
+\DoxyCodeLine{\Hypertarget{_time_8h_source_l00036}00036     \textcolor{keywordtype}{bool} operator>(\textcolor{keyword}{const} \mbox{\hyperlink{class_time}{Time}} \&time) \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{_time_8h_source_l00037}00037 }
+\DoxyCodeLine{\Hypertarget{_time_8h_source_l00038}00038     \textcolor{keywordtype}{bool} operator<=(\textcolor{keyword}{const} \mbox{\hyperlink{class_time}{Time}} \&time) \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{_time_8h_source_l00039}00039 }
+\DoxyCodeLine{\Hypertarget{_time_8h_source_l00040}00040     \textcolor{keywordtype}{bool} operator>=(\textcolor{keyword}{const} \mbox{\hyperlink{class_time}{Time}} \&time) \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{_time_8h_source_l00041}00041 }
+\DoxyCodeLine{\Hypertarget{_time_8h_source_l00043}00043     \mbox{\hyperlink{class_time}{Time}} \&\mbox{\hyperlink{class_time_a1feef9575b99c7fa0458f7124ab8d734}{operator=}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_time}{Time}} \&other);}
+\DoxyCodeLine{\Hypertarget{_time_8h_source_l00044}00044 }
+\DoxyCodeLine{\Hypertarget{_time_8h_source_l00046}00046     \textcolor{keyword}{friend} std::istream \&\mbox{\hyperlink{class_time_a8f23b1a8d26e30d62094ae46554205f9}{operator>>}}(std::istream \&in, \mbox{\hyperlink{class_time}{Time}} \&time);}
+\DoxyCodeLine{\Hypertarget{_time_8h_source_l00047}00047 }
+\DoxyCodeLine{\Hypertarget{_time_8h_source_l00048}00048 \};}
+\DoxyCodeLine{\Hypertarget{_time_8h_source_l00049}00049 }
+\DoxyCodeLine{\Hypertarget{_time_8h_source_l00051}00051 \textcolor{keywordtype}{bool} isValidTime(\textcolor{keyword}{const} \mbox{\hyperlink{class_time}{Time}} \&time);}
+\DoxyCodeLine{\Hypertarget{_time_8h_source_l00052}00052 }
+\DoxyCodeLine{\Hypertarget{_time_8h_source_l00054}00054 \textcolor{keyword}{static} \textcolor{keywordtype}{bool}}
+\DoxyCodeLine{\Hypertarget{_time_8h_source_l00055}00055 areOverlapping(\textcolor{keyword}{const} \mbox{\hyperlink{class_time}{Time}} \&startingTime1, \textcolor{keyword}{const} \mbox{\hyperlink{class_time}{Time}} \&endingTime1, \textcolor{keyword}{const} \mbox{\hyperlink{class_time}{Time}} \&startingTime2, \textcolor{keyword}{const} \mbox{\hyperlink{class_time}{Time}} \&endingTime2);}
+\DoxyCodeLine{\Hypertarget{_time_8h_source_l00056}00056 }
+\DoxyCodeLine{\Hypertarget{_time_8h_source_l00057}00057 \textcolor{preprocessor}{\#endif }\textcolor{comment}{//PERSONAL\_CALENDAR\_OOP\_HOUR\_H}}
 
 \end{DoxyCode}

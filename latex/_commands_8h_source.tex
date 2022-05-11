@@ -1,49 +1,51 @@
 \hypertarget{_commands_8h_source}{}\doxysection{Commands.\+h}
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef PERSONAL\_CALENDAR\_OOP\_COMMANDS\_H}}
-\DoxyCodeLine{2 \textcolor{preprocessor}{\#define PERSONAL\_CALENDAR\_OOP\_COMMANDS\_H}}
-\DoxyCodeLine{3 \textcolor{preprocessor}{\#include "{}String.h"{}}}
-\DoxyCodeLine{4 }
-\DoxyCodeLine{5 \textcolor{keyword}{enum} commands \{}
-\DoxyCodeLine{6     SHOW\_COMMANDS,}
-\DoxyCodeLine{7     MAKE\_APPOINTMENT,}
-\DoxyCodeLine{8     CANCEL\_APPOINTMENT,}
-\DoxyCodeLine{9     DAY\_SCHEDULE,}
-\DoxyCodeLine{10     CHANGE\_APPOINTMENT,}
-\DoxyCodeLine{11     SEARCH\_APPOINTMENT,}
-\DoxyCodeLine{12     WORKLOAD,}
-\DoxyCodeLine{13     FIND\_FREE\_TIME,}
-\DoxyCodeLine{14     EXIT\_COMMAND,}
-\DoxyCodeLine{15     WRONG\_COMMAND}
-\DoxyCodeLine{16 \};}
-\DoxyCodeLine{17 commands stringToCommands(\mbox{\hyperlink{class_string}{String}} \& command)}
-\DoxyCodeLine{18 \{}
-\DoxyCodeLine{19     \textcolor{keywordflow}{if}(strcmp(command.getText(), \textcolor{stringliteral}{"{}help"{}}) == 0)}
-\DoxyCodeLine{20         \textcolor{keywordflow}{return} SHOW\_COMMANDS;}
-\DoxyCodeLine{21     \textcolor{keywordflow}{if}(strcmp(command.getText(), \textcolor{stringliteral}{"{}make"{}}) == 0)}
-\DoxyCodeLine{22         \textcolor{keywordflow}{return} MAKE\_APPOINTMENT;}
-\DoxyCodeLine{23     \textcolor{keywordflow}{if}(strcmp(command.getText(), \textcolor{stringliteral}{"{}cancel"{}}) == 0)}
-\DoxyCodeLine{24         \textcolor{keywordflow}{return} CANCEL\_APPOINTMENT;}
-\DoxyCodeLine{25     \textcolor{keywordflow}{if}(strcmp(command.getText(), \textcolor{stringliteral}{"{}show:day"{}}) == 0)}
-\DoxyCodeLine{26         \textcolor{keywordflow}{return} DAY\_SCHEDULE;}
-\DoxyCodeLine{27     \textcolor{keywordflow}{if}(strcmp(command.getText(), \textcolor{stringliteral}{"{}change"{}}) == 0)}
-\DoxyCodeLine{28         \textcolor{keywordflow}{return} CHANGE\_APPOINTMENT;}
-\DoxyCodeLine{29     \textcolor{keywordflow}{if}(strcmp(command.getText(), \textcolor{stringliteral}{"{}search"{}}) == 0)}
-\DoxyCodeLine{30         \textcolor{keywordflow}{return} SEARCH\_APPOINTMENT;}
-\DoxyCodeLine{31     \textcolor{keywordflow}{if}(strcmp(command.getText(), \textcolor{stringliteral}{"{}show:busy"{}}) == 0)}
-\DoxyCodeLine{32         \textcolor{keywordflow}{return} WORKLOAD;}
-\DoxyCodeLine{33     \textcolor{keywordflow}{if}(strcmp(command.getText(), \textcolor{stringliteral}{"{}free"{}}) == 0)}
-\DoxyCodeLine{34         \textcolor{keywordflow}{return} FIND\_FREE\_TIME;}
-\DoxyCodeLine{35     \textcolor{keywordflow}{if}(strcmp(command.getText(), \textcolor{stringliteral}{"{}exit"{}}) == 0)}
-\DoxyCodeLine{36         \textcolor{keywordflow}{return} EXIT\_COMMAND;}
-\DoxyCodeLine{37 }
-\DoxyCodeLine{38     \textcolor{keywordflow}{return} WRONG\_COMMAND;}
-\DoxyCodeLine{39 \}}
-\DoxyCodeLine{40 }
-\DoxyCodeLine{41 }
-\DoxyCodeLine{42 }
-\DoxyCodeLine{43 }
-\DoxyCodeLine{44 \textcolor{preprocessor}{\#endif }\textcolor{comment}{//PERSONAL\_CALENDAR\_OOP\_COMMANDS\_H}}
+\DoxyCodeLine{\Hypertarget{_commands_8h_source_l00001}00001 \textcolor{preprocessor}{\#ifndef PERSONAL\_CALENDAR\_OOP\_COMMANDS\_H}}
+\DoxyCodeLine{\Hypertarget{_commands_8h_source_l00002}00002 \textcolor{preprocessor}{\#define PERSONAL\_CALENDAR\_OOP\_COMMANDS\_H}}
+\DoxyCodeLine{\Hypertarget{_commands_8h_source_l00003}00003 \textcolor{preprocessor}{\#include "{}String.h"{}}}
+\DoxyCodeLine{\Hypertarget{_commands_8h_source_l00004}00004 \textcolor{preprocessor}{\#include "{}Helper.h"{}}}
+\DoxyCodeLine{\Hypertarget{_commands_8h_source_l00005}00005 }
+\DoxyCodeLine{\Hypertarget{_commands_8h_source_l00007}00007 \textcolor{keyword}{enum} commands \{}
+\DoxyCodeLine{\Hypertarget{_commands_8h_source_l00008}00008     SHOW\_COMMANDS,}
+\DoxyCodeLine{\Hypertarget{_commands_8h_source_l00009}00009     MAKE\_APPOINTMENT,}
+\DoxyCodeLine{\Hypertarget{_commands_8h_source_l00010}00010     CANCEL\_APPOINTMENT,}
+\DoxyCodeLine{\Hypertarget{_commands_8h_source_l00011}00011     DAY\_SCHEDULE,}
+\DoxyCodeLine{\Hypertarget{_commands_8h_source_l00012}00012     CHANGE\_APPOINTMENT,}
+\DoxyCodeLine{\Hypertarget{_commands_8h_source_l00013}00013     SEARCH\_APPOINTMENT,}
+\DoxyCodeLine{\Hypertarget{_commands_8h_source_l00014}00014     WORKLOAD,}
+\DoxyCodeLine{\Hypertarget{_commands_8h_source_l00015}00015     FIND\_FREE\_TIME,}
+\DoxyCodeLine{\Hypertarget{_commands_8h_source_l00016}00016     EXIT\_COMMAND,}
+\DoxyCodeLine{\Hypertarget{_commands_8h_source_l00017}00017     WRONG\_COMMAND}
+\DoxyCodeLine{\Hypertarget{_commands_8h_source_l00018}00018 \};}
+\DoxyCodeLine{\Hypertarget{_commands_8h_source_l00019}00019 }
+\DoxyCodeLine{\Hypertarget{_commands_8h_source_l00021}00021 commands stringToCommands(\mbox{\hyperlink{class_string}{String}} \& command)}
+\DoxyCodeLine{\Hypertarget{_commands_8h_source_l00022}00022 \{}
+\DoxyCodeLine{\Hypertarget{_commands_8h_source_l00023}00023     \textcolor{keywordflow}{if}(command == \mbox{\hyperlink{class_helper_a4d3d56774e7b6f9242a6277b22a45a79}{Helper::HELP\_COMMAND}})}
+\DoxyCodeLine{\Hypertarget{_commands_8h_source_l00024}00024         \textcolor{keywordflow}{return} SHOW\_COMMANDS;}
+\DoxyCodeLine{\Hypertarget{_commands_8h_source_l00025}00025     \textcolor{keywordflow}{if}(command == Helper::ADD\_COMMAND)}
+\DoxyCodeLine{\Hypertarget{_commands_8h_source_l00026}00026         \textcolor{keywordflow}{return} MAKE\_APPOINTMENT;}
+\DoxyCodeLine{\Hypertarget{_commands_8h_source_l00027}00027     \textcolor{keywordflow}{if}(command == Helper::REMOVE\_COMMAND)}
+\DoxyCodeLine{\Hypertarget{_commands_8h_source_l00028}00028         \textcolor{keywordflow}{return} CANCEL\_APPOINTMENT;}
+\DoxyCodeLine{\Hypertarget{_commands_8h_source_l00029}00029     \textcolor{keywordflow}{if}(command == Helper::SHOW\_DAY\_COMMAND)}
+\DoxyCodeLine{\Hypertarget{_commands_8h_source_l00030}00030         \textcolor{keywordflow}{return} DAY\_SCHEDULE;}
+\DoxyCodeLine{\Hypertarget{_commands_8h_source_l00031}00031     \textcolor{keywordflow}{if}(command == Helper::CHANGE\_COMMAND)}
+\DoxyCodeLine{\Hypertarget{_commands_8h_source_l00032}00032         \textcolor{keywordflow}{return} CHANGE\_APPOINTMENT;}
+\DoxyCodeLine{\Hypertarget{_commands_8h_source_l00033}00033     \textcolor{keywordflow}{if}(command == Helper::SEARCH\_COMMAND)}
+\DoxyCodeLine{\Hypertarget{_commands_8h_source_l00034}00034         \textcolor{keywordflow}{return} SEARCH\_APPOINTMENT;}
+\DoxyCodeLine{\Hypertarget{_commands_8h_source_l00035}00035     \textcolor{keywordflow}{if}(command == Helper::SHOW\_SCHEDULE\_COMMAND)}
+\DoxyCodeLine{\Hypertarget{_commands_8h_source_l00036}00036         \textcolor{keywordflow}{return} WORKLOAD;}
+\DoxyCodeLine{\Hypertarget{_commands_8h_source_l00037}00037     \textcolor{keywordflow}{if}(command == Helper::FIND\_FREE\_TIME\_COMMAND)}
+\DoxyCodeLine{\Hypertarget{_commands_8h_source_l00038}00038         \textcolor{keywordflow}{return} FIND\_FREE\_TIME;}
+\DoxyCodeLine{\Hypertarget{_commands_8h_source_l00039}00039     \textcolor{keywordflow}{if}(command == Helper::EXIT\_COMMAND\_STRING)}
+\DoxyCodeLine{\Hypertarget{_commands_8h_source_l00040}00040         \textcolor{keywordflow}{return} EXIT\_COMMAND;}
+\DoxyCodeLine{\Hypertarget{_commands_8h_source_l00041}00041 }
+\DoxyCodeLine{\Hypertarget{_commands_8h_source_l00042}00042     \textcolor{keywordflow}{return} WRONG\_COMMAND;}
+\DoxyCodeLine{\Hypertarget{_commands_8h_source_l00043}00043 \}}
+\DoxyCodeLine{\Hypertarget{_commands_8h_source_l00044}00044 }
+\DoxyCodeLine{\Hypertarget{_commands_8h_source_l00045}00045 }
+\DoxyCodeLine{\Hypertarget{_commands_8h_source_l00046}00046 }
+\DoxyCodeLine{\Hypertarget{_commands_8h_source_l00047}00047 }
+\DoxyCodeLine{\Hypertarget{_commands_8h_source_l00048}00048 \textcolor{preprocessor}{\#endif }\textcolor{comment}{//PERSONAL\_CALENDAR\_OOP\_COMMANDS\_H}}
 
 \end{DoxyCode}

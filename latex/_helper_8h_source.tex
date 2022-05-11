@@ -1,89 +1,98 @@
 \hypertarget{_helper_8h_source}{}\doxysection{Helper.\+h}
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef PERSONAL\_CALENDAR\_OOP\_HELPER\_H}}
-\DoxyCodeLine{2 \textcolor{preprocessor}{\#define PERSONAL\_CALENDAR\_OOP\_HELPER\_H}}
-\DoxyCodeLine{3 }
-\DoxyCodeLine{4 }
-\DoxyCodeLine{5 \textcolor{keyword}{class }\mbox{\hyperlink{class_helper}{Helper}} \{}
-\DoxyCodeLine{6 \textcolor{keyword}{public}:}
-\DoxyCodeLine{7     \textcolor{comment}{//date helper constants}}
-\DoxyCodeLine{8     \textcolor{keyword}{static} \textcolor{keyword}{const} \textcolor{keywordtype}{char} *INVALID\_DATE\_MESSAGE;}
-\DoxyCodeLine{9     \textcolor{keyword}{static} \textcolor{keyword}{const} \textcolor{keywordtype}{char} *DATE\_INPUT\_HELPER\_MESSAGE;}
-\DoxyCodeLine{10     \textcolor{keyword}{static} \textcolor{keyword}{const} \textcolor{keywordtype}{char} DATE\_SEPARATOR;}
-\DoxyCodeLine{11     \textcolor{keyword}{static} \textcolor{keyword}{const} \textcolor{keywordtype}{char} *DATE\_NOT\_FREE\_ERROR\_MESSAGE;}
-\DoxyCodeLine{12 }
-\DoxyCodeLine{13     \textcolor{comment}{//hours helper constants}}
-\DoxyCodeLine{14     \textcolor{keyword}{static} \textcolor{keyword}{const} \textcolor{keywordtype}{char} TIME\_SEPARATOR;}
-\DoxyCodeLine{15     \textcolor{keyword}{static} \textcolor{keyword}{const} \textcolor{keywordtype}{char} *TIME\_INPUT\_HELPER\_MESSAGE;}
-\DoxyCodeLine{16     \textcolor{keyword}{static} \textcolor{keyword}{const} \textcolor{keywordtype}{char} *INVALID\_TIME\_ERROR\_MESSAGE;}
-\DoxyCodeLine{17 }
-\DoxyCodeLine{18     \textcolor{comment}{//event helper constants}}
-\DoxyCodeLine{19     \textcolor{keyword}{static} \textcolor{keyword}{const} \textcolor{keywordtype}{char} *EVENT\_NOT\_FOUND\_ERROR;}
-\DoxyCodeLine{20     \textcolor{keyword}{static} \textcolor{keyword}{const} \textcolor{keywordtype}{char} *EVENT\_FOUND\_MESSAGE;}
-\DoxyCodeLine{21     \textcolor{keyword}{static} \textcolor{keyword}{const} \textcolor{keywordtype}{char} *HELPER\_MESSAGE\_CHANGE\_EVENT;}
-\DoxyCodeLine{22 }
-\DoxyCodeLine{23     \textcolor{comment}{//misc}}
-\DoxyCodeLine{24     \textcolor{keyword}{static} \textcolor{keyword}{const} \textcolor{keywordtype}{char} *UNKNOWN\_COMMAND\_USED;}
-\DoxyCodeLine{25     \textcolor{keyword}{static} \textcolor{keyword}{const} \textcolor{keywordtype}{char} *MAX\_CAPACITY\_REACHED\_ERROR;}
-\DoxyCodeLine{26     \textcolor{keyword}{static} \textcolor{keyword}{const} \textcolor{keywordtype}{int} ERROR\_INDEX;}
-\DoxyCodeLine{27 }
-\DoxyCodeLine{28     \textcolor{comment}{//event reading constants}}
-\DoxyCodeLine{29     \textcolor{keyword}{static} \textcolor{keyword}{const} \textcolor{keywordtype}{char} * NAME\_INPUT\_HELPER\_MESSAGE;}
-\DoxyCodeLine{30     \textcolor{keyword}{static} \textcolor{keyword}{const} \textcolor{keywordtype}{char} * COMMENT\_INPUT\_HELPER\_MESSAGE;}
-\DoxyCodeLine{31 }
-\DoxyCodeLine{32     \textcolor{comment}{//UI}}
-\DoxyCodeLine{33     \textcolor{keyword}{static} \textcolor{keyword}{const} \textcolor{keywordtype}{char} * COMMANDS\_HELPER\_MESSAGE;}
-\DoxyCodeLine{34     \textcolor{keyword}{static} \textcolor{keyword}{const} \textcolor{keywordtype}{char} * ENTER\_COMMAND\_MESSAGE;}
-\DoxyCodeLine{35     \textcolor{keyword}{static} \textcolor{keyword}{const} \textcolor{keywordtype}{char} * EXIT\_MESSAGE;}
-\DoxyCodeLine{36     \textcolor{keyword}{static} \textcolor{keyword}{const} \textcolor{keywordtype}{char} * SAVED\_WORKLOAD;}
-\DoxyCodeLine{37     \textcolor{keyword}{static} \textcolor{keyword}{const} \textcolor{keywordtype}{char} * ENTER\_STRING;}
-\DoxyCodeLine{38 }
-\DoxyCodeLine{39     \textcolor{comment}{//determination of day of the week constants}}
-\DoxyCodeLine{40     \textcolor{keyword}{static} \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} MONTH\_DIFFERENCE\_CONST;}
-\DoxyCodeLine{41 }
-\DoxyCodeLine{42     \textcolor{comment}{//find free time constants}}
-\DoxyCodeLine{43     \textcolor{keyword}{static} \textcolor{keyword}{const} \textcolor{keywordtype}{char} * DATE\_FREE;}
-\DoxyCodeLine{44     \textcolor{keyword}{static} \textcolor{keyword}{const} \textcolor{keywordtype}{char} * DATE\_BUSY;}
-\DoxyCodeLine{45 \};}
-\DoxyCodeLine{46 }
-\DoxyCodeLine{47 \textcolor{keyword}{const} \textcolor{keywordtype}{char} *Helper::INVALID\_DATE\_MESSAGE = \textcolor{stringliteral}{"{}The date you entered is invalid!"{}};}
-\DoxyCodeLine{48 \textcolor{keyword}{const} \textcolor{keywordtype}{char} *Helper::DATE\_INPUT\_HELPER\_MESSAGE = \textcolor{stringliteral}{"{}Please enter a date in the correct format dd/mm/yyyy!"{}};}
-\DoxyCodeLine{49 \textcolor{keyword}{const} \textcolor{keywordtype}{char} Helper::TIME\_SEPARATOR = \textcolor{charliteral}{':'};}
-\DoxyCodeLine{50 \textcolor{keyword}{const} \textcolor{keywordtype}{char} Helper::DATE\_SEPARATOR = \textcolor{charliteral}{'/'};}
-\DoxyCodeLine{51 \textcolor{keyword}{const} \textcolor{keywordtype}{char} *Helper::TIME\_INPUT\_HELPER\_MESSAGE = \textcolor{stringliteral}{"{}Please enter the hours in the following format: hh:ii"{}};}
-\DoxyCodeLine{52 \textcolor{keyword}{const} \textcolor{keywordtype}{char} *Helper::EVENT\_NOT\_FOUND\_ERROR = \textcolor{stringliteral}{"{}Event with this information was not found!"{}};}
-\DoxyCodeLine{53 \textcolor{keyword}{const} \textcolor{keywordtype}{char} *Helper::EVENT\_FOUND\_MESSAGE = \textcolor{stringliteral}{"{}Event with this information was found!"{}};}
-\DoxyCodeLine{54 \textcolor{keyword}{const} \textcolor{keywordtype}{char} *Helper::DATE\_NOT\_FREE\_ERROR\_MESSAGE = \textcolor{stringliteral}{"{}The event cannot be added because an event with the same date exists!"{}};}
-\DoxyCodeLine{55 \textcolor{keyword}{const} \textcolor{keywordtype}{char} *Helper::HELPER\_MESSAGE\_CHANGE\_EVENT = \textcolor{stringliteral}{"{}Hello! In order to change information for the event build the string: "{}}}
-\DoxyCodeLine{56                                                   \textcolor{stringliteral}{"{}\(\backslash\)n To change the date: write 'd'"{}}}
-\DoxyCodeLine{57                                                   \textcolor{stringliteral}{"{}\(\backslash\)n To change the name: write 'n'"{}}}
-\DoxyCodeLine{58                                                   \textcolor{stringliteral}{"{}\(\backslash\)n To change the comment: write 'c'"{}}}
-\DoxyCodeLine{59                                                   \textcolor{stringliteral}{"{}\(\backslash\)n Your final string could look like that dnc"{}};}
-\DoxyCodeLine{60 \textcolor{keyword}{const} \textcolor{keywordtype}{char} *Helper::UNKNOWN\_COMMAND\_USED = \textcolor{stringliteral}{"{}Unknown command was used!"{}};}
-\DoxyCodeLine{61 \textcolor{keyword}{const} \textcolor{keywordtype}{char} *Helper::MAX\_CAPACITY\_REACHED\_ERROR = \textcolor{stringliteral}{"{}Max capacity reached!"{}};}
-\DoxyCodeLine{62 \textcolor{keyword}{const} \textcolor{keywordtype}{int} Helper::ERROR\_INDEX = -\/1;}
-\DoxyCodeLine{63 \textcolor{keyword}{const} \textcolor{keywordtype}{char} * Helper::NAME\_INPUT\_HELPER\_MESSAGE = \textcolor{stringliteral}{"{}Please enter the name of the event:"{}};}
-\DoxyCodeLine{64 \textcolor{keyword}{const} \textcolor{keywordtype}{char} * Helper::COMMENT\_INPUT\_HELPER\_MESSAGE = \textcolor{stringliteral}{"{}Please enter the comment of the event:"{}};}
-\DoxyCodeLine{65 \textcolor{keyword}{const} \textcolor{keywordtype}{char} * Helper::INVALID\_TIME\_ERROR\_MESSAGE = \textcolor{stringliteral}{"{}The entered time is invalid!"{}};}
-\DoxyCodeLine{66 \textcolor{keyword}{const} \textcolor{keywordtype}{char} * Helper::COMMANDS\_HELPER\_MESSAGE = \textcolor{stringliteral}{"{}Hello! \(\backslash\)n"{}}}
-\DoxyCodeLine{67                                                \textcolor{stringliteral}{"{}To add an event write: make \(\backslash\)n"{}}}
-\DoxyCodeLine{68                                                \textcolor{stringliteral}{"{}To remove an event write: cancel \(\backslash\)n"{}}}
-\DoxyCodeLine{69                                                \textcolor{stringliteral}{"{}To change information about an event write: change \(\backslash\)n"{}}}
-\DoxyCodeLine{70                                                \textcolor{stringliteral}{"{}To search an event write: search \(\backslash\)n"{}}}
-\DoxyCodeLine{71                                                \textcolor{stringliteral}{"{}To show your schedule for a certain date write: show:day \(\backslash\)n"{}}}
-\DoxyCodeLine{72                                                \textcolor{stringliteral}{"{}To find free time in a certain week write: free \(\backslash\)n"{}}}
-\DoxyCodeLine{73                                                \textcolor{stringliteral}{"{}To see your daily schedule for a certain week write: show:busy \(\backslash\)n"{}}}
-\DoxyCodeLine{74                                                \textcolor{stringliteral}{"{}To exit the program write: exit \(\backslash\)n"{}};}
-\DoxyCodeLine{75 \textcolor{keyword}{const} \textcolor{keywordtype}{char} * Helper::ENTER\_COMMAND\_MESSAGE = \textcolor{stringliteral}{"{}Enter command:\(\backslash\)n"{}};}
-\DoxyCodeLine{76  \textcolor{keyword}{const} \textcolor{keywordtype}{char} * Helper::EXIT\_MESSAGE = \textcolor{stringliteral}{"{}Goodbye! \(\backslash\)n"{}}}
-\DoxyCodeLine{77                                            \textcolor{stringliteral}{"{}Your event calendar is currently being saved to: "{}};}
-\DoxyCodeLine{78  \textcolor{keyword}{const} \textcolor{keywordtype}{char} * Helper::SAVED\_WORKLOAD = \textcolor{stringliteral}{"{}Your workload was successfully saved to a file: "{}};}
-\DoxyCodeLine{79 \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} Helper::MONTH\_DIFFERENCE\_CONST = 2;}
-\DoxyCodeLine{80 \textcolor{keyword}{const} \textcolor{keywordtype}{char} * Helper::DATE\_FREE = \textcolor{stringliteral}{"{} FREE"{}};}
-\DoxyCodeLine{81 \textcolor{keyword}{const} \textcolor{keywordtype}{char} * Helper::DATE\_BUSY = \textcolor{stringliteral}{"{} BUSY"{}};}
-\DoxyCodeLine{82 \textcolor{keyword}{const} \textcolor{keywordtype}{char} * Helper::ENTER\_STRING = \textcolor{stringliteral}{"{}Enter string to search for!"{}};}
-\DoxyCodeLine{83 }
-\DoxyCodeLine{84 \textcolor{preprocessor}{\#endif }\textcolor{comment}{//PERSONAL\_CALENDAR\_OOP\_HELPER\_H}}
+\DoxyCodeLine{\Hypertarget{_helper_8h_source_l00001}00001 \textcolor{preprocessor}{\#ifndef PERSONAL\_CALENDAR\_OOP\_HELPER\_H}}
+\DoxyCodeLine{\Hypertarget{_helper_8h_source_l00002}00002 \textcolor{preprocessor}{\#define PERSONAL\_CALENDAR\_OOP\_HELPER\_H}}
+\DoxyCodeLine{\Hypertarget{_helper_8h_source_l00003}00003 }
+\DoxyCodeLine{\Hypertarget{_helper_8h_source_l00005}\mbox{\hyperlink{class_helper}{00005}} \textcolor{keyword}{class }\mbox{\hyperlink{class_helper}{Helper}} \{}
+\DoxyCodeLine{\Hypertarget{_helper_8h_source_l00006}00006 \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_helper_8h_source_l00008}\mbox{\hyperlink{class_helper_a198eafda2b486ede8e3a45a19829b3cb}{00008}}     \textcolor{keyword}{static} \textcolor{keyword}{const} \textcolor{keywordtype}{char} *\mbox{\hyperlink{class_helper_a198eafda2b486ede8e3a45a19829b3cb}{INVALID\_DATE\_MESSAGE}};}
+\DoxyCodeLine{\Hypertarget{_helper_8h_source_l00009}00009     \textcolor{keyword}{static} \textcolor{keyword}{const} \textcolor{keywordtype}{char} *DATE\_INPUT\_HELPER\_MESSAGE;}
+\DoxyCodeLine{\Hypertarget{_helper_8h_source_l00010}00010     \textcolor{keyword}{static} \textcolor{keyword}{const} \textcolor{keywordtype}{char} DATE\_SEPARATOR;}
+\DoxyCodeLine{\Hypertarget{_helper_8h_source_l00011}00011     \textcolor{keyword}{static} \textcolor{keyword}{const} \textcolor{keywordtype}{char} *DATE\_NOT\_FREE\_ERROR\_MESSAGE;}
+\DoxyCodeLine{\Hypertarget{_helper_8h_source_l00012}00012 }
+\DoxyCodeLine{\Hypertarget{_helper_8h_source_l00014}\mbox{\hyperlink{class_helper_ab8d805ff85e9bb3cb55eeb7de208af93}{00014}}     \textcolor{keyword}{static} \textcolor{keyword}{const} \textcolor{keywordtype}{char} \mbox{\hyperlink{class_helper_ab8d805ff85e9bb3cb55eeb7de208af93}{TIME\_SEPARATOR}};}
+\DoxyCodeLine{\Hypertarget{_helper_8h_source_l00015}00015     \textcolor{keyword}{static} \textcolor{keyword}{const} \textcolor{keywordtype}{char} *TIME\_INPUT\_HELPER\_MESSAGE;}
+\DoxyCodeLine{\Hypertarget{_helper_8h_source_l00016}00016     \textcolor{keyword}{static} \textcolor{keyword}{const} \textcolor{keywordtype}{char} *INVALID\_TIME\_ERROR\_MESSAGE;}
+\DoxyCodeLine{\Hypertarget{_helper_8h_source_l00017}00017 }
+\DoxyCodeLine{\Hypertarget{_helper_8h_source_l00019}\mbox{\hyperlink{class_helper_aeea6e6adeefd4a314b1591f4abf21444}{00019}}     \textcolor{keyword}{static} \textcolor{keyword}{const} \textcolor{keywordtype}{char} *\mbox{\hyperlink{class_helper_aeea6e6adeefd4a314b1591f4abf21444}{EVENT\_NOT\_FOUND\_ERROR}};}
+\DoxyCodeLine{\Hypertarget{_helper_8h_source_l00020}00020     \textcolor{keyword}{static} \textcolor{keyword}{const} \textcolor{keywordtype}{char} *EVENT\_FOUND\_MESSAGE;}
+\DoxyCodeLine{\Hypertarget{_helper_8h_source_l00021}00021     \textcolor{keyword}{static} \textcolor{keyword}{const} \textcolor{keywordtype}{char} *HELPER\_MESSAGE\_CHANGE\_EVENT;}
+\DoxyCodeLine{\Hypertarget{_helper_8h_source_l00022}00022 }
+\DoxyCodeLine{\Hypertarget{_helper_8h_source_l00024}\mbox{\hyperlink{class_helper_a0f1209187c67370e7bae25dbf9b6a60a}{00024}}     \textcolor{keyword}{static} \textcolor{keyword}{const} \textcolor{keywordtype}{char} *\mbox{\hyperlink{class_helper_a0f1209187c67370e7bae25dbf9b6a60a}{UNKNOWN\_COMMAND\_USED}};}
+\DoxyCodeLine{\Hypertarget{_helper_8h_source_l00025}00025     \textcolor{keyword}{static} \textcolor{keyword}{const} \textcolor{keywordtype}{char} *MAX\_CAPACITY\_REACHED\_ERROR;}
+\DoxyCodeLine{\Hypertarget{_helper_8h_source_l00026}00026     \textcolor{keyword}{static} \textcolor{keyword}{const} \textcolor{keywordtype}{int} ERROR\_INDEX;}
+\DoxyCodeLine{\Hypertarget{_helper_8h_source_l00027}00027 }
+\DoxyCodeLine{\Hypertarget{_helper_8h_source_l00029}\mbox{\hyperlink{class_helper_a00dce1a5884fca35964a9f94c26c5996}{00029}}     \textcolor{keyword}{static} \textcolor{keyword}{const} \textcolor{keywordtype}{char} * \mbox{\hyperlink{class_helper_a00dce1a5884fca35964a9f94c26c5996}{NAME\_INPUT\_HELPER\_MESSAGE}};}
+\DoxyCodeLine{\Hypertarget{_helper_8h_source_l00030}00030     \textcolor{keyword}{static} \textcolor{keyword}{const} \textcolor{keywordtype}{char} * COMMENT\_INPUT\_HELPER\_MESSAGE;}
+\DoxyCodeLine{\Hypertarget{_helper_8h_source_l00031}00031 }
+\DoxyCodeLine{\Hypertarget{_helper_8h_source_l00033}\mbox{\hyperlink{class_helper_aa912ebb2dbb1d23e3f8412a17eb006ff}{00033}}     \textcolor{keyword}{static} \textcolor{keyword}{const} \textcolor{keywordtype}{char} * \mbox{\hyperlink{class_helper_aa912ebb2dbb1d23e3f8412a17eb006ff}{COMMANDS\_HELPER\_MESSAGE}};}
+\DoxyCodeLine{\Hypertarget{_helper_8h_source_l00034}00034     \textcolor{keyword}{static} \textcolor{keyword}{const} \textcolor{keywordtype}{char} * ENTER\_COMMAND\_MESSAGE;}
+\DoxyCodeLine{\Hypertarget{_helper_8h_source_l00035}00035     \textcolor{keyword}{static} \textcolor{keyword}{const} \textcolor{keywordtype}{char} * EXIT\_MESSAGE;}
+\DoxyCodeLine{\Hypertarget{_helper_8h_source_l00036}00036     \textcolor{keyword}{static} \textcolor{keyword}{const} \textcolor{keywordtype}{char} * SAVED\_WORKLOAD;}
+\DoxyCodeLine{\Hypertarget{_helper_8h_source_l00037}00037     \textcolor{keyword}{static} \textcolor{keyword}{const} \textcolor{keywordtype}{char} * ENTER\_STRING;}
+\DoxyCodeLine{\Hypertarget{_helper_8h_source_l00038}00038 }
+\DoxyCodeLine{\Hypertarget{_helper_8h_source_l00040}\mbox{\hyperlink{class_helper_a37b5da60fb5d6ce53804805e3d78524f}{00040}}     \textcolor{keyword}{static} \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} \mbox{\hyperlink{class_helper_a37b5da60fb5d6ce53804805e3d78524f}{MONTH\_DIFFERENCE\_CONST}};}
+\DoxyCodeLine{\Hypertarget{_helper_8h_source_l00041}00041 }
+\DoxyCodeLine{\Hypertarget{_helper_8h_source_l00043}\mbox{\hyperlink{class_helper_a4923d40d41886af3d11b6c025b1c37a2}{00043}}     \textcolor{keyword}{static} \textcolor{keyword}{const} \textcolor{keywordtype}{char} * \mbox{\hyperlink{class_helper_a4923d40d41886af3d11b6c025b1c37a2}{DATE\_FREE}};}
+\DoxyCodeLine{\Hypertarget{_helper_8h_source_l00044}00044     \textcolor{keyword}{static} \textcolor{keyword}{const} \textcolor{keywordtype}{char} * DATE\_BUSY;}
+\DoxyCodeLine{\Hypertarget{_helper_8h_source_l00045}00045 }
+\DoxyCodeLine{\Hypertarget{_helper_8h_source_l00047}\mbox{\hyperlink{class_helper_a4d3d56774e7b6f9242a6277b22a45a79}{00047}}     \textcolor{keyword}{static} \textcolor{keyword}{const} \textcolor{keywordtype}{char} * \mbox{\hyperlink{class_helper_a4d3d56774e7b6f9242a6277b22a45a79}{HELP\_COMMAND}};}
+\DoxyCodeLine{\Hypertarget{_helper_8h_source_l00048}00048     \textcolor{keyword}{static} \textcolor{keyword}{const} \textcolor{keywordtype}{char} * ADD\_COMMAND;}
+\DoxyCodeLine{\Hypertarget{_helper_8h_source_l00049}00049     \textcolor{keyword}{static} \textcolor{keyword}{const} \textcolor{keywordtype}{char} * REMOVE\_COMMAND;}
+\DoxyCodeLine{\Hypertarget{_helper_8h_source_l00050}00050     \textcolor{keyword}{static} \textcolor{keyword}{const} \textcolor{keywordtype}{char} * CHANGE\_COMMAND;}
+\DoxyCodeLine{\Hypertarget{_helper_8h_source_l00051}00051     \textcolor{keyword}{static} \textcolor{keyword}{const} \textcolor{keywordtype}{char} * SEARCH\_COMMAND;}
+\DoxyCodeLine{\Hypertarget{_helper_8h_source_l00052}00052     \textcolor{keyword}{static} \textcolor{keyword}{const} \textcolor{keywordtype}{char} * SHOW\_SCHEDULE\_COMMAND;}
+\DoxyCodeLine{\Hypertarget{_helper_8h_source_l00053}00053     \textcolor{keyword}{static} \textcolor{keyword}{const} \textcolor{keywordtype}{char} * SHOW\_DAY\_COMMAND;}
+\DoxyCodeLine{\Hypertarget{_helper_8h_source_l00054}00054     \textcolor{keyword}{static} \textcolor{keyword}{const} \textcolor{keywordtype}{char} * FIND\_FREE\_TIME\_COMMAND;}
+\DoxyCodeLine{\Hypertarget{_helper_8h_source_l00055}00055     \textcolor{keyword}{static} \textcolor{keyword}{const} \textcolor{keywordtype}{char} * EXIT\_COMMAND\_STRING;}
+\DoxyCodeLine{\Hypertarget{_helper_8h_source_l00056}00056 \};}
+\DoxyCodeLine{\Hypertarget{_helper_8h_source_l00058}00058 \textcolor{keyword}{const} \textcolor{keywordtype}{char} *\mbox{\hyperlink{class_helper_a198eafda2b486ede8e3a45a19829b3cb}{Helper::INVALID\_DATE\_MESSAGE}} = \textcolor{stringliteral}{"{}The date you entered is invalid!"{}};}
+\DoxyCodeLine{\Hypertarget{_helper_8h_source_l00059}00059 \textcolor{keyword}{const} \textcolor{keywordtype}{char} *Helper::DATE\_INPUT\_HELPER\_MESSAGE = \textcolor{stringliteral}{"{}Please enter a date in the correct format dd/mm/yyyy!"{}};}
+\DoxyCodeLine{\Hypertarget{_helper_8h_source_l00060}00060 \textcolor{keyword}{const} \textcolor{keywordtype}{char} \mbox{\hyperlink{class_helper_ab8d805ff85e9bb3cb55eeb7de208af93}{Helper::TIME\_SEPARATOR}} = \textcolor{charliteral}{':'};}
+\DoxyCodeLine{\Hypertarget{_helper_8h_source_l00061}00061 \textcolor{keyword}{const} \textcolor{keywordtype}{char} Helper::DATE\_SEPARATOR = \textcolor{charliteral}{'/'};}
+\DoxyCodeLine{\Hypertarget{_helper_8h_source_l00062}00062 \textcolor{keyword}{const} \textcolor{keywordtype}{char} *Helper::TIME\_INPUT\_HELPER\_MESSAGE = \textcolor{stringliteral}{"{}Please enter the hours in the following format: hh:ii"{}};}
+\DoxyCodeLine{\Hypertarget{_helper_8h_source_l00063}00063 \textcolor{keyword}{const} \textcolor{keywordtype}{char} *\mbox{\hyperlink{class_helper_aeea6e6adeefd4a314b1591f4abf21444}{Helper::EVENT\_NOT\_FOUND\_ERROR}} = \textcolor{stringliteral}{"{}Event with this information was not found!"{}};}
+\DoxyCodeLine{\Hypertarget{_helper_8h_source_l00064}00064 \textcolor{keyword}{const} \textcolor{keywordtype}{char} *Helper::EVENT\_FOUND\_MESSAGE = \textcolor{stringliteral}{"{}Event with this information was found!"{}};}
+\DoxyCodeLine{\Hypertarget{_helper_8h_source_l00065}00065 \textcolor{keyword}{const} \textcolor{keywordtype}{char} *Helper::DATE\_NOT\_FREE\_ERROR\_MESSAGE = \textcolor{stringliteral}{"{}The event cannot be added because an event with the same date exists!"{}};}
+\DoxyCodeLine{\Hypertarget{_helper_8h_source_l00066}00066 \textcolor{keyword}{const} \textcolor{keywordtype}{char} *Helper::HELPER\_MESSAGE\_CHANGE\_EVENT = \textcolor{stringliteral}{"{}Hello! In order to change information for the event build the string: "{}}}
+\DoxyCodeLine{\Hypertarget{_helper_8h_source_l00067}00067                                                   \textcolor{stringliteral}{"{}\(\backslash\)n To change the date: write 'd'"{}}}
+\DoxyCodeLine{\Hypertarget{_helper_8h_source_l00068}00068                                                   \textcolor{stringliteral}{"{}\(\backslash\)n To change the name: write 'n'"{}}}
+\DoxyCodeLine{\Hypertarget{_helper_8h_source_l00069}00069                                                   \textcolor{stringliteral}{"{}\(\backslash\)n To change the comment: write 'c'"{}}}
+\DoxyCodeLine{\Hypertarget{_helper_8h_source_l00070}00070                                                   \textcolor{stringliteral}{"{}\(\backslash\)n Your final string could look like that dnc"{}};}
+\DoxyCodeLine{\Hypertarget{_helper_8h_source_l00071}00071 \textcolor{keyword}{const} \textcolor{keywordtype}{char} *\mbox{\hyperlink{class_helper_a0f1209187c67370e7bae25dbf9b6a60a}{Helper::UNKNOWN\_COMMAND\_USED}} = \textcolor{stringliteral}{"{}Unknown command was used!"{}};}
+\DoxyCodeLine{\Hypertarget{_helper_8h_source_l00072}00072 \textcolor{keyword}{const} \textcolor{keywordtype}{char} *Helper::MAX\_CAPACITY\_REACHED\_ERROR = \textcolor{stringliteral}{"{}Max capacity reached!"{}};}
+\DoxyCodeLine{\Hypertarget{_helper_8h_source_l00073}00073 \textcolor{keyword}{const} \textcolor{keywordtype}{int} Helper::ERROR\_INDEX = -\/1;}
+\DoxyCodeLine{\Hypertarget{_helper_8h_source_l00074}00074 \textcolor{keyword}{const} \textcolor{keywordtype}{char} * \mbox{\hyperlink{class_helper_a00dce1a5884fca35964a9f94c26c5996}{Helper::NAME\_INPUT\_HELPER\_MESSAGE}} = \textcolor{stringliteral}{"{}Please enter the name of the event:"{}};}
+\DoxyCodeLine{\Hypertarget{_helper_8h_source_l00075}00075 \textcolor{keyword}{const} \textcolor{keywordtype}{char} * Helper::COMMENT\_INPUT\_HELPER\_MESSAGE = \textcolor{stringliteral}{"{}Please enter the comment of the event:"{}};}
+\DoxyCodeLine{\Hypertarget{_helper_8h_source_l00076}00076 \textcolor{keyword}{const} \textcolor{keywordtype}{char} * Helper::INVALID\_TIME\_ERROR\_MESSAGE = \textcolor{stringliteral}{"{}The entered time is invalid!"{}};}
+\DoxyCodeLine{\Hypertarget{_helper_8h_source_l00077}00077 \textcolor{keyword}{const} \textcolor{keywordtype}{char} * \mbox{\hyperlink{class_helper_aa912ebb2dbb1d23e3f8412a17eb006ff}{Helper::COMMANDS\_HELPER\_MESSAGE}} = \textcolor{stringliteral}{"{}Hello! \(\backslash\)n"{}}}
+\DoxyCodeLine{\Hypertarget{_helper_8h_source_l00078}00078                                                \textcolor{stringliteral}{"{}To add an event write: make \(\backslash\)n"{}}}
+\DoxyCodeLine{\Hypertarget{_helper_8h_source_l00079}00079                                                \textcolor{stringliteral}{"{}To remove an event write: cancel \(\backslash\)n"{}}}
+\DoxyCodeLine{\Hypertarget{_helper_8h_source_l00080}00080                                                \textcolor{stringliteral}{"{}To change information about an event write: change \(\backslash\)n"{}}}
+\DoxyCodeLine{\Hypertarget{_helper_8h_source_l00081}00081                                                \textcolor{stringliteral}{"{}To search an event write: search \(\backslash\)n"{}}}
+\DoxyCodeLine{\Hypertarget{_helper_8h_source_l00082}00082                                                \textcolor{stringliteral}{"{}To show your schedule for a certain date write: show:day \(\backslash\)n"{}}}
+\DoxyCodeLine{\Hypertarget{_helper_8h_source_l00083}00083                                                \textcolor{stringliteral}{"{}To find free time in a certain week write: free \(\backslash\)n"{}}}
+\DoxyCodeLine{\Hypertarget{_helper_8h_source_l00084}00084                                                \textcolor{stringliteral}{"{}To see your daily schedule for a certain week write: show:busy \(\backslash\)n"{}}}
+\DoxyCodeLine{\Hypertarget{_helper_8h_source_l00085}00085                                                \textcolor{stringliteral}{"{}To exit the program write: exit \(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{_helper_8h_source_l00086}00086 \textcolor{keyword}{const} \textcolor{keywordtype}{char} * Helper::ENTER\_COMMAND\_MESSAGE = \textcolor{stringliteral}{"{}Enter command:\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{_helper_8h_source_l00087}00087 \textcolor{keyword}{const} \textcolor{keywordtype}{char} * Helper::EXIT\_MESSAGE = \textcolor{stringliteral}{"{}Goodbye! \(\backslash\)n"{}}}
+\DoxyCodeLine{\Hypertarget{_helper_8h_source_l00088}00088                                            \textcolor{stringliteral}{"{}Your event calendar is currently being saved to: "{}};}
+\DoxyCodeLine{\Hypertarget{_helper_8h_source_l00089}00089 \textcolor{keyword}{const} \textcolor{keywordtype}{char} * Helper::SAVED\_WORKLOAD = \textcolor{stringliteral}{"{}Your workload was successfully saved to a file: "{}};}
+\DoxyCodeLine{\Hypertarget{_helper_8h_source_l00090}00090 \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} \mbox{\hyperlink{class_helper_a37b5da60fb5d6ce53804805e3d78524f}{Helper::MONTH\_DIFFERENCE\_CONST}} = 2;}
+\DoxyCodeLine{\Hypertarget{_helper_8h_source_l00091}00091 \textcolor{keyword}{const} \textcolor{keywordtype}{char} * \mbox{\hyperlink{class_helper_a4923d40d41886af3d11b6c025b1c37a2}{Helper::DATE\_FREE}} = \textcolor{stringliteral}{"{} FREE"{}};}
+\DoxyCodeLine{\Hypertarget{_helper_8h_source_l00092}00092 \textcolor{keyword}{const} \textcolor{keywordtype}{char} * Helper::DATE\_BUSY = \textcolor{stringliteral}{"{} BUSY"{}};}
+\DoxyCodeLine{\Hypertarget{_helper_8h_source_l00093}00093 \textcolor{keyword}{const} \textcolor{keywordtype}{char} * Helper::ENTER\_STRING = \textcolor{stringliteral}{"{}Enter string to search for!"{}};}
+\DoxyCodeLine{\Hypertarget{_helper_8h_source_l00094}00094 }
+\DoxyCodeLine{\Hypertarget{_helper_8h_source_l00095}00095  \textcolor{keyword}{const} \textcolor{keywordtype}{char} * \mbox{\hyperlink{class_helper_a4d3d56774e7b6f9242a6277b22a45a79}{Helper::HELP\_COMMAND}} = \textcolor{stringliteral}{"{}help"{}};}
+\DoxyCodeLine{\Hypertarget{_helper_8h_source_l00096}00096  \textcolor{keyword}{const} \textcolor{keywordtype}{char} * Helper::ADD\_COMMAND = \textcolor{stringliteral}{"{}make"{}};}
+\DoxyCodeLine{\Hypertarget{_helper_8h_source_l00097}00097  \textcolor{keyword}{const} \textcolor{keywordtype}{char} * Helper::REMOVE\_COMMAND = \textcolor{stringliteral}{"{}remove"{}};}
+\DoxyCodeLine{\Hypertarget{_helper_8h_source_l00098}00098  \textcolor{keyword}{const} \textcolor{keywordtype}{char} * Helper::SEARCH\_COMMAND = \textcolor{stringliteral}{"{}search"{}};}
+\DoxyCodeLine{\Hypertarget{_helper_8h_source_l00099}00099  \textcolor{keyword}{const} \textcolor{keywordtype}{char} * Helper::CHANGE\_COMMAND = \textcolor{stringliteral}{"{}change"{}};}
+\DoxyCodeLine{\Hypertarget{_helper_8h_source_l00100}00100  \textcolor{keyword}{const} \textcolor{keywordtype}{char} * Helper::SHOW\_SCHEDULE\_COMMAND = \textcolor{stringliteral}{"{}show:busy"{}};}
+\DoxyCodeLine{\Hypertarget{_helper_8h_source_l00101}00101  \textcolor{keyword}{const} \textcolor{keywordtype}{char} * Helper::SHOW\_DAY\_COMMAND = \textcolor{stringliteral}{"{}show:day"{}};}
+\DoxyCodeLine{\Hypertarget{_helper_8h_source_l00102}00102  \textcolor{keyword}{const} \textcolor{keywordtype}{char} * Helper::FIND\_FREE\_TIME\_COMMAND = \textcolor{stringliteral}{"{}free"{}};}
+\DoxyCodeLine{\Hypertarget{_helper_8h_source_l00103}00103  \textcolor{keyword}{const} \textcolor{keywordtype}{char} * Helper::EXIT\_COMMAND\_STRING = \textcolor{stringliteral}{"{}exit"{}};}
+\DoxyCodeLine{\Hypertarget{_helper_8h_source_l00104}00104 \textcolor{preprocessor}{\#endif }\textcolor{comment}{//PERSONAL\_CALENDAR\_OOP\_HELPER\_H}}
 
 \end{DoxyCode}

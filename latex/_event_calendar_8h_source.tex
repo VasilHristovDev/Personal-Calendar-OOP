@@ -1,41 +1,49 @@
 \hypertarget{_event_calendar_8h_source}{}\doxysection{Event\+Calendar.\+h}
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef PERSONAL\_CALENDAR\_OOP\_EVENTCALENDAR\_H}}
-\DoxyCodeLine{2 \textcolor{preprocessor}{\#define PERSONAL\_CALENDAR\_OOP\_EVENTCALENDAR\_H}}
-\DoxyCodeLine{3 }
-\DoxyCodeLine{4 \textcolor{preprocessor}{\#include "{}Event.cpp"{}}}
-\DoxyCodeLine{5 \textcolor{preprocessor}{\#include "{}Container.h"{}}}
-\DoxyCodeLine{6 }
-\DoxyCodeLine{7 }
-\DoxyCodeLine{8 \textcolor{keyword}{class }\mbox{\hyperlink{class_event_calendar}{EventCalendar}} \{}
-\DoxyCodeLine{9 \textcolor{keyword}{private}:}
-\DoxyCodeLine{10     \mbox{\hyperlink{class_container}{Container<Event>}} events;}
-\DoxyCodeLine{11 \textcolor{keyword}{public}:}
-\DoxyCodeLine{12     \textcolor{comment}{//constructor}}
-\DoxyCodeLine{13     \mbox{\hyperlink{class_event_calendar}{EventCalendar}}();}
-\DoxyCodeLine{14     \mbox{\hyperlink{class_event_calendar}{EventCalendar}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_event}{Event}} * events, \textcolor{keywordtype}{int} numberEvents, \textcolor{keywordtype}{int} maxEvents);}
-\DoxyCodeLine{15 }
-\DoxyCodeLine{16     \textcolor{comment}{//logic}}
-\DoxyCodeLine{17     \textcolor{keywordtype}{void} addEvent(\textcolor{keyword}{const} \mbox{\hyperlink{class_event}{Event}} \& event);}
-\DoxyCodeLine{18     \textcolor{keywordtype}{void} removeEvent(\textcolor{keyword}{const} \mbox{\hyperlink{class_event}{Event}} \& event);}
-\DoxyCodeLine{19     \textcolor{keywordtype}{void} searchEvent(\mbox{\hyperlink{class_string}{String}} \& \textcolor{keywordtype}{string});}
-\DoxyCodeLine{20     \textcolor{keywordtype}{void} changeEvent(\textcolor{keyword}{const} \mbox{\hyperlink{class_event}{Event}}\& event);}
-\DoxyCodeLine{21     \textcolor{keywordtype}{void} printDayList(\textcolor{keyword}{const} \mbox{\hyperlink{class_date}{Date}} \& date);}
-\DoxyCodeLine{22     \textcolor{keywordtype}{void} outputScheduleFromTo(\textcolor{keyword}{const} \mbox{\hyperlink{class_date}{Date}} \& dateStart, \textcolor{keyword}{const} \mbox{\hyperlink{class_date}{Date}} \& dateEnd);}
-\DoxyCodeLine{23     \textcolor{keywordtype}{void} findFreeTime(\textcolor{keyword}{const} \mbox{\hyperlink{class_date}{Date}} \& dateStart, \textcolor{keyword}{const} \mbox{\hyperlink{class_date}{Date}} \& dateEnd, \textcolor{keyword}{const} \mbox{\hyperlink{class_time}{Time}} \& startTime, \textcolor{keyword}{const} \mbox{\hyperlink{class_time}{Time}} \& endTime, \textcolor{keywordtype}{int} duration);}
-\DoxyCodeLine{24 }
-\DoxyCodeLine{25     \textcolor{comment}{//mutators}}
-\DoxyCodeLine{26     \textcolor{keywordtype}{void} setEvents(\textcolor{keyword}{const} \mbox{\hyperlink{class_event}{Event}} * events, \textcolor{keywordtype}{int} size, \textcolor{keywordtype}{int} maxSize = DEFAULT\_CAP);}
-\DoxyCodeLine{27     \textcolor{keywordtype}{void} writeEvents(\textcolor{keyword}{const} \textcolor{keywordtype}{char} * filename);}
-\DoxyCodeLine{28 }
-\DoxyCodeLine{29 \};}
-\DoxyCodeLine{30 \textcolor{keyword}{static} \textcolor{keywordtype}{void} sortEventsByStartingHour(\mbox{\hyperlink{class_container}{Container<Event>}} \& events);}
-\DoxyCodeLine{31 \textcolor{keyword}{static} \textcolor{keywordtype}{int} * sortDatesFromBusiestAndGetDurations(\mbox{\hyperlink{class_container}{Container<Event>}} \& givenEvents, \mbox{\hyperlink{class_container}{Container<Date>}} \& givenDates);}
-\DoxyCodeLine{32 \textcolor{keywordtype}{bool} checkIfDateFree(\textcolor{keyword}{const} \mbox{\hyperlink{class_date}{Date}} \& date, \textcolor{keyword}{const} \mbox{\hyperlink{class_time}{Time}} \& startingTime, \textcolor{keyword}{const} \mbox{\hyperlink{class_time}{Time}} \& endingTime, \mbox{\hyperlink{class_container}{Container<Event>}} \& events);}
-\DoxyCodeLine{33 \textcolor{keyword}{static} \mbox{\hyperlink{class_string}{String}} constructFileName(\textcolor{keyword}{const} \mbox{\hyperlink{class_date}{Date}} \& startDate);}
-\DoxyCodeLine{34 \textcolor{keyword}{static} \textcolor{keywordtype}{void} sortEventsByDuration(\mbox{\hyperlink{class_container}{Container<Event>}} \& container);}
-\DoxyCodeLine{35 }
-\DoxyCodeLine{36 \textcolor{preprocessor}{\#endif }\textcolor{comment}{//PERSONAL\_CALENDAR\_OOP\_EVENTCALENDAR\_H}}
+\DoxyCodeLine{\Hypertarget{_event_calendar_8h_source_l00001}00001 \textcolor{preprocessor}{\#ifndef PERSONAL\_CALENDAR\_OOP\_EVENTCALENDAR\_H}}
+\DoxyCodeLine{\Hypertarget{_event_calendar_8h_source_l00002}00002 \textcolor{preprocessor}{\#define PERSONAL\_CALENDAR\_OOP\_EVENTCALENDAR\_H}}
+\DoxyCodeLine{\Hypertarget{_event_calendar_8h_source_l00003}00003 }
+\DoxyCodeLine{\Hypertarget{_event_calendar_8h_source_l00004}00004 \textcolor{preprocessor}{\#include "{}Event.cpp"{}}}
+\DoxyCodeLine{\Hypertarget{_event_calendar_8h_source_l00005}00005 \textcolor{preprocessor}{\#include "{}Container.h"{}}}
+\DoxyCodeLine{\Hypertarget{_event_calendar_8h_source_l00006}00006 }
+\DoxyCodeLine{\Hypertarget{_event_calendar_8h_source_l00009}\mbox{\hyperlink{class_event_calendar}{00009}} \textcolor{keyword}{class }\mbox{\hyperlink{class_event_calendar}{EventCalendar}} \{}
+\DoxyCodeLine{\Hypertarget{_event_calendar_8h_source_l00010}00010 \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{_event_calendar_8h_source_l00011}00011     \mbox{\hyperlink{class_container}{Container<Event>}} events;}
+\DoxyCodeLine{\Hypertarget{_event_calendar_8h_source_l00012}00012 \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_event_calendar_8h_source_l00013}00013     }
+\DoxyCodeLine{\Hypertarget{_event_calendar_8h_source_l00015}00015     \mbox{\hyperlink{class_event_calendar_a89978fad92697843ac7dd0463208bf4e}{EventCalendar}}();}
+\DoxyCodeLine{\Hypertarget{_event_calendar_8h_source_l00017}00017     \mbox{\hyperlink{class_event_calendar_a89978fad92697843ac7dd0463208bf4e}{EventCalendar}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_event}{Event}} * events, \textcolor{keywordtype}{int} numberEvents, \textcolor{keywordtype}{int} maxEvents);}
+\DoxyCodeLine{\Hypertarget{_event_calendar_8h_source_l00018}00018 }
+\DoxyCodeLine{\Hypertarget{_event_calendar_8h_source_l00021}00021     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_event_calendar_a10a1fc38bfd0e1b5b5728fa5e29843df}{addEvent}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_event}{Event}} \& event);}
+\DoxyCodeLine{\Hypertarget{_event_calendar_8h_source_l00022}00022 }
+\DoxyCodeLine{\Hypertarget{_event_calendar_8h_source_l00024}00024     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_event_calendar_ac55daf50914bed38f2e6351869c4b734}{removeEvent}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_event}{Event}} \& event);}
+\DoxyCodeLine{\Hypertarget{_event_calendar_8h_source_l00025}00025 }
+\DoxyCodeLine{\Hypertarget{_event_calendar_8h_source_l00027}00027     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_event_calendar_a8f6bb7c4153d7c551bbc257cc4623200}{searchEvent}}(\mbox{\hyperlink{class_string}{String}} \& \textcolor{keywordtype}{string});}
+\DoxyCodeLine{\Hypertarget{_event_calendar_8h_source_l00028}00028 }
+\DoxyCodeLine{\Hypertarget{_event_calendar_8h_source_l00030}00030     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_event_calendar_ab95938698a8e1ac6a939a585aec7034c}{changeEvent}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_event}{Event}}\& event);}
+\DoxyCodeLine{\Hypertarget{_event_calendar_8h_source_l00031}00031 }
+\DoxyCodeLine{\Hypertarget{_event_calendar_8h_source_l00033}00033     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_event_calendar_a34197970660081373debd54e8a2f8bbf}{printDayList}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_date}{Date}} \& date);}
+\DoxyCodeLine{\Hypertarget{_event_calendar_8h_source_l00034}00034 }
+\DoxyCodeLine{\Hypertarget{_event_calendar_8h_source_l00036}00036     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_event_calendar_af3753ca78497f5cf930d26f9e9fc380b}{outputScheduleFromTo}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_date}{Date}} \& dateStart, \textcolor{keyword}{const} \mbox{\hyperlink{class_date}{Date}} \& dateEnd);}
+\DoxyCodeLine{\Hypertarget{_event_calendar_8h_source_l00037}00037 }
+\DoxyCodeLine{\Hypertarget{_event_calendar_8h_source_l00039}00039     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_event_calendar_a79048ef033462070a11ef3de53557161}{findFreeTime}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_date}{Date}} \& dateStart, \textcolor{keyword}{const} \mbox{\hyperlink{class_date}{Date}} \& dateEnd, \textcolor{keyword}{const} \mbox{\hyperlink{class_time}{Time}} \& startTime, \textcolor{keyword}{const} \mbox{\hyperlink{class_time}{Time}} \& endTime, \textcolor{keywordtype}{int} duration);}
+\DoxyCodeLine{\Hypertarget{_event_calendar_8h_source_l00040}00040 }
+\DoxyCodeLine{\Hypertarget{_event_calendar_8h_source_l00041}00041     \textcolor{comment}{//mutators}}
+\DoxyCodeLine{\Hypertarget{_event_calendar_8h_source_l00042}00042     \textcolor{keywordtype}{void} setEvents(\textcolor{keyword}{const} \mbox{\hyperlink{class_event}{Event}} * events, \textcolor{keywordtype}{int} size, \textcolor{keywordtype}{int} maxSize = DEFAULT\_CAP);}
+\DoxyCodeLine{\Hypertarget{_event_calendar_8h_source_l00043}00043     \textcolor{keywordtype}{void} writeEvents(\textcolor{keyword}{const} \textcolor{keywordtype}{char} * filename);}
+\DoxyCodeLine{\Hypertarget{_event_calendar_8h_source_l00044}00044 }
+\DoxyCodeLine{\Hypertarget{_event_calendar_8h_source_l00045}00045 \};}
+\DoxyCodeLine{\Hypertarget{_event_calendar_8h_source_l00047}00047 \textcolor{keyword}{static} \textcolor{keywordtype}{void} sortEventsByStartingHour(\mbox{\hyperlink{class_container}{Container<Event>}} \& events);}
+\DoxyCodeLine{\Hypertarget{_event_calendar_8h_source_l00048}00048 }
+\DoxyCodeLine{\Hypertarget{_event_calendar_8h_source_l00050}00050 \textcolor{keyword}{static} \textcolor{keywordtype}{int} * sortDatesFromBusiestAndGetDurations(\mbox{\hyperlink{class_container}{Container<Event>}} \& givenEvents, \mbox{\hyperlink{class_container}{Container<Date>}} \& givenDates);}
+\DoxyCodeLine{\Hypertarget{_event_calendar_8h_source_l00051}00051 }
+\DoxyCodeLine{\Hypertarget{_event_calendar_8h_source_l00053}00053 \textcolor{keywordtype}{bool} checkIfDateFree(\textcolor{keyword}{const} \mbox{\hyperlink{class_date}{Date}} \& date, \textcolor{keyword}{const} \mbox{\hyperlink{class_time}{Time}} \& startingTime, \textcolor{keyword}{const} \mbox{\hyperlink{class_time}{Time}} \& endingTime, \mbox{\hyperlink{class_container}{Container<Event>}} \& events);}
+\DoxyCodeLine{\Hypertarget{_event_calendar_8h_source_l00054}00054 }
+\DoxyCodeLine{\Hypertarget{_event_calendar_8h_source_l00056}00056 \textcolor{keyword}{static} \mbox{\hyperlink{class_string}{String}} constructFileName(\textcolor{keyword}{const} \mbox{\hyperlink{class_date}{Date}} \& startDate);}
+\DoxyCodeLine{\Hypertarget{_event_calendar_8h_source_l00057}00057 }
+\DoxyCodeLine{\Hypertarget{_event_calendar_8h_source_l00059}00059 \textcolor{keyword}{static} \textcolor{keywordtype}{void} sortEventsByDuration(\mbox{\hyperlink{class_container}{Container<Event>}} \& container);}
+\DoxyCodeLine{\Hypertarget{_event_calendar_8h_source_l00060}00060 }
+\DoxyCodeLine{\Hypertarget{_event_calendar_8h_source_l00061}00061 \textcolor{preprocessor}{\#endif }\textcolor{comment}{//PERSONAL\_CALENDAR\_OOP\_EVENTCALENDAR\_H}}
 
 \end{DoxyCode}

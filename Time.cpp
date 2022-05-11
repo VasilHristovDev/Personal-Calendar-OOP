@@ -28,6 +28,7 @@ Time::Time(unsigned int hour, unsigned int minutes) {
 }
 
 void Time::print(std::ostream &out) const {
+    //added ternary statements to help the time printing look like a digital clock
     out << (this->hours < 10 ? "0" : "") << this->hours << Helper::TIME_SEPARATOR << (this->minutes < 10 ? "0" : "")
         << this->minutes;
 }
@@ -97,7 +98,7 @@ bool Time::operator>=(const Time &time) const {
         return false;
     }
 }
-
+//validator for time
 bool isValidTime(const Time & time)
 {
     unsigned int hour = time.getHour();
@@ -105,7 +106,8 @@ bool isValidTime(const Time & time)
 
     return hour <= 23 && hour >= 0 && minutes <= 59 && minutes >= 0 ;
 }
+//helper function for checking if two time spans are overlapping
 bool areOverlapping(const Time & startingTime1, const Time & endingTime1, const Time & startingTime2, const Time & endingTime2)
 {
-    return (startingTime1 <= endingTime2) && (endingTime1 >= startingTime2);
+    return !((endingTime1 < startingTime2 && startingTime1 < startingTime2) || (endingTime2 < startingTime1 && startingTime2 < startingTime1));
 }

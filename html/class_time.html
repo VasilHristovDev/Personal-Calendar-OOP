@@ -21,9 +21,9 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">PersonalCalendarOOP
+   <div id="projectname">PersonalCalendarOOP<span id="projectnumber">&#160;0</span>
    </div>
-   <div id="projectbrief">A command line interface project related to creating events and saving them to a file</div>
+   <div id="projectbrief">A project that I made for OOP course in FMI</div>
   </td>
  </tr>
  </tbody>
@@ -70,55 +70,379 @@ $(function() {
   <div class="headertitle"><div class="title">Time Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &lt;<a class="el" href="_time_8h_source.html">Time.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a486cb9b332e15b580e7031b3633e70da"><td class="memItemLeft" align="right" valign="top"><a id="a486cb9b332e15b580e7031b3633e70da" name="a486cb9b332e15b580e7031b3633e70da"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Time</b> (unsigned int hours, unsigned int minutes)</td></tr>
+<tr class="memitem:a4245e409c7347d1d671858962c2ca3b5"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_time.html#a4245e409c7347d1d671858962c2ca3b5">Time</a> ()</td></tr>
+<tr class="memdesc:a4245e409c7347d1d671858962c2ca3b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default constructor for the needs of the <a class="el" href="class_event.html">Event</a> default constructor and other usages.  <a href="class_time.html#a4245e409c7347d1d671858962c2ca3b5">More...</a><br /></td></tr>
+<tr class="separator:a4245e409c7347d1d671858962c2ca3b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a486cb9b332e15b580e7031b3633e70da"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_time.html#a486cb9b332e15b580e7031b3633e70da">Time</a> (unsigned int hour, unsigned int minutes)</td></tr>
 <tr class="separator:a486cb9b332e15b580e7031b3633e70da"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad0bb10f2a541ba3df0c8185747d31047"><td class="memItemLeft" align="right" valign="top"><a id="ad0bb10f2a541ba3df0c8185747d31047" name="ad0bb10f2a541ba3df0c8185747d31047"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setHour</b> (unsigned int hours)</td></tr>
+<tr class="memitem:ad0bb10f2a541ba3df0c8185747d31047"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_time.html#ad0bb10f2a541ba3df0c8185747d31047">setHour</a> (unsigned int hour)</td></tr>
+<tr class="memdesc:ad0bb10f2a541ba3df0c8185747d31047"><td class="mdescLeft">&#160;</td><td class="mdescRight">Two setters for the properties of the class.  <a href="class_time.html#ad0bb10f2a541ba3df0c8185747d31047">More...</a><br /></td></tr>
 <tr class="separator:ad0bb10f2a541ba3df0c8185747d31047"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a990f26878f1b42f9e7157f4fda5f5a44"><td class="memItemLeft" align="right" valign="top"><a id="a990f26878f1b42f9e7157f4fda5f5a44" name="a990f26878f1b42f9e7157f4fda5f5a44"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setMinutes</b> (unsigned int minutes)</td></tr>
+<tr class="memitem:a990f26878f1b42f9e7157f4fda5f5a44"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_time.html#a990f26878f1b42f9e7157f4fda5f5a44">setMinutes</a> (unsigned int minutes)</td></tr>
 <tr class="separator:a990f26878f1b42f9e7157f4fda5f5a44"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae87a67b05fc6b4973372d73da6677db3"><td class="memItemLeft" align="right" valign="top"><a id="ae87a67b05fc6b4973372d73da6677db3" name="ae87a67b05fc6b4973372d73da6677db3"></a>
-unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>getHour</b> () const</td></tr>
+<tr class="memitem:ae87a67b05fc6b4973372d73da6677db3"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_time.html#ae87a67b05fc6b4973372d73da6677db3">getHour</a> () const</td></tr>
+<tr class="memdesc:ae87a67b05fc6b4973372d73da6677db3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Two getters for the properties of the class.  <a href="class_time.html#ae87a67b05fc6b4973372d73da6677db3">More...</a><br /></td></tr>
 <tr class="separator:ae87a67b05fc6b4973372d73da6677db3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3e8fbc545774df53980b3f04b9755831"><td class="memItemLeft" align="right" valign="top"><a id="a3e8fbc545774df53980b3f04b9755831" name="a3e8fbc545774df53980b3f04b9755831"></a>
-unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>getMinutes</b> () const</td></tr>
+<tr class="memitem:a3e8fbc545774df53980b3f04b9755831"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_time.html#a3e8fbc545774df53980b3f04b9755831">getMinutes</a> () const</td></tr>
 <tr class="separator:a3e8fbc545774df53980b3f04b9755831"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abce839858683788520d0400fed01797c"><td class="memItemLeft" align="right" valign="top"><a id="abce839858683788520d0400fed01797c" name="abce839858683788520d0400fed01797c"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>print</b> (std::ostream &amp;out=std::cout) const</td></tr>
+<tr class="memitem:abce839858683788520d0400fed01797c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_time.html#abce839858683788520d0400fed01797c">print</a> (std::ostream &amp;out=std::cout) const</td></tr>
+<tr class="memdesc:abce839858683788520d0400fed01797c"><td class="mdescLeft">&#160;</td><td class="mdescRight">A print method that displays the information about the created object.  <a href="class_time.html#abce839858683788520d0400fed01797c">More...</a><br /></td></tr>
 <tr class="separator:abce839858683788520d0400fed01797c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a358022173825bc5eb75e2101df0f78e4"><td class="memItemLeft" align="right" valign="top"><a id="a358022173825bc5eb75e2101df0f78e4" name="a358022173825bc5eb75e2101df0f78e4"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator==</b> (const <a class="el" href="class_time.html">Time</a> &amp;time) const</td></tr>
+<tr class="memitem:a358022173825bc5eb75e2101df0f78e4"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_time.html#a358022173825bc5eb75e2101df0f78e4">operator==</a> (const <a class="el" href="class_time.html">Time</a> &amp;time) const</td></tr>
+<tr class="memdesc:a358022173825bc5eb75e2101df0f78e4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Operators for comparison, needed for determining the time spans.  <a href="class_time.html#a358022173825bc5eb75e2101df0f78e4">More...</a><br /></td></tr>
 <tr class="separator:a358022173825bc5eb75e2101df0f78e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3dee842a041ca4e8d9c1e9eb267b3801"><td class="memItemLeft" align="right" valign="top"><a id="a3dee842a041ca4e8d9c1e9eb267b3801" name="a3dee842a041ca4e8d9c1e9eb267b3801"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator&lt;</b> (const <a class="el" href="class_time.html">Time</a> &amp;time) const</td></tr>
+<tr class="memitem:a3dee842a041ca4e8d9c1e9eb267b3801"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_time.html#a3dee842a041ca4e8d9c1e9eb267b3801">operator&lt;</a> (const <a class="el" href="class_time.html">Time</a> &amp;time) const</td></tr>
 <tr class="separator:a3dee842a041ca4e8d9c1e9eb267b3801"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aca20d7c5d322ab8e950cddf64572a7d3"><td class="memItemLeft" align="right" valign="top"><a id="aca20d7c5d322ab8e950cddf64572a7d3" name="aca20d7c5d322ab8e950cddf64572a7d3"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator&gt;</b> (const <a class="el" href="class_time.html">Time</a> &amp;time) const</td></tr>
+<tr class="memitem:aca20d7c5d322ab8e950cddf64572a7d3"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_time.html#aca20d7c5d322ab8e950cddf64572a7d3">operator&gt;</a> (const <a class="el" href="class_time.html">Time</a> &amp;time) const</td></tr>
 <tr class="separator:aca20d7c5d322ab8e950cddf64572a7d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad4f6e1d73590a2c89aa5d80813f74ab1"><td class="memItemLeft" align="right" valign="top"><a id="ad4f6e1d73590a2c89aa5d80813f74ab1" name="ad4f6e1d73590a2c89aa5d80813f74ab1"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator&lt;=</b> (const <a class="el" href="class_time.html">Time</a> &amp;time) const</td></tr>
+<tr class="memitem:ad4f6e1d73590a2c89aa5d80813f74ab1"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_time.html#ad4f6e1d73590a2c89aa5d80813f74ab1">operator&lt;=</a> (const <a class="el" href="class_time.html">Time</a> &amp;time) const</td></tr>
 <tr class="separator:ad4f6e1d73590a2c89aa5d80813f74ab1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab8785e557e3d70b465f0487ede95b996"><td class="memItemLeft" align="right" valign="top"><a id="ab8785e557e3d70b465f0487ede95b996" name="ab8785e557e3d70b465f0487ede95b996"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator&gt;=</b> (const <a class="el" href="class_time.html">Time</a> &amp;time) const</td></tr>
+<tr class="memitem:ab8785e557e3d70b465f0487ede95b996"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_time.html#ab8785e557e3d70b465f0487ede95b996">operator&gt;=</a> (const <a class="el" href="class_time.html">Time</a> &amp;time) const</td></tr>
 <tr class="separator:ab8785e557e3d70b465f0487ede95b996"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1feef9575b99c7fa0458f7124ab8d734"><td class="memItemLeft" align="right" valign="top"><a id="a1feef9575b99c7fa0458f7124ab8d734" name="a1feef9575b99c7fa0458f7124ab8d734"></a>
-<a class="el" href="class_time.html">Time</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (const <a class="el" href="class_time.html">Time</a> &amp;other)</td></tr>
+<tr class="memitem:a1feef9575b99c7fa0458f7124ab8d734"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_time.html">Time</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_time.html#a1feef9575b99c7fa0458f7124ab8d734">operator=</a> (const <a class="el" href="class_time.html">Time</a> &amp;other)</td></tr>
+<tr class="memdesc:a1feef9575b99c7fa0458f7124ab8d734"><td class="mdescLeft">&#160;</td><td class="mdescRight">Assignment operator.  <a href="class_time.html#a1feef9575b99c7fa0458f7124ab8d734">More...</a><br /></td></tr>
 <tr class="separator:a1feef9575b99c7fa0458f7124ab8d734"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="friends" name="friends"></a>
 Friends</h2></td></tr>
-<tr class="memitem:a8f23b1a8d26e30d62094ae46554205f9"><td class="memItemLeft" align="right" valign="top"><a id="a8f23b1a8d26e30d62094ae46554205f9" name="a8f23b1a8d26e30d62094ae46554205f9"></a>
-std::istream &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator&gt;&gt;</b> (std::istream &amp;in, <a class="el" href="class_time.html">Time</a> &amp;time)</td></tr>
+<tr class="memitem:a8f23b1a8d26e30d62094ae46554205f9"><td class="memItemLeft" align="right" valign="top">std::istream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_time.html#a8f23b1a8d26e30d62094ae46554205f9">operator&gt;&gt;</a> (std::istream &amp;in, <a class="el" href="class_time.html">Time</a> &amp;time)</td></tr>
+<tr class="memdesc:a8f23b1a8d26e30d62094ae46554205f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">operator that reads time from the console  <a href="class_time.html#a8f23b1a8d26e30d62094ae46554205f9">More...</a><br /></td></tr>
 <tr class="separator:a8f23b1a8d26e30d62094ae46554205f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p ><a class="el" href="class_time.html">Time</a> class that interprets the time for the events to happen The class consists of two properties : hours and minutes </p>
+
+<p class="definition">Definition at line <a class="el" href="_time_8h_source.html#l00008">8</a> of file <a class="el" href="_time_8h_source.html">Time.h</a>.</p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a4245e409c7347d1d671858962c2ca3b5" name="a4245e409c7347d1d671858962c2ca3b5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4245e409c7347d1d671858962c2ca3b5">&#9670;&nbsp;</a></span>Time() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Time::Time </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Default constructor for the needs of the <a class="el" href="class_event.html">Event</a> default constructor and other usages. </p>
+
+<p class="definition">Definition at line <a class="el" href="_time_8cpp_source.html#l00020">20</a> of file <a class="el" href="_time_8cpp_source.html">Time.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a486cb9b332e15b580e7031b3633e70da" name="a486cb9b332e15b580e7031b3633e70da"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a486cb9b332e15b580e7031b3633e70da">&#9670;&nbsp;</a></span>Time() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Time::Time </td>
+          <td>(</td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>hour</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>minutes</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_time_8cpp_source.html#l00025">25</a> of file <a class="el" href="_time_8cpp_source.html">Time.cpp</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="ae87a67b05fc6b4973372d73da6677db3" name="ae87a67b05fc6b4973372d73da6677db3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae87a67b05fc6b4973372d73da6677db3">&#9670;&nbsp;</a></span>getHour()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned int Time::getHour </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Two getters for the properties of the class. </p>
+
+<p class="definition">Definition at line <a class="el" href="_time_8cpp_source.html#l00004">4</a> of file <a class="el" href="_time_8cpp_source.html">Time.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a3e8fbc545774df53980b3f04b9755831" name="a3e8fbc545774df53980b3f04b9755831"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3e8fbc545774df53980b3f04b9755831">&#9670;&nbsp;</a></span>getMinutes()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned int Time::getMinutes </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_time_8cpp_source.html#l00008">8</a> of file <a class="el" href="_time_8cpp_source.html">Time.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a3dee842a041ca4e8d9c1e9eb267b3801" name="a3dee842a041ca4e8d9c1e9eb267b3801"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3dee842a041ca4e8d9c1e9eb267b3801">&#9670;&nbsp;</a></span>operator&lt;()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Time::operator&lt; </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="class_time.html">Time</a> &amp;&#160;</td>
+          <td class="paramname"><em>time</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_time_8cpp_source.html#l00047">47</a> of file <a class="el" href="_time_8cpp_source.html">Time.cpp</a>.</p>
+
+</div>
+</div>
+<a id="ad4f6e1d73590a2c89aa5d80813f74ab1" name="ad4f6e1d73590a2c89aa5d80813f74ab1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad4f6e1d73590a2c89aa5d80813f74ab1">&#9670;&nbsp;</a></span>operator&lt;=()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Time::operator&lt;= </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="class_time.html">Time</a> &amp;&#160;</td>
+          <td class="paramname"><em>time</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_time_8cpp_source.html#l00065">65</a> of file <a class="el" href="_time_8cpp_source.html">Time.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a1feef9575b99c7fa0458f7124ab8d734" name="a1feef9575b99c7fa0458f7124ab8d734"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1feef9575b99c7fa0458f7124ab8d734">&#9670;&nbsp;</a></span>operator=()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_time.html">Time</a> &amp; Time::operator= </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="class_time.html">Time</a> &amp;&#160;</td>
+          <td class="paramname"><em>other</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Assignment operator. </p>
+
+<p class="definition">Definition at line <a class="el" href="_time_8cpp_source.html#l00039">39</a> of file <a class="el" href="_time_8cpp_source.html">Time.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a358022173825bc5eb75e2101df0f78e4" name="a358022173825bc5eb75e2101df0f78e4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a358022173825bc5eb75e2101df0f78e4">&#9670;&nbsp;</a></span>operator==()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Time::operator== </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="class_time.html">Time</a> &amp;&#160;</td>
+          <td class="paramname"><em>time</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Operators for comparison, needed for determining the time spans. </p>
+
+<p class="definition">Definition at line <a class="el" href="_time_8cpp_source.html#l00035">35</a> of file <a class="el" href="_time_8cpp_source.html">Time.cpp</a>.</p>
+
+</div>
+</div>
+<a id="aca20d7c5d322ab8e950cddf64572a7d3" name="aca20d7c5d322ab8e950cddf64572a7d3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aca20d7c5d322ab8e950cddf64572a7d3">&#9670;&nbsp;</a></span>operator&gt;()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Time::operator&gt; </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="class_time.html">Time</a> &amp;&#160;</td>
+          <td class="paramname"><em>time</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_time_8cpp_source.html#l00051">51</a> of file <a class="el" href="_time_8cpp_source.html">Time.cpp</a>.</p>
+
+</div>
+</div>
+<a id="ab8785e557e3d70b465f0487ede95b996" name="ab8785e557e3d70b465f0487ede95b996"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab8785e557e3d70b465f0487ede95b996">&#9670;&nbsp;</a></span>operator&gt;=()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Time::operator&gt;= </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="class_time.html">Time</a> &amp;&#160;</td>
+          <td class="paramname"><em>time</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_time_8cpp_source.html#l00083">83</a> of file <a class="el" href="_time_8cpp_source.html">Time.cpp</a>.</p>
+
+</div>
+</div>
+<a id="abce839858683788520d0400fed01797c" name="abce839858683788520d0400fed01797c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abce839858683788520d0400fed01797c">&#9670;&nbsp;</a></span>print()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Time::print </td>
+          <td>(</td>
+          <td class="paramtype">std::ostream &amp;&#160;</td>
+          <td class="paramname"><em>out</em> = <code>std::cout</code></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A print method that displays the information about the created object. </p>
+
+<p class="definition">Definition at line <a class="el" href="_time_8cpp_source.html#l00030">30</a> of file <a class="el" href="_time_8cpp_source.html">Time.cpp</a>.</p>
+
+</div>
+</div>
+<a id="ad0bb10f2a541ba3df0c8185747d31047" name="ad0bb10f2a541ba3df0c8185747d31047"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad0bb10f2a541ba3df0c8185747d31047">&#9670;&nbsp;</a></span>setHour()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Time::setHour </td>
+          <td>(</td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>hour</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Two setters for the properties of the class. </p>
+
+<p class="definition">Definition at line <a class="el" href="_time_8cpp_source.html#l00012">12</a> of file <a class="el" href="_time_8cpp_source.html">Time.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a990f26878f1b42f9e7157f4fda5f5a44" name="a990f26878f1b42f9e7157f4fda5f5a44"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a990f26878f1b42f9e7157f4fda5f5a44">&#9670;&nbsp;</a></span>setMinutes()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Time::setMinutes </td>
+          <td>(</td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>minutes</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_time_8cpp_source.html#l00016">16</a> of file <a class="el" href="_time_8cpp_source.html">Time.cpp</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Friends And Related Function Documentation</h2>
+<a id="a8f23b1a8d26e30d62094ae46554205f9" name="a8f23b1a8d26e30d62094ae46554205f9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8f23b1a8d26e30d62094ae46554205f9">&#9670;&nbsp;</a></span>operator&gt;&gt;</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::istream &amp; operator&gt;&gt; </td>
+          <td>(</td>
+          <td class="paramtype">std::istream &amp;&#160;</td>
+          <td class="paramname"><em>in</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_time.html">Time</a> &amp;&#160;</td>
+          <td class="paramname"><em>time</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>operator that reads time from the console </p>
+
+<p class="definition">Definition at line <a class="el" href="_time_8cpp_source.html#l00055">55</a> of file <a class="el" href="_time_8cpp_source.html">Time.cpp</a>.</p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li><a class="el" href="_time_8h_source.html">Time.h</a></li>
-<li>Time.cpp</li>
+<li><a class="el" href="_time_8cpp_source.html">Time.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

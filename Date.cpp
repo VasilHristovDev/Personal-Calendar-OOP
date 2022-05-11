@@ -1,7 +1,7 @@
 #include "Date.h"
 #include "Helper.h"
 #include <cmath>
-
+//enum variable that hold the values for each day of the week that helps us determine which day of the week a given date is
 enum dayOfWeek {
     MONDAY = 1,
     TUESDAY = 2,
@@ -11,7 +11,7 @@ enum dayOfWeek {
     SATURDAY = 6,
     SUNDAY = 0
 };
-
+//enum variable that holds how many dates a given month has ( used for validation )
 enum daysMonths {
     JANUARY_DAYS = 31,
     FEBRUARY_DAYS = 28,
@@ -26,6 +26,7 @@ enum daysMonths {
     NOVEMBER_DAYS = 30,
     DECEMBER_DAYS = 31
 };
+//function that returns whether a year is leap or not
 bool isLeapYearChecker(unsigned int year)
 {
     if ((year % 400 == 0 || year % 4 == 0) && year % 100 != 0 ) {
@@ -33,6 +34,7 @@ bool isLeapYearChecker(unsigned int year)
     }
     return false;
 }
+// function that validates whether a given date is correct ( checks if the given days are valid for the given month )
 bool doesNotHaveMoreDays(unsigned int days, months givenMonth, bool isLeap)
 {
     switch (givenMonth) {
@@ -77,6 +79,7 @@ bool doesNotHaveMoreDays(unsigned int days, months givenMonth, bool isLeap)
     }
     return true;
 }
+//The validator function returns if a date is valid or not
 bool isValid(const Date &date) {
     months givenMonth = (months) (date.getMonth());
     unsigned int days = date.getDay();
@@ -85,7 +88,13 @@ bool isValid(const Date &date) {
 
     return doesNotHaveMoreDays(days,givenMonth,isLeapYear);
 }
-
+/*
+ * A function that I wanted to implement
+ * The reference that helped me is on this link : https://cs.uwaterloo.ca/~alopez-o/math-faq/node73.html
+ * It is only for aesthetic purposes
+ * The formula I used to calculate is displayed in the website
+ * Also I found a period that is not being calculated well ( 1st Jan 2005 - 4 th Jan 2005 )
+ */
 unsigned int getDayOfWeek(const Date &date) {
 
     unsigned int day = date.getDay();
@@ -108,19 +117,18 @@ unsigned int getDayOfWeek(const Date &date) {
     return (day + monthManipulation - 2 * century + year + yearByFour + centuryByFour) % 7;
 
 }
-
+//constructors
 Date::Date() : day(1), month(1), year(2001) {}
-
 Date::Date(unsigned int day, unsigned int month, unsigned int year) : day(day), month(month), year(year) {}
 
-
+//print method
 void Date::print(std::ostream &out) const {
     out << "date: ";
     this->printDayOfWeek(out);
     out << (this->day < 10 ? "0" : "") << this->day << Helper::DATE_SEPARATOR << (this->month < 10 ? "0" : "")
         << this->month << Helper::DATE_SEPARATOR << this->year;
 }
-
+//setters
 void Date::setDay(unsigned int _day) {
     this->day = _day;
 }
@@ -132,7 +140,7 @@ void Date::setMonth(unsigned int _month) {
 void Date::setYear(unsigned int _year) {
     this->year = _year;
 }
-
+//getters
 unsigned int Date::getDay() const {
     return this->day;
 }
@@ -144,11 +152,11 @@ unsigned int Date::getMonth() const {
 unsigned int Date::getYear() const {
     return this->year;
 }
-
+//operator that checks whether two dates are the same
 bool Date::operator==(const Date &date1) const {
     return this->day == date1.getDay() && this->month == date1.getMonth() && this->year == date1.getYear();
 }
-
+//assignment operator
 Date &Date::operator=(const Date &other) {
     if (this != &other && isValid(other)) {
         this->setDay(other.getDay());
@@ -157,12 +165,14 @@ Date &Date::operator=(const Date &other) {
     }
     return *this;
 }
-
+//operator for reading date from the console
 std::istream &operator>>(std::istream &in, Date &date) {
     std::cout << Helper::DATE_INPUT_HELPER_MESSAGE << std::endl;
     in >> date.day;
+    //ignore the date separator
     in.ignore(1);
     in >> date.month;
+    //ignore the date separator
     in.ignore(1);
     in >> date.year;
     if (!isValid(date)) {
@@ -170,7 +180,7 @@ std::istream &operator>>(std::istream &in, Date &date) {
     }
     return in;
 }
-
+//method that prints which day of the week a date is
 void Date::printDayOfWeek(std::ostream &out) const {
     switch (getDayOfWeek(*this)) {
         case MONDAY:
@@ -199,7 +209,7 @@ void Date::printDayOfWeek(std::ostream &out) const {
             break;
     }
 }
-
+//operator for checking whether a date is before or it matches a given date
 bool Date::operator<=(const Date &date1) const {
     if(this->year < date1.getYear())
     {
@@ -224,7 +234,7 @@ bool Date::operator<=(const Date &date1) const {
     }
     return false;
 }
-
+//operator for checking whether a date is after or it matches a given date
 bool Date::operator>=(const Date &date1) const {
     if(this->year > date1.getYear())
     {
@@ -249,28 +259,32 @@ bool Date::operator>=(const Date &date1) const {
     }
     return false;
 }
-
+//operator for incrementation of a date ( prefix )
 Date &Date::operator++() {
     unsigned int monthReturnable = this->month;
     unsigned int daysReturnable = this->day;
     unsigned int yearReturnable = this->year;
-
+    //we check if the next date is after the given month
     if(!doesNotHaveMoreDays(daysReturnable + 1, (months) monthReturnable, isLeapYearChecker(yearReturnable)))
     {
+        //if it does we check if the month is the next after december
         if((months)(monthReturnable + 1) > DECEMBER)
         {
+            //if it is the date becomes 1/1 of the next year
             yearReturnable++;
             monthReturnable = 1;
             daysReturnable = 1;
         }
         else
         {
+            //if it is not we increment the month and set the days to 1
             daysReturnable = 1;
             monthReturnable++;
         }
     }
     else
     {
+        //we simply increment the days
         daysReturnable++;
     }
     this->setYear(yearReturnable);
@@ -279,13 +293,13 @@ Date &Date::operator++() {
 
     return *this;
 }
-
+//a postfix operator for the date
 Date Date::operator++(int) {
     Date old = *this;
     operator++();
     return old;
 }
-
+//a method that returns a container with all the dates from a given period
 Container<Date> getAllDatesFromPeriod(const Date & dateStart, const Date & dateEnd)
 {
     Date currDate = dateStart;
@@ -293,8 +307,8 @@ Container<Date> getAllDatesFromPeriod(const Date & dateStart, const Date & dateE
 
     while(currDate <= dateEnd)
     {
-        returnableDates.add(currDate);
-        ++currDate;
+        //here we use the postfix operator for date incrementation
+        returnableDates.add(currDate++);
     }
 
     return returnableDates;

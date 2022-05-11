@@ -21,9 +21,9 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">PersonalCalendarOOP
+   <div id="projectname">PersonalCalendarOOP<span id="projectnumber">&#160;0</span>
    </div>
-   <div id="projectbrief">A command line interface project related to creating events and saving them to a file</div>
+   <div id="projectbrief">A project that I made for OOP course in FMI</div>
   </td>
  </tr>
  </tbody>
@@ -69,13 +69,71 @@ $(function() {
   <div class="headertitle"><div class="title">Program Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &lt;<a class="el" href="_program_8h_source.html">Program.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a6adbc9a50861c35f3229cfb277b4afdb"><td class="memItemLeft" align="right" valign="top"><a id="a6adbc9a50861c35f3229cfb277b4afdb" name="a6adbc9a50861c35f3229cfb277b4afdb"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>run</b> ()</td></tr>
+<tr class="memitem:aaefaa0df08f3484476fc4d61e97acbdc"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_program.html#aaefaa0df08f3484476fc4d61e97acbdc">Program</a> ()</td></tr>
+<tr class="memdesc:aaefaa0df08f3484476fc4d61e97acbdc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default Constructor that initializes the <a class="el" href="class_event_calendar.html">EventCalendar</a>.  <a href="class_program.html#aaefaa0df08f3484476fc4d61e97acbdc">More...</a><br /></td></tr>
+<tr class="separator:aaefaa0df08f3484476fc4d61e97acbdc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6adbc9a50861c35f3229cfb277b4afdb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_program.html#a6adbc9a50861c35f3229cfb277b4afdb">run</a> ()</td></tr>
+<tr class="memdesc:a6adbc9a50861c35f3229cfb277b4afdb"><td class="mdescLeft">&#160;</td><td class="mdescRight">run method that interprets the dialog mode of the project  <a href="class_program.html#a6adbc9a50861c35f3229cfb277b4afdb">More...</a><br /></td></tr>
 <tr class="separator:a6adbc9a50861c35f3229cfb277b4afdb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p >Class containing the main structure in my project - <a class="el" href="class_event_calendar.html">EventCalendar</a> Which uses the main logic of the project </p>
+
+<p class="definition">Definition at line <a class="el" href="_program_8h_source.html#l00010">10</a> of file <a class="el" href="_program_8h_source.html">Program.h</a>.</p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="aaefaa0df08f3484476fc4d61e97acbdc" name="aaefaa0df08f3484476fc4d61e97acbdc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaefaa0df08f3484476fc4d61e97acbdc">&#9670;&nbsp;</a></span>Program()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Program::Program </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Default Constructor that initializes the <a class="el" href="class_event_calendar.html">EventCalendar</a>. </p>
+<p >Using the default constructor of <a class="el" href="class_event_calendar.html">EventCalendar</a>. </p>
+
+<p class="definition">Definition at line <a class="el" href="_program_8h_source.html#l00022">22</a> of file <a class="el" href="_program_8h_source.html">Program.h</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a6adbc9a50861c35f3229cfb277b4afdb" name="a6adbc9a50861c35f3229cfb277b4afdb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6adbc9a50861c35f3229cfb277b4afdb">&#9670;&nbsp;</a></span>run()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Program::run </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>run method that interprets the dialog mode of the project </p>
+<p >Command - Action based dialog mode</p>
+<p >entering commands until the exit command string is entered</p>
+<p ><a class="el" href="class_helper.html" title="Helper class containing all the needed string or integer constants for the whole project.">Helper</a> variables for the program to run correctly</p>
+<p >After entering the exit command the calendar is being saved to a file</p>
+
+<p class="definition">Definition at line <a class="el" href="_program_8h_source.html#l00026">26</a> of file <a class="el" href="_program_8h_source.html">Program.h</a>.</p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li><a class="el" href="_program_8h_source.html">Program.h</a></li>
 </ul>

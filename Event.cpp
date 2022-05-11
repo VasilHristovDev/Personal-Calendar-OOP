@@ -1,6 +1,6 @@
 #include "Event.h"
 #include "Helper.h"
-
+//constructors
 Event::Event():date(), name(), comment(),startingTime(),endingTime(){
 }
 
@@ -11,7 +11,7 @@ Event::Event(Date date, const char *name, const char *comment, const Time starti
     this->setStartingTime(startingTime);
     this->setEndingTime(endingTime);
 }
-
+//getters
 Date Event::getDate() const {
     return this->date;
 }
@@ -31,7 +31,7 @@ Time Event::getStartingTime() const {
 Time Event::getEndingTime() const {
     return this->endingTime;
 }
-
+//setters
 void Event::setDate(Date date1) {
     if (isValid(date1)) {
         this->date.setDay(date1.getDay());
@@ -70,13 +70,13 @@ void Event::setEndingTime(Time hour) {
     }
 
 }
-
+//operator for checking whether an event matches another event
 bool Event::operator==(const Event &event) const {
     return this->date == event.getDate() && this->startingTime == event.getStartingTime() && this->endingTime ==
                                                                                              event.getEndingTime();
 }
 
-
+//print an event
 void Event::print(std::ostream &out) {
     out <<"name: "<< this->name <<std::endl;
     out<<"comment:  "<< this->comment<<std::endl;
@@ -91,7 +91,7 @@ void Event::print(std::ostream &out) {
     out<<getDuration(*this)<<" min";
     out<<std::endl;
 }
-
+//operator for reading an event from the console
 std::istream &operator>>(std::istream &in, Event &event) {
     in>>event.date;
     std::cout<<Helper::NAME_INPUT_HELPER_MESSAGE<<std::endl;
@@ -103,7 +103,7 @@ std::istream &operator>>(std::istream &in, Event &event) {
     in>>event.endingTime;
     return in;
 }
-
+//save an event to a file
 void Event::save(std::ostream & out) {
     this->print(out);
 }

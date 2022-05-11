@@ -1,54 +1,60 @@
 \hypertarget{_event_8h_source}{}\doxysection{Event.\+h}
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef PERSONAL\_CALENDAR\_OOP\_EVENT\_H}}
-\DoxyCodeLine{2 \textcolor{preprocessor}{\#define PERSONAL\_CALENDAR\_OOP\_EVENT\_H}}
-\DoxyCodeLine{3 }
-\DoxyCodeLine{4 \textcolor{preprocessor}{\#include "{}Date.cpp"{}}}
-\DoxyCodeLine{5 \textcolor{preprocessor}{\#include "{}Time.cpp"{}}}
-\DoxyCodeLine{6 \textcolor{preprocessor}{\#include "{}String.h"{}}}
-\DoxyCodeLine{7 }
-\DoxyCodeLine{8 \textcolor{keyword}{class }\mbox{\hyperlink{class_event}{Event}} \{}
-\DoxyCodeLine{9 \textcolor{keyword}{private}:}
-\DoxyCodeLine{10     \mbox{\hyperlink{class_date}{Date}} date;}
-\DoxyCodeLine{11     \mbox{\hyperlink{class_string}{String}} name;}
-\DoxyCodeLine{12     \mbox{\hyperlink{class_string}{String}} comment;}
-\DoxyCodeLine{13     \mbox{\hyperlink{class_time}{Time}} startingTime;}
-\DoxyCodeLine{14     \mbox{\hyperlink{class_time}{Time}} endingTime;}
-\DoxyCodeLine{15 \textcolor{keyword}{public}:}
-\DoxyCodeLine{16     \textcolor{comment}{//constructors}}
-\DoxyCodeLine{17     \mbox{\hyperlink{class_event}{Event}}();}
-\DoxyCodeLine{18     \mbox{\hyperlink{class_event}{Event}}(\mbox{\hyperlink{class_date}{Date}} date, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *name, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *comment, \mbox{\hyperlink{class_time}{Time}} startingTime, \mbox{\hyperlink{class_time}{Time}} endingTime);}
-\DoxyCodeLine{19 }
-\DoxyCodeLine{20     \textcolor{comment}{//mutators}}
-\DoxyCodeLine{21     \textcolor{keywordtype}{void} setDate(\mbox{\hyperlink{class_date}{Date}});}
-\DoxyCodeLine{22     \textcolor{keywordtype}{void} setName(\textcolor{keyword}{const} \textcolor{keywordtype}{char} *name);}
-\DoxyCodeLine{23     \textcolor{keywordtype}{void} setComment(\textcolor{keyword}{const} \textcolor{keywordtype}{char} *comment);}
-\DoxyCodeLine{24     \textcolor{keywordtype}{void} setStartingTime(\mbox{\hyperlink{class_time}{Time}} hours);}
-\DoxyCodeLine{25     \textcolor{keywordtype}{void} setEndingTime(\mbox{\hyperlink{class_time}{Time}} hours);}
-\DoxyCodeLine{26 }
-\DoxyCodeLine{27     \textcolor{comment}{//selectors}}
-\DoxyCodeLine{28     \mbox{\hyperlink{class_date}{Date}} getDate() \textcolor{keyword}{const};}
-\DoxyCodeLine{29     \mbox{\hyperlink{class_string}{String}} getName() \textcolor{keyword}{const};}
-\DoxyCodeLine{30     \mbox{\hyperlink{class_string}{String}} getComment() \textcolor{keyword}{const};}
-\DoxyCodeLine{31     \mbox{\hyperlink{class_time}{Time}} getStartingTime() \textcolor{keyword}{const};}
-\DoxyCodeLine{32     \mbox{\hyperlink{class_time}{Time}} getEndingTime() \textcolor{keyword}{const};}
-\DoxyCodeLine{33 }
-\DoxyCodeLine{34     \textcolor{keywordtype}{void} print(std::ostream \& out = std::cout);}
-\DoxyCodeLine{35     \textcolor{keywordtype}{void} save(std::ostream \& out);}
-\DoxyCodeLine{36 \textcolor{comment}{//    Event \& operator=(const Event \& other);}}
-\DoxyCodeLine{37     \textcolor{keywordtype}{bool} operator == (\textcolor{keyword}{const} \mbox{\hyperlink{class_event}{Event}} \& event) \textcolor{keyword}{const};}
-\DoxyCodeLine{38     \textcolor{keyword}{friend} std::istream \& operator >> (std::istream \& in, \mbox{\hyperlink{class_event}{Event}} \& event);}
-\DoxyCodeLine{39 }
-\DoxyCodeLine{40 \};}
-\DoxyCodeLine{41 }
-\DoxyCodeLine{42 \textcolor{keyword}{static} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} getDuration(\textcolor{keyword}{const} \mbox{\hyperlink{class_event}{Event}} \& event) \{}
-\DoxyCodeLine{43     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} hours = \textcolor{keyword}{event}.getEndingTime().getHour() -\/ \textcolor{keyword}{event}.getStartingTime().getHour();}
-\DoxyCodeLine{44     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} minutes = \textcolor{keyword}{event}.getEndingTime().getMinutes() -\/ \textcolor{keyword}{event}.getStartingTime().getMinutes();}
-\DoxyCodeLine{45 }
-\DoxyCodeLine{46     \textcolor{keywordflow}{return} hours * 60 + minutes;}
-\DoxyCodeLine{47 \}}
-\DoxyCodeLine{48 }
-\DoxyCodeLine{49 \textcolor{preprocessor}{\#endif }\textcolor{comment}{//PERSONAL\_CALENDAR\_OOP\_EVENT\_H}}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00001}00001 \textcolor{preprocessor}{\#ifndef PERSONAL\_CALENDAR\_OOP\_EVENT\_H}}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00002}00002 \textcolor{preprocessor}{\#define PERSONAL\_CALENDAR\_OOP\_EVENT\_H}}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00003}00003 }
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00004}00004 \textcolor{preprocessor}{\#include "{}Date.cpp"{}}}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00005}00005 \textcolor{preprocessor}{\#include "{}Time.cpp"{}}}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00006}00006 \textcolor{preprocessor}{\#include "{}String.h"{}}}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00007}00007 }
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00011}\mbox{\hyperlink{class_event}{00011}} \textcolor{keyword}{class }\mbox{\hyperlink{class_event}{Event}} \{}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00012}00012 \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00013}00013     \mbox{\hyperlink{class_date}{Date}} date;}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00014}00014     \mbox{\hyperlink{class_string}{String}} name;}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00015}00015     \mbox{\hyperlink{class_string}{String}} comment;}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00016}00016     \mbox{\hyperlink{class_time}{Time}} startingTime;}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00017}00017     \mbox{\hyperlink{class_time}{Time}} endingTime;}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00018}00018 \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00020}00020     \mbox{\hyperlink{class_event_a5a40dd4708297f7031e29b39e039ae10}{Event}}();}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00021}00021     \mbox{\hyperlink{class_event_a5a40dd4708297f7031e29b39e039ae10}{Event}}(\mbox{\hyperlink{class_date}{Date}} date, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *name, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *comment, \mbox{\hyperlink{class_time}{Time}} startingTime, \mbox{\hyperlink{class_time}{Time}} endingTime);}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00022}00022 }
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00024}00024     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_event_aed3f9c44d2591274ee475913d96e8a29}{setDate}}(\mbox{\hyperlink{class_date}{Date}});}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00025}00025 }
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00026}00026     \textcolor{keywordtype}{void} setName(\textcolor{keyword}{const} \textcolor{keywordtype}{char} *name);}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00027}00027 }
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00028}00028     \textcolor{keywordtype}{void} setComment(\textcolor{keyword}{const} \textcolor{keywordtype}{char} *comment);}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00029}00029 }
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00030}00030     \textcolor{keywordtype}{void} setStartingTime(\mbox{\hyperlink{class_time}{Time}} hour);}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00031}00031 }
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00032}00032     \textcolor{keywordtype}{void} setEndingTime(\mbox{\hyperlink{class_time}{Time}} hour);}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00033}00033 }
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00035}00035     \mbox{\hyperlink{class_date}{Date}} \mbox{\hyperlink{class_event_afb982ea390aa61ed05bd3c5e544071e1}{getDate}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00036}00036 }
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00037}00037     \mbox{\hyperlink{class_string}{String}} getName() \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00038}00038 }
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00039}00039     \mbox{\hyperlink{class_string}{String}} getComment() \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00040}00040 }
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00041}00041     \mbox{\hyperlink{class_time}{Time}} getStartingTime() \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00042}00042 }
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00043}00043     \mbox{\hyperlink{class_time}{Time}} getEndingTime() \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00044}00044 }
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00046}00046     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_event_a66a1dc83c7e9922fa4707453d6f0b211}{print}}(std::ostream \&out = std::cout);}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00047}00047     \textcolor{keywordtype}{void} save(std::ostream \&out);}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00048}00048 }
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00050}00050     \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_event_a32421852d531dfc492f534e953416174}{operator==}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_event}{Event}} \&event) \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00051}00051 }
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00053}00053     \textcolor{keyword}{friend} std::istream \&\mbox{\hyperlink{class_event_aed459a839caa210b72041bf8d75ad2e2}{operator>>}}(std::istream \&in, \mbox{\hyperlink{class_event}{Event}} \&event);}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00054}00054 }
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00055}00055 \};}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00056}00056 }
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00058}00058 \textcolor{keyword}{static} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} getDuration(\textcolor{keyword}{const} \mbox{\hyperlink{class_event}{Event}} \&event) \{}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00059}00059     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} hours = \textcolor{keyword}{event}.getEndingTime().getHour() -\/ \textcolor{keyword}{event}.getStartingTime().getHour();}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00060}00060     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} minutes = \textcolor{keyword}{event}.getEndingTime().getMinutes() -\/ \textcolor{keyword}{event}.getStartingTime().getMinutes();}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00061}00061 }
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00062}00062     \textcolor{keywordflow}{return} hours * 60 + minutes;}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00063}00063 \}}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00064}00064 }
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00065}00065 \textcolor{preprocessor}{\#endif }\textcolor{comment}{//PERSONAL\_CALENDAR\_OOP\_EVENT\_H}}
 
 \end{DoxyCode}

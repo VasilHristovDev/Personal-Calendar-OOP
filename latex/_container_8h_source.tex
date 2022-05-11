@@ -1,160 +1,159 @@
 \hypertarget{_container_8h_source}{}\doxysection{Container.\+h}
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{1 \textcolor{preprocessor}{\#include "{}Event.h"{}}}
-\DoxyCodeLine{2 \textcolor{preprocessor}{\#include "{}Helper.h"{}}}
-\DoxyCodeLine{3 }
-\DoxyCodeLine{4 \textcolor{preprocessor}{\#ifndef PERSONAL\_CALENDAR\_OOP\_EVENTCONTAINER\_H}}
-\DoxyCodeLine{5 \textcolor{preprocessor}{\#define PERSONAL\_CALENDAR\_OOP\_EVENTCONTAINER\_H}}
-\DoxyCodeLine{6 }
-\DoxyCodeLine{7 \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} MAX\_CAP = 100;}
-\DoxyCodeLine{8 \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} DEFAULT\_CAP = 10;}
-\DoxyCodeLine{9 }
-\DoxyCodeLine{10 }
-\DoxyCodeLine{11 \textcolor{keyword}{template}<\textcolor{keyword}{class} Type>}
-\DoxyCodeLine{12 \textcolor{keyword}{class }\mbox{\hyperlink{class_container}{Container}} \{}
-\DoxyCodeLine{13 \textcolor{keyword}{private}:}
-\DoxyCodeLine{14     Type *arr;}
-\DoxyCodeLine{15     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} size;}
-\DoxyCodeLine{16     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} capacity;}
-\DoxyCodeLine{17 }
-\DoxyCodeLine{18     \textcolor{keywordtype}{void} resize();}
-\DoxyCodeLine{19 }
-\DoxyCodeLine{20 \textcolor{keyword}{public}:}
-\DoxyCodeLine{21     \mbox{\hyperlink{class_container}{Container}}();}
-\DoxyCodeLine{22 }
-\DoxyCodeLine{23     \mbox{\hyperlink{class_container}{Container}}(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} cap);}
-\DoxyCodeLine{24 }
-\DoxyCodeLine{25     \mbox{\hyperlink{class_container}{Container}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_container}{Container<Type>}} \&container);}
-\DoxyCodeLine{26 }
-\DoxyCodeLine{27     \textcolor{keywordtype}{void} add(\textcolor{keyword}{const} Type \&element);}
-\DoxyCodeLine{28 }
-\DoxyCodeLine{29     \textcolor{keywordtype}{void} swap(Type \&element1, Type \&element2);}
-\DoxyCodeLine{30 }
-\DoxyCodeLine{31     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} getIndex(\textcolor{keyword}{const} Type \&element);}
-\DoxyCodeLine{32 }
-\DoxyCodeLine{33     \textcolor{keywordtype}{void} remove(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} index);}
-\DoxyCodeLine{34 }
-\DoxyCodeLine{35     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} getSize() \textcolor{keyword}{const};}
-\DoxyCodeLine{36 }
-\DoxyCodeLine{37     Type \&operator[](\textcolor{keywordtype}{unsigned} index);}
-\DoxyCodeLine{38 }
-\DoxyCodeLine{39     \mbox{\hyperlink{class_container}{Container<Type>}} \&operator=(\textcolor{keyword}{const} \mbox{\hyperlink{class_container}{Container<Type>}} \&other);}
-\DoxyCodeLine{40 }
-\DoxyCodeLine{41     \mbox{\hyperlink{class_container}{\string~Container}}();}
-\DoxyCodeLine{42 }
-\DoxyCodeLine{43 \};}
-\DoxyCodeLine{44 }
-\DoxyCodeLine{45 \textcolor{keyword}{template}<\textcolor{keyword}{class} Type>}
-\DoxyCodeLine{46 \textcolor{keywordtype}{void} \mbox{\hyperlink{class_container}{Container<Type>::add}}(\textcolor{keyword}{const} Type \&element) \{}
-\DoxyCodeLine{47     \textcolor{keywordflow}{if} (size + 1 >= capacity) \{}
-\DoxyCodeLine{48         resize();}
-\DoxyCodeLine{49     \}}
-\DoxyCodeLine{50     \textcolor{keywordflow}{if} (size + 1 >= MAX\_CAP)}
-\DoxyCodeLine{51         std::cerr << Helper::MAX\_CAPACITY\_REACHED\_ERROR << std::endl;}
-\DoxyCodeLine{52     \textcolor{keywordflow}{else}}
-\DoxyCodeLine{53         arr[size++] = element;}
-\DoxyCodeLine{54 \}}
-\DoxyCodeLine{55 }
-\DoxyCodeLine{56 \textcolor{keyword}{template}<\textcolor{keyword}{class} Type>}
-\DoxyCodeLine{57 \mbox{\hyperlink{class_container}{Container<Type>::Container}}(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} cap) \{}
-\DoxyCodeLine{58     capacity = cap;}
-\DoxyCodeLine{59     size = 0;}
-\DoxyCodeLine{60     arr = \textcolor{keyword}{new} Type[capacity];}
-\DoxyCodeLine{61 \}}
-\DoxyCodeLine{62 }
-\DoxyCodeLine{63 \textcolor{keyword}{template}<\textcolor{keyword}{class} Type>}
-\DoxyCodeLine{64 \mbox{\hyperlink{class_container}{Container<Type>::Container}}() \{}
-\DoxyCodeLine{65     capacity = DEFAULT\_CAP;}
-\DoxyCodeLine{66     size = 0;}
-\DoxyCodeLine{67     arr = \textcolor{keyword}{new} Type[capacity];}
-\DoxyCodeLine{68 \}}
-\DoxyCodeLine{69 }
-\DoxyCodeLine{70 \textcolor{keyword}{template}<\textcolor{keyword}{class} Type>}
-\DoxyCodeLine{71 \textcolor{keywordtype}{void} \mbox{\hyperlink{class_container}{Container<Type>::remove}}(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} index) \{}
-\DoxyCodeLine{72     \textcolor{keywordflow}{if} (index <= size) \{}
-\DoxyCodeLine{73         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < size; ++i) \{}
-\DoxyCodeLine{74             \textcolor{keywordflow}{if} (i == index) \{}
-\DoxyCodeLine{75                 \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} j = i; j < size; ++j) \{}
-\DoxyCodeLine{76                     arr[j] = arr[j + 1];}
-\DoxyCodeLine{77                 \}}
-\DoxyCodeLine{78             \}}
-\DoxyCodeLine{79         \}}
-\DoxyCodeLine{80         size-\/-\/;}
-\DoxyCodeLine{81     \} \textcolor{keywordflow}{else} \{}
-\DoxyCodeLine{82         std::cerr << Helper::EVENT\_NOT\_FOUND\_ERROR << std::endl;}
-\DoxyCodeLine{83     \}}
-\DoxyCodeLine{84 \}}
-\DoxyCodeLine{85 }
-\DoxyCodeLine{86 \textcolor{keyword}{template}<\textcolor{keyword}{class} Type>}
-\DoxyCodeLine{87 \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} \mbox{\hyperlink{class_container}{Container<Type>::getSize}}()\textcolor{keyword}{ const }\{}
-\DoxyCodeLine{88     \textcolor{keywordflow}{return} size;}
-\DoxyCodeLine{89 \}}
-\DoxyCodeLine{90 }
-\DoxyCodeLine{91 \textcolor{keyword}{template}<\textcolor{keyword}{class} Type>}
-\DoxyCodeLine{92 Type \&\mbox{\hyperlink{class_container}{Container<Type>::operator[]}}(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} index) \{}
-\DoxyCodeLine{93     \textcolor{keywordflow}{return} arr[index];}
-\DoxyCodeLine{94 \}}
-\DoxyCodeLine{95 }
-\DoxyCodeLine{96 \textcolor{keyword}{template}<\textcolor{keyword}{class} Type>}
-\DoxyCodeLine{97 \textcolor{keywordtype}{void} \mbox{\hyperlink{class_container}{Container<Type>::swap}}(Type \&element1, Type \&element2) \{}
-\DoxyCodeLine{98     Type temp = element1;}
-\DoxyCodeLine{99     element1 = element2;}
-\DoxyCodeLine{100     element2 = temp;}
-\DoxyCodeLine{101 \}}
-\DoxyCodeLine{102 }
-\DoxyCodeLine{103 \textcolor{keyword}{template}<\textcolor{keyword}{class} Type>}
-\DoxyCodeLine{104 \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} \mbox{\hyperlink{class_container}{Container<Type>::getIndex}}(\textcolor{keyword}{const} Type \&element) \{}
-\DoxyCodeLine{105     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < size; ++i) \{}
-\DoxyCodeLine{106         \textcolor{keywordflow}{if} (arr[i] == element)}
-\DoxyCodeLine{107             \textcolor{keywordflow}{return} i;}
-\DoxyCodeLine{108     \}}
-\DoxyCodeLine{109     \textcolor{keywordflow}{return} Helper::ERROR\_INDEX;}
-\DoxyCodeLine{110 \}}
-\DoxyCodeLine{111 }
-\DoxyCodeLine{112 \textcolor{keyword}{template}<\textcolor{keyword}{class} Type>}
-\DoxyCodeLine{113 \mbox{\hyperlink{class_container}{Container<Type>::\string~Container}}() \{}
-\DoxyCodeLine{114     \textcolor{keyword}{delete}[] arr;}
-\DoxyCodeLine{115 \}}
-\DoxyCodeLine{116 }
-\DoxyCodeLine{117 \textcolor{keyword}{template}<\textcolor{keyword}{class} Type>}
-\DoxyCodeLine{118 \mbox{\hyperlink{class_container}{Container<Type>}} \&\mbox{\hyperlink{class_container}{Container<Type>::operator=}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_container}{Container<Type>}} \&other) \{}
-\DoxyCodeLine{119     \textcolor{keywordflow}{if} (\textcolor{keyword}{this} != \&other) \{}
-\DoxyCodeLine{120         \textcolor{keyword}{delete}[] arr;}
-\DoxyCodeLine{121         capacity = other.capacity;}
-\DoxyCodeLine{122         arr = \textcolor{keyword}{new} Type[capacity];}
-\DoxyCodeLine{123         size = other.getSize();}
-\DoxyCodeLine{124         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < size; ++i) \{}
-\DoxyCodeLine{125             arr[i] = other.arr[i];}
-\DoxyCodeLine{126         \}}
-\DoxyCodeLine{127     \}}
-\DoxyCodeLine{128     \textcolor{keywordflow}{return} *\textcolor{keyword}{this};}
-\DoxyCodeLine{129 \}}
-\DoxyCodeLine{130 }
-\DoxyCodeLine{131 \textcolor{keyword}{template}<\textcolor{keyword}{class} Type>}
-\DoxyCodeLine{132 \mbox{\hyperlink{class_container}{Container<Type>::Container}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_container}{Container<Type>}} \&container) \{}
-\DoxyCodeLine{133     capacity = container.capacity;}
-\DoxyCodeLine{134     arr = \textcolor{keyword}{new} Type[capacity];}
-\DoxyCodeLine{135     size = container.size;}
-\DoxyCodeLine{136 }
-\DoxyCodeLine{137     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < size; ++i) \{}
-\DoxyCodeLine{138         arr[i] = container.arr[i];}
-\DoxyCodeLine{139     \}}
-\DoxyCodeLine{140 \}}
-\DoxyCodeLine{141 }
-\DoxyCodeLine{142 \textcolor{keyword}{template}<\textcolor{keyword}{class} Type>}
-\DoxyCodeLine{143 \textcolor{keywordtype}{void} \mbox{\hyperlink{class_container}{Container<Type>::resize}}() \{}
-\DoxyCodeLine{144     capacity *= 2;}
-\DoxyCodeLine{145     Type *temp = \textcolor{keyword}{new} Type[capacity];}
-\DoxyCodeLine{146 }
-\DoxyCodeLine{147     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < size; i++) \{}
-\DoxyCodeLine{148         temp[i] = arr[i];}
-\DoxyCodeLine{149     \}}
-\DoxyCodeLine{150     \textcolor{keyword}{delete}[] arr;}
-\DoxyCodeLine{151     arr = temp;}
-\DoxyCodeLine{152 \}}
-\DoxyCodeLine{153 }
-\DoxyCodeLine{154 }
-\DoxyCodeLine{155 \textcolor{preprocessor}{\#endif }\textcolor{comment}{//PERSONAL\_CALENDAR\_OOP\_EVENTCONTAINER\_H}}
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00001}00001 \textcolor{preprocessor}{\#include "{}Event.h"{}}}
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00002}00002 \textcolor{preprocessor}{\#include "{}Helper.h"{}}}
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00003}00003 }
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00004}00004 \textcolor{preprocessor}{\#ifndef PERSONAL\_CALENDAR\_OOP\_EVENTCONTAINER\_H}}
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00005}00005 \textcolor{preprocessor}{\#define PERSONAL\_CALENDAR\_OOP\_EVENTCONTAINER\_H}}
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00006}00006 }
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00008}00008 \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} MAX\_CAP = 100;}
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00009}00009 \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} DEFAULT\_CAP = 10;}
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00010}00010 }
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00013}00013 \textcolor{keyword}{template}<\textcolor{keyword}{class} Type>}
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00014}\mbox{\hyperlink{class_container}{00014}} \textcolor{keyword}{class }\mbox{\hyperlink{class_container}{Container}} \{}
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00015}00015 \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00016}00016     Type *arr;}
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00017}00017     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} size;}
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00018}00018     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} capacity;}
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00019}00019 }
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00021}00021     \textcolor{keywordtype}{void} resize();}
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00022}00022 }
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00023}00023 \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00025}\mbox{\hyperlink{class_container_a02406d11792ccfd80eca60a61330a4f6}{00025}}     \mbox{\hyperlink{class_container_a02406d11792ccfd80eca60a61330a4f6}{Container}}();}
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00026}00026 }
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00028}\mbox{\hyperlink{class_container_a73e1c92b36a33157c453a59756c45e2c}{00028}}     \mbox{\hyperlink{class_container_a73e1c92b36a33157c453a59756c45e2c}{Container}}(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} cap);}
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00029}00029 }
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00031}\mbox{\hyperlink{class_container_a0e6de95ebbc4a4e022919302c812439d}{00031}}     \mbox{\hyperlink{class_container_a0e6de95ebbc4a4e022919302c812439d}{Container}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_container}{Container<Type>}} \&container);}
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00032}00032 }
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00034}\mbox{\hyperlink{class_container_a652475b953d8d99128998f330f976493}{00034}}     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_container_a652475b953d8d99128998f330f976493}{add}}(\textcolor{keyword}{const} Type \&element);}
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00035}00035 }
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00037}\mbox{\hyperlink{class_container_adccc5b89f1efedaea2a0d54c318b29a4}{00037}}     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_container_adccc5b89f1efedaea2a0d54c318b29a4}{swap}}(Type \&element1, Type \&element2);}
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00038}00038 }
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00040}\mbox{\hyperlink{class_container_a4314b8f7be7d08303d41907a68ed513e}{00040}}     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} \mbox{\hyperlink{class_container_a4314b8f7be7d08303d41907a68ed513e}{getIndex}}(\textcolor{keyword}{const} Type \&element);}
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00041}00041 }
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00043}\mbox{\hyperlink{class_container_ae84d6a20d61594544c77079a7038e83e}{00043}}     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_container_ae84d6a20d61594544c77079a7038e83e}{remove}}(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} index);}
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00044}00044 }
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00046}\mbox{\hyperlink{class_container_a9062f623a789661f385b3e2b86990f24}{00046}}     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} \mbox{\hyperlink{class_container_a9062f623a789661f385b3e2b86990f24}{getSize}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00047}00047 }
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00049}\mbox{\hyperlink{class_container_afa56baec48f99f1fdc8a7f386583fcbd}{00049}}     Type \&\mbox{\hyperlink{class_container_afa56baec48f99f1fdc8a7f386583fcbd}{operator[]}}(\textcolor{keywordtype}{unsigned} index);}
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00050}00050 }
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00052}\mbox{\hyperlink{class_container_ab1c10eb11d688820d9b938f64cd0180b}{00052}}     \mbox{\hyperlink{class_container}{Container<Type>}} \&\mbox{\hyperlink{class_container_ab1c10eb11d688820d9b938f64cd0180b}{operator=}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_container}{Container<Type>}} \&other);}
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00053}00053 }
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00055}\mbox{\hyperlink{class_container_a18ba8d01a192854a225120ca4ab889be}{00055}}     \mbox{\hyperlink{class_container_a18ba8d01a192854a225120ca4ab889be}{\string~Container}}();}
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00056}00056 }
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00057}00057 \};}
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00058}00058 }
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00059}00059 \textcolor{keyword}{template}<\textcolor{keyword}{class} Type>}
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00060}\mbox{\hyperlink{class_container_a652475b953d8d99128998f330f976493}{00060}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_container_a652475b953d8d99128998f330f976493}{Container<Type>::add}}(\textcolor{keyword}{const} Type \&element) \{}
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00061}00061     \textcolor{keywordflow}{if} (size + 1 >= capacity) \{}
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00062}00062         resize();}
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00063}00063     \}}
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00064}00064     \textcolor{keywordflow}{if} (size + 1 >= MAX\_CAP)}
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00065}00065         std::cerr << Helper::MAX\_CAPACITY\_REACHED\_ERROR << std::endl;}
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00066}00066     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00067}00067         arr[size++] = element;}
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00068}00068 \}}
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00069}00069 }
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00070}00070 \textcolor{keyword}{template}<\textcolor{keyword}{class} Type>}
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00071}\mbox{\hyperlink{class_container_a73e1c92b36a33157c453a59756c45e2c}{00071}} \mbox{\hyperlink{class_container_a02406d11792ccfd80eca60a61330a4f6}{Container<Type>::Container}}(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} cap) \{}
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00072}00072     capacity = cap;}
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00073}00073     size = 0;}
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00074}00074     arr = \textcolor{keyword}{new} Type[capacity];}
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00075}00075 \}}
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00076}00076 }
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00077}00077 \textcolor{keyword}{template}<\textcolor{keyword}{class} Type>}
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00078}\mbox{\hyperlink{class_container_a02406d11792ccfd80eca60a61330a4f6}{00078}} \mbox{\hyperlink{class_container_a02406d11792ccfd80eca60a61330a4f6}{Container<Type>::Container}}() \{}
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00079}00079     capacity = DEFAULT\_CAP;}
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00080}00080     size = 0;}
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00081}00081     arr = \textcolor{keyword}{new} Type[capacity];}
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00082}00082 \}}
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00083}00083 }
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00084}00084 \textcolor{keyword}{template}<\textcolor{keyword}{class} Type>}
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00085}\mbox{\hyperlink{class_container_ae84d6a20d61594544c77079a7038e83e}{00085}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_container_ae84d6a20d61594544c77079a7038e83e}{Container<Type>::remove}}(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} index) \{}
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00086}00086     \textcolor{keywordflow}{if} (index <= size) \{}
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00087}00087         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < size; ++i) \{}
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00088}00088             \textcolor{keywordflow}{if} (i == index) \{}
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00089}00089                 \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} j = i; j < size; ++j) \{}
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00090}00090                     arr[j] = arr[j + 1];}
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00091}00091                 \}}
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00092}00092             \}}
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00093}00093         \}}
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00094}00094         size-\/-\/;}
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00095}00095     \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00096}00096         std::cerr << \mbox{\hyperlink{class_helper_aeea6e6adeefd4a314b1591f4abf21444}{Helper::EVENT\_NOT\_FOUND\_ERROR}} << std::endl;}
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00097}00097     \}}
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00098}00098 \}}
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00099}00099 }
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00100}00100 \textcolor{keyword}{template}<\textcolor{keyword}{class} Type>}
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00101}\mbox{\hyperlink{class_container_a9062f623a789661f385b3e2b86990f24}{00101}} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} \mbox{\hyperlink{class_container_a9062f623a789661f385b3e2b86990f24}{Container<Type>::getSize}}()\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00102}00102     \textcolor{keywordflow}{return} size;}
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00103}00103 \}}
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00104}00104 }
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00105}00105 \textcolor{keyword}{template}<\textcolor{keyword}{class} Type>}
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00106}\mbox{\hyperlink{class_container_afa56baec48f99f1fdc8a7f386583fcbd}{00106}} Type \&\mbox{\hyperlink{class_container_afa56baec48f99f1fdc8a7f386583fcbd}{Container<Type>::operator[]}}(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} index) \{}
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00107}00107     \textcolor{keywordflow}{return} arr[index];}
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00108}00108 \}}
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00109}00109 }
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00110}00110 \textcolor{keyword}{template}<\textcolor{keyword}{class} Type>}
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00111}\mbox{\hyperlink{class_container_adccc5b89f1efedaea2a0d54c318b29a4}{00111}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_container_adccc5b89f1efedaea2a0d54c318b29a4}{Container<Type>::swap}}(Type \&element1, Type \&element2) \{}
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00112}00112     Type temp = element1;}
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00113}00113     element1 = element2;}
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00114}00114     element2 = temp;}
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00115}00115 \}}
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00116}00116 }
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00117}00117 \textcolor{keyword}{template}<\textcolor{keyword}{class} Type>}
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00118}\mbox{\hyperlink{class_container_a4314b8f7be7d08303d41907a68ed513e}{00118}} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} \mbox{\hyperlink{class_container_a4314b8f7be7d08303d41907a68ed513e}{Container<Type>::getIndex}}(\textcolor{keyword}{const} Type \&element) \{}
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00119}00119     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < size; ++i) \{}
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00120}00120         \textcolor{keywordflow}{if} (arr[i] == element)}
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00121}00121             \textcolor{keywordflow}{return} i;}
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00122}00122     \}}
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00123}00123     \textcolor{keywordflow}{return} Helper::ERROR\_INDEX;}
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00124}00124 \}}
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00125}00125 }
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00126}00126 \textcolor{keyword}{template}<\textcolor{keyword}{class} Type>}
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00127}\mbox{\hyperlink{class_container_a18ba8d01a192854a225120ca4ab889be}{00127}} \mbox{\hyperlink{class_container_a18ba8d01a192854a225120ca4ab889be}{Container<Type>::\string~Container}}() \{}
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00128}00128     \textcolor{keyword}{delete}[] arr;}
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00129}00129 \}}
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00130}00130 }
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00131}00131 \textcolor{keyword}{template}<\textcolor{keyword}{class} Type>}
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00132}\mbox{\hyperlink{class_container_ab1c10eb11d688820d9b938f64cd0180b}{00132}} \mbox{\hyperlink{class_container}{Container<Type>}} \&\mbox{\hyperlink{class_container_ab1c10eb11d688820d9b938f64cd0180b}{Container<Type>::operator=}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_container}{Container<Type>}} \&other) \{}
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00133}00133     \textcolor{keywordflow}{if} (\textcolor{keyword}{this} != \&other) \{}
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00134}00134         \textcolor{keyword}{delete}[] arr;}
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00135}00135         capacity = other.capacity;}
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00136}00136         arr = \textcolor{keyword}{new} Type[capacity];}
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00137}00137         size = other.\mbox{\hyperlink{class_container_a9062f623a789661f385b3e2b86990f24}{getSize}}();}
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00138}00138         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < size; ++i) \{}
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00139}00139             arr[i] = other.arr[i];}
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00140}00140         \}}
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00141}00141     \}}
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00142}00142     \textcolor{keywordflow}{return} *\textcolor{keyword}{this};}
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00143}00143 \}}
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00144}00144 }
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00145}00145 \textcolor{keyword}{template}<\textcolor{keyword}{class} Type>}
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00146}\mbox{\hyperlink{class_container_a0e6de95ebbc4a4e022919302c812439d}{00146}} \mbox{\hyperlink{class_container_a02406d11792ccfd80eca60a61330a4f6}{Container<Type>::Container}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_container}{Container<Type>}} \&container) \{}
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00147}00147     capacity = container.capacity;}
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00148}00148     arr = \textcolor{keyword}{new} Type[capacity];}
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00149}00149     size = container.size;}
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00150}00150 }
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00151}00151     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < size; ++i) \{}
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00152}00152         arr[i] = container.arr[i];}
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00153}00153     \}}
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00154}00154 \}}
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00155}00155 }
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00156}00156 \textcolor{keyword}{template}<\textcolor{keyword}{class} Type>}
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00157}00157 \textcolor{keywordtype}{void} \mbox{\hyperlink{class_container}{Container<Type>::resize}}() \{}
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00158}00158     capacity *= 2;}
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00159}00159     Type *temp = \textcolor{keyword}{new} Type[capacity];}
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00160}00160 }
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00161}00161     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < size; i++) \{}
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00162}00162         temp[i] = arr[i];}
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00163}00163     \}}
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00164}00164     \textcolor{keyword}{delete}[] arr;}
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00165}00165     arr = temp;}
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00166}00166 \}}
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00167}00167 }
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00168}00168 }
+\DoxyCodeLine{\Hypertarget{_container_8h_source_l00169}00169 \textcolor{preprocessor}{\#endif }\textcolor{comment}{//PERSONAL\_CALENDAR\_OOP\_EVENTCONTAINER\_H}}
 
 \end{DoxyCode}

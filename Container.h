@@ -58,13 +58,20 @@ public:
 
 template<class Type>
 void Container<Type>::add(const Type &element) {
+    //check if the size with the new element would be greater than the current capacity
     if (size + 1 >= capacity) {
+        //if it is greater or equal to the current capacity resize the container
         resize();
     }
-    if (size + 1 >= MAX_CAP)
+    //If the capacity is greater than the MAX_CAP const output error message
+    if (size + 1 >= MAX_CAP) {
         std::cerr << Helper::MAX_CAPACITY_REACHED_ERROR << std::endl;
-    else
+    }
+    //add the element to the container and increment its size
+    else{
         arr[size++] = element;
+    }
+
 }
 
 template<class Type>
@@ -80,7 +87,7 @@ Container<Type>::Container() {
     size = 0;
     arr = new Type[capacity];
 }
-
+//find the element at this index and withdraw all elements after its position to one position before
 template<class Type>
 void Container<Type>::remove(unsigned int index) {
     if (index <= size) {
@@ -91,29 +98,32 @@ void Container<Type>::remove(unsigned int index) {
                 }
             }
         }
+        //decrement size
         size--;
-    } else {
-        std::cerr << Helper::EVENT_NOT_FOUND_ERROR << std::endl;
+    }
+    //If no element was found
+    else {
+        std::cerr << Helper::ELEMENT_NOT_FOUND_ERROR << std::endl;
     }
 }
-
+//getter
 template<class Type>
 unsigned int Container<Type>::getSize() const {
     return size;
 }
-
+//operator for indexation used to return an element in the array standing on a given index
 template<class Type>
 Type &Container<Type>::operator[](unsigned int index) {
     return arr[index];
 }
-
+//swap two elements in the array
 template<class Type>
 void Container<Type>::swap(Type &element1, Type &element2) {
     Type temp = element1;
     element1 = element2;
     element2 = temp;
 }
-
+//get an index of an element in the container
 template<class Type>
 unsigned int Container<Type>::getIndex(const Type &element) {
     for (int i = 0; i < size; ++i) {
@@ -122,12 +132,12 @@ unsigned int Container<Type>::getIndex(const Type &element) {
     }
     return Helper::ERROR_INDEX;
 }
-
+//destructor
 template<class Type>
 Container<Type>::~Container() {
     delete[] arr;
 }
-
+//operator for assignment ( good practise when using dynamic allocated memory )
 template<class Type>
 Container<Type> &Container<Type>::operator=(const Container<Type> &other) {
     if (this != &other) {
@@ -141,7 +151,7 @@ Container<Type> &Container<Type>::operator=(const Container<Type> &other) {
     }
     return *this;
 }
-
+//copy constructor
 template<class Type>
 Container<Type>::Container(const Container<Type> &container) {
     capacity = container.capacity;
@@ -152,7 +162,7 @@ Container<Type>::Container(const Container<Type> &container) {
         arr[i] = container.arr[i];
     }
 }
-
+//private method for resizing container capacity
 template<class Type>
 void Container<Type>::resize() {
     capacity *= 2;
