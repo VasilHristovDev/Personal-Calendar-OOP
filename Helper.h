@@ -19,6 +19,7 @@ public:
     static const char *EVENT_NOT_FOUND_ERROR;
     static const char *EVENT_FOUND_MESSAGE;
     static const char *HELPER_MESSAGE_CHANGE_EVENT;
+    static const char *TIME_ERROR_MESSAGE;
 
     ///miscellaneous constants
     static const char *UNKNOWN_COMMAND_USED;
@@ -62,6 +63,7 @@ const char Helper::TIME_SEPARATOR = ':';
 const char Helper::DATE_SEPARATOR = '/';
 const char *Helper::TIME_INPUT_HELPER_MESSAGE = "Please enter the hours in the following format: hh:ii";
 const char *Helper::EVENT_NOT_FOUND_ERROR = "Event with this information was not found!";
+const char * Helper::TIME_ERROR_MESSAGE = "Starting time must be before ending time!";
 const char *Helper::ELEMENT_NOT_FOUND_ERROR = "Element with this information was not found!";
 const char *Helper::EVENT_FOUND_MESSAGE = "Event with this information was found!";
 const char *Helper::DATE_NOT_FREE_ERROR_MESSAGE = "The event cannot be added because an event with the same date exists!";

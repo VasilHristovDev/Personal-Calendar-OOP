@@ -44,12 +44,15 @@ public:
 
     ///print method that helps us display information for the date
     void print(std::ostream & out = std::cout) const;
+    void read(std::istream & in = std::cin);
     ///comparison operator related to : telling whether two dates are the same
     bool operator == (const Date & date1) const;
 
     ///comparison operators related to: determining a period of time between two dates
     bool operator <=(const Date & date1) const;
     bool operator >=(const Date & date1) const;
+    bool operator > (const Date & date1) const;
+    bool operator < (const Date & date1) const;
 
     ///incrementation operators changing the date to the next
     Date & operator++();

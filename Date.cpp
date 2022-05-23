@@ -299,6 +299,35 @@ Date Date::operator++(int) {
     operator++();
     return old;
 }
+
+bool Date::operator>(const Date &date1) const {
+    if ( year == date1.year)
+    {
+        if(month == date1.month)
+        {
+            return day > date1.day;
+        }
+        else
+        {
+            return month > date1.month;
+        }
+    }
+    return year > date1.year;
+}
+
+bool Date::operator<(const Date &date1) const {
+    return !(*this > date1);
+}
+
+void Date::read(std::istream &in) {
+    in.ignore(10);
+    in>>this->day;
+    in.ignore(1);
+    in>>this->month;
+    in.ignore(1);
+    in>>this->year;
+}
+
 //a method that returns a container with all the dates from a given period
 Container<Date> getAllDatesFromPeriod(const Date & dateStart, const Date & dateEnd)
 {

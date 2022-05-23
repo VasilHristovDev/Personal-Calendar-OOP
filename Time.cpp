@@ -98,6 +98,13 @@ bool Time::operator>=(const Time &time) const {
         return false;
     }
 }
+
+void Time::read(std::istream & in) {
+    in>>hours;
+    in.ignore(1);
+    in>>minutes;
+}
+
 //validator for time
 bool isValidTime(const Time & time)
 {

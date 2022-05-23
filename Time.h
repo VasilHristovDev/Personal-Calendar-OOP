@@ -27,6 +27,7 @@ public:
 
     ///A print method that displays the information about the created object
     void print(std::ostream &out = std::cout) const;
+    void read(std::istream &in = std::cin);
 
     ///Operators for comparison, needed for determining the time spans
     bool operator==(const Time &time) const;

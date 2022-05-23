@@ -40,6 +40,7 @@ public:
     ///mutators
     void setEvents(const Event * events, int size, int maxSize = DEFAULT_CAP);
     void writeEvents(const char * filename);
+    void readEvents(const char * filename);
 
 };
 ///Helper static function that sorts given container of events by starting hour

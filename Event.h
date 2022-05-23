@@ -45,6 +45,7 @@ public:
     ///Print and save operations, helping us write events on the console or to a file
     void print(std::ostream &out = std::cout);
     void save(std::ostream &out);
+    void read(std::istream &in);
 
     ///operator for comparison telling us whether two events are the same
     bool operator==(const Event &event) const;

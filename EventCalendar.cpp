@@ -195,6 +195,11 @@ String constructFileName(const Date &startDate) {
 }
 //outputting the schedule for a given period of time
 void EventCalendar::outputScheduleFromTo(const Date &dateStart, const Date &dateEnd) {
+    if(dateStart > dateEnd)
+    {
+        std::cerr<<Helper::INVALID_DATE_MESSAGE<<std::endl;
+        return;
+    }
     String filename = constructFileName(dateStart);
     std::ofstream out;
     out.open(filename.getText());
@@ -229,6 +234,16 @@ void EventCalendar::outputScheduleFromTo(const Date &dateStart, const Date &date
 //the method that is responsible for 'free' command action
 void EventCalendar::findFreeTime(const Date &dateStart, const Date &dateEnd, const Time &startTime, const Time &endTime,
                                  const int duration) {
+    if(dateStart > dateEnd)
+    {
+        std::cerr<<Helper::INVALID_DATE_MESSAGE<<std::endl;
+        return;
+    }
+    if(startTime > endTime)
+    {
+        std::cerr<<Helper::TIME_ERROR_MESSAGE<<std::endl;
+        return;
+    }
     Container<Event> eventsInPeriod;
     unsigned int sizeEvents = this->events.getSize();
     //Get all events that are in the given period of time (Dates)
@@ -265,6 +280,28 @@ void EventCalendar::findFreeTime(const Date &dateStart, const Date &dateEnd, con
         }
     }
 }
+
+void EventCalendar::readEvents(const char *filename) {
+    std::ifstream in;
+    in.open(filename);
+    if(in)
+    {
+        int numberOfEntries;
+        in.ignore(34);
+        in>>numberOfEntries;
+        for (int i = 0; i < numberOfEntries ; ++i) {
+            Event event;
+            event.read(in);
+            events.add(event);
+        }
+    }
+    else
+    {
+        std::cerr<<"Could not open file :"<<filename<<" for reading!"<<std::endl;
+    }
+    in.close();
+}
+
 //We sort all events by their duration
 void sortEventsByDuration(Container<Event> &events) {
     unsigned int size = events.getSize();

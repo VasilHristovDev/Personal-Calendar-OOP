@@ -26,6 +26,8 @@ Program::Program() {
 void Program::run() {
     ///Command - Action based dialog mode
     String command;
+    this->calendar.readEvents(OUTPUT_FILENAME);
+
     std::cout << Helper::COMMANDS_HELPER_MESSAGE << std::endl;
     ///entering commands until the exit command string is entered
     while (stringToCommands(command) != EXIT_COMMAND) {

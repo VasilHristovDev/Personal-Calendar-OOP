@@ -8,8 +8,15 @@ Event::Event(Date date, const char *name, const char *comment, const Time starti
     this->setDate(date);
     this->setName(name);
     this->setComment(comment);
-    this->setStartingTime(startingTime);
-    this->setEndingTime(endingTime);
+    if(startingTime > endingTime)
+    {
+        std::cerr<<Helper::TIME_ERROR_MESSAGE<<std::endl;
+    }
+    else
+    {
+        this->setStartingTime(startingTime);
+        this->setEndingTime(endingTime);
+    }
 }
 //getters
 Date Event::getDate() const {
@@ -106,6 +113,20 @@ std::istream &operator>>(std::istream &in, Event &event) {
 //save an event to a file
 void Event::save(std::ostream & out) {
     this->print(out);
+}
+
+void Event::read(std::istream &in) {
+    in.ignore(2);
+    in.ignore(8);
+    in>>name;
+    in.ignore(10);
+    in>>comment;
+    date.read(in);
+    in.ignore(6);
+    startingTime.read(in);
+    in.ignore(3);
+    endingTime.read(in);
+    std::cout<<"Added event from file!"<<std::endl;
 }
 
 
